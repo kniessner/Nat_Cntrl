@@ -1,0 +1,14 @@
+
+.react-grid-layout{
+        background: darkgray;
+        //max-width: 900px;
+        width: 100%;
+        margin: 0 auto;
+}
+
+.react-grid-item {
+    border: 1px solid RGBA(142, 210, 234, 1.00);
+    background-color: RGBA(224, 224, 224, 0.3);
+    color: white;
+    text-transform: uppercase;
+}

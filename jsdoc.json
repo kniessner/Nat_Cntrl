@@ -1,0 +1,22 @@
+{
+    "tags": {
+        "allowUnknownTags": true,
+        "dictionaries": ["jsdoc","closure"]
+    },
+    "source": {
+        "include": [ "src" ],
+        "exclude": [ "node_modules" ],
+        "includePattern": ".+\\.js(doc|x)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+    "plugins": [],
+    "opts": {
+        "encoding": "utf8",
+        "destination": "./doc/",
+        "recurse": true
+    },
+    "plugins": ["plugins/markdown","plugins/summarize"],
+    "markdown": {
+        "tags": ["foo", "bar"]
+    }
+}
