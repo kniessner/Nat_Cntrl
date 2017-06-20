@@ -13,8 +13,8 @@
     "write:doc": "jsdoc -c /Users/Sascha-Darius/CodeSpace/Settings/Jsdoc/conf.json ./node_modules/docdash -r ."
   },
   "engines": {
-  "node": "6.2.0"
-},
+    "node": "6.2.0"
+  },
   "author": "",
   "dependencies": {
     "babel-core": "^6.7.6",
