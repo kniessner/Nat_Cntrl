@@ -5,6 +5,7 @@ import {Responsive, WidthProvider} from 'react-grid-layout';
 const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 
+
 class ShowcaseLayout extends React.Component {
 
   static propTypes = {

@@ -38,9 +38,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="container bg-glow" id="content">
-        <h1>Motion Control Testboard</h1>
-        <Divider />
+        <h1>Usability Konzepte & neue Interaktionswege</h1>
         <h5>Sascha-Darius Knießner</h5>
+          <Divider />
         <button onClick={this.toggle_pixel_camera}>
           Pixel Cam
         </button>
