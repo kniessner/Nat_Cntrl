@@ -23,9 +23,6 @@ import Motion_Drag from '../components/motion_drag';
 
 
 
-
-
-
 class App extends React.Component {
   constructor(props) {
     super(props);
