@@ -8,19 +8,20 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route, Switch ,Link  } from 'react-router-dom'
+import {BrowserRouter, Route, Switch ,Link  } from 'react-router-dom'
 import {Collapse} from 'pui-react-collapse';
 import {Icon} from 'pui-react-iconography';
 import {ExpanderContent} from 'pui-react-expander';
 
+ import './assets/stylesheets/nav.scss';
 
-import App from './views/App';
+
+import App from './views/App/App';
 import About from './views/About';
 import NotFound from './views/NotFound';
-import Leap from './views/Leap';
+import Leap from './views/Leap/Leap';
 import Track from './views/Track';
 import Dashboard from './views/Dashboard';
-import './assets/stylesheets/nav.scss';
 
 /**
  * A shape.

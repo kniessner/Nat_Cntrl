@@ -1,17 +1,16 @@
 @import 'reactGrid';
 @import '../../../node_modules/react-grid-layout/css/styles.css';
 @import '../../../node_modules/react-resizable/css/styles.css';
-//@import 'nav';
+@import 'nav';
+@import 'typography';
+@import 'helper';
 
-h1 {
-  font-family: helvetica;
-  font-weight: 200;
-}
 body{
   background: rgba(35, 40, 45, 1.00);
   font-family: helvetica;
   font-weight: 200;
 }
+
 #root{
   position: absolute;
   width: 100%;
@@ -19,7 +18,14 @@ body{
   color:RGBA(241, 241, 241, 1.00);
 }
 
-
+main {
+    display: block;
+    max-height: 100%;
+    overflow: hidden;
+    position: ABSOLUTE;
+    width: 100%;
+    padding: 20px;
+}
 #stats{
   width: 80px;
   opacity: 0.9;
@@ -62,12 +68,4 @@ body{
 button{
   background: rgba(200,200,200,0.1);
   border: 1px solid rgba(200,200,200,0.1);
-}
-
-hr {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 0;
-    border-top: 1px solid #eee;
-    opacity: 0.1;
 }

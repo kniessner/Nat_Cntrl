@@ -33,7 +33,7 @@ fs.watch('./src', function(event, filename) {
 
 app.use(express.static(path.join(__dirname, 'app')));
 
-app.get('/', function(request, response) {
+app.get('*', function(request, response) {
   response.sendFile(__dirname + '/app/index.html')
 });
 

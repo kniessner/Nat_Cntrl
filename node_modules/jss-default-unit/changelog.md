@@ -1,3 +1,7 @@
+## 7.0.0 / 2017-06-20
+
+- support jss 8.0
+
 ## 6.1.2 / 2017-05-28
 
 - fixed support of objects created by Object.create(null)
