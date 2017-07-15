@@ -18,7 +18,10 @@ import React_Grid from '../../components/drag_grid';
 import Motion_Grid from '../../components/motion_grid';
 import Motion_Drag from '../../components/motion_drag';
 import Pixeltracker from "../../controller/Pixeltracker";
-import Hand from '../..assets/hand_drw.png';
+import Hand from '../../assets/images/hand_drw.svg';
+
+import {screen_width,screen_height} from '../../util/screen.js';
+
 
 
 class App extends React.Component {
@@ -27,23 +30,24 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(screen_width());
     return (
-      <div className="container bg-glow" id="content">
-        <h1>Usability Konzepte & neue Interaktionswege</h1>
-        <h3>Analyse und Recherche Sascha-Darius Knießner</h3>
-          <Divider />
-        <div className="test_area">
+      <div  id="content">
+
+        <section className="low_pres main_section">
+          <h1>Usability Konzepte & neue Interaktionswege</h1>
+          <h3>Analyse und Recherche Sascha-Darius Knießner</h3>
+        </section>
+        <section className="high_pres main_section test_area">
           <h4>Chapters</h4>
           <Divider />
-          <img src={Hand}/>
-
           <ol>
             <li>Usability</li>
             <li>Neue Technologien</li>
             <li>Neue Interaktionswege</li>
             <li>Back to "normal" - Nutzerorientierete Bedienkonzepte</li>
           </ol>
-        </div>
+        </section>
       </div>
     )
   }

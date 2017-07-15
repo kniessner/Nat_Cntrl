@@ -1,7 +1,6 @@
 
 .react-grid-layout{
         background: darkgray;
-        //max-width: 900px;
         width: 100%;
         margin: 0 auto;
 }
@@ -11,4 +10,18 @@
     background-color: RGBA(224, 224, 224, 0.3);
     color: white;
     text-transform: uppercase;
+}
+
+.grid .col {
+    min-width: 0;
+    box-sizing: border-box;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    -ms-flex-positive: 1;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    max-width: 100%;
+    padding: 0 8px 0 8px;
 }

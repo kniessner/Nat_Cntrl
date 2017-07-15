@@ -1,31 +1,74 @@
-@import 'reactGrid';
 @import '../../../node_modules/react-grid-layout/css/styles.css';
 @import '../../../node_modules/react-resizable/css/styles.css';
-@import 'nav';
 @import 'typography';
 @import 'helper';
+@import 'reactGrid';
+@import 'nav';
+@import 'buttons';
+
+html {
+    overflow: scroll;
+    overflow-x: hidden;
+}
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+/* optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+}
+
+
 
 body{
   background: rgba(35, 40, 45, 1.00);
   font-family: helvetica;
   font-weight: 200;
+    color:RGBA(241, 241, 241, 1.00);
 }
 
 #root{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  color:RGBA(241, 241, 241, 1.00);
+  //position: absolute;
+  //width: 100%;
+//  height: 100%;
+
 }
 
 main {
     display: block;
-    max-height: 100%;
+    height: 100vh;
     overflow: hidden;
     position: ABSOLUTE;
     width: 100%;
     padding: 20px;
 }
+
+#content {
+    max-height: 100%;
+  //  border: 1px solid rgba(100,100,100,0.2);
+    background: rgba(0,59,100,0.1);
+    overflow: hidden;
+    overflow-y: scroll;
+    padding: 0px;
+    width: 100;
+}
+
+.main_section{
+    padding: 20px;
+    margin: 10px 0;
+}
+
+.low_pres {
+  background: rgba(250,250,250,0.3);
+  color: RGBA(33, 37, 43, 1.00);
+}
+
+.high_pres {
+  color: rgba(250,250,250,0.8);
+  background: RGBA(33, 37, 43, 1.00);
+}
+
 #stats{
   width: 80px;
   opacity: 0.9;
@@ -38,19 +81,7 @@ main {
   z-index: 100;
 }
 
-.grid .col {
-    min-width: 0;
-    box-sizing: border-box;
-    -ms-flex: 0 0 auto;
-    flex: 0 0 auto;
-    -ms-flex-positive: 1;
-    -webkit-box-flex: 1;
-    flex-grow: 1;
-    -ms-flex-preferred-size: 0;
-    flex-basis: 0;
-    max-width: 100%;
-    padding: 0 8px 0 8px;
-}
+
 
 .test_area{
   background: rgba(200,200,200,0.04);
@@ -63,9 +94,4 @@ main {
   height: initial;
   margin: 0 auto;
   display: block;
-}
-
-button{
-  background: rgba(200,200,200,0.1);
-  border: 1px solid rgba(200,200,200,0.1);
 }
