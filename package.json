@@ -23,6 +23,7 @@
     "babel-preset-react": "^6.5.0",
     "css-loader": "^0.23.1",
     "express": "^4.13.4",
+    "jquery": "^3.2.1",
     "leapShell": "^1.0.4",
     "leapjs": "^0.6.4",
     "lodash.range": "^3.2.0",

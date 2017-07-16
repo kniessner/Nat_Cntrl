@@ -21,6 +21,7 @@ import Pixeltracker from "../../controller/Pixeltracker";
 import Hand from '../../assets/images/hand_drw.svg';
 
 import {screen_width,screen_height} from '../../util/screen.js';
+import {scroll_top} from '../../util/scroll.js';
 
 
 
@@ -31,6 +32,7 @@ class App extends React.Component {
 
   render() {
     console.log(screen_width());
+    console.log(scroll_top());
     return (
       <div  id="content">
 
