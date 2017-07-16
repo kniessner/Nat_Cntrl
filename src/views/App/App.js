@@ -35,8 +35,8 @@ class App extends React.Component {
       <div  id="content">
 
         <section className="low_pres main_section">
-          <h1>Usability Konzepte & neue Interaktionswege</h1>
-          <h3>Analyse und Recherche Sascha-Darius Knießner</h3>
+          <h1>Usability in Arbeit 4.0</h1>
+          <h3>Digital Workspace - Kooperation statt Interaktion </h3>
         </section>
         <section className="high_pres main_section test_area">
           <h4>Chapters</h4>
