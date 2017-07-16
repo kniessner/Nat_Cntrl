@@ -35,18 +35,26 @@ class App extends React.Component {
       <div  id="content">
 
         <section className="low_pres main_section">
-          <h1>Usability in Arbeit 4.0</h1>
-          <h3>Digital Workspace - Kooperation statt Interaktion </h3>
+          <h1>Arbeit 4.0</h1>
+          <h3>Usability und neue Interaktionskonzepte </h3>
         </section>
+        <div className="chapter">
+        <h4>Thesis</h4>
+        </div>
+        <div className="chapter">
+        <h4>Vorwort</h4>
+        </div>
+        <div className="chapter">
+        <h4>Einleitung</h4>
+        </div>
+        <div className="chapter">
+        <h4>Arbeit 4.0</h4>
+        </div>
+        <div className="chapter">
+        <h4>Human Factor</h4>
+        </div>
         <section className="high_pres main_section test_area">
-          <h4>Chapters</h4>
-          <Divider />
-          <ol>
-            <li>Usability</li>
-            <li>Neue Technologien</li>
-            <li>Neue Interaktionswege</li>
-            <li>Back to "normal" - Nutzerorientierete Bedienkonzepte</li>
-          </ol>
+
         </section>
       </div>
     )
