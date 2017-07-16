@@ -1,12 +1,23 @@
-.chapter{
-  padding: 5px 20px;
-  margin: 5px 0;
-  background: RGBA(35, 40, 45, 1.00);
-  h4{
-    padding: 0;
-    margin: 5px;
-    color: rgba(250,250,250,0.6);
-    font-size: 13px;
-        letter-spacing: 2px;
+#chapters {
+  max-width: 800px;
+  margin: 0 auto;
+  .chapter {
+    padding: 5px 20px;
+    /* margin: 5px 0; */
+    background: RGBA(35,40,45,1);
+    padding-left: 100px;
+    border-bottom: 1px solid;
+
+    h4 {
+      padding: 0;
+      margin: 5px;
+      color: rgba(250,250,250,0.6);
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+  }
+
+  .chapter_content {
+    display: none;
   }
 }

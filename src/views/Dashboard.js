@@ -24,12 +24,24 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div className="container bg-glow" id="content">
-        <h1>Dashboard</h1>
-        <Divider />
-        <h4>Modular Widgets</h4>
+      <div id="Dashboard" >
+      <nav className="sub_nav">
+        <button >
+          Übersicht
+        </button>
+        <button className="active">
+          Dashboard
+        </button>
+        <button>
+          Dokumentation
+        </button>
+        <button>
+          Elemente
+        </button>
 
-        <div className="test_area ">
+      </nav>
+
+        <div className="inner_wrap ">
           <GridDrag />
         </div>
       </div>

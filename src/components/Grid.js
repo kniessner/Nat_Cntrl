@@ -16,7 +16,7 @@ class ShowcaseLayout extends React.Component {
     className: "layout",
     rowHeight: 30,
     onLayoutChange: function() {},
-    cols: {lg: 12, md: 10, sm: 6, xs: 4, xxs: 2},
+    cols: {lg: 6, md: 5, sm: 4, xs: 3, xxs: 2},
     initialLayout: generateLayout()
   };
 
@@ -57,13 +57,15 @@ class ShowcaseLayout extends React.Component {
       layouts: {lg: generateLayout()}
     });
   };
+/*
+<div>Current Breakpoint: {this.state.currentBreakpoint} ({this.props.cols[this.state.currentBreakpoint]} columns)
+</div>
+<button onClick={this.onNewLayout}>Generate New Layout</button>
 
+ */
   render() {
     return (
       <div>
-        <div>Current Breakpoint: {this.state.currentBreakpoint} ({this.props.cols[this.state.currentBreakpoint]} columns)
-        </div>
-        <button onClick={this.onNewLayout}>Generate New Layout</button>
         <ResponsiveReactGridLayout
           {...this.props}
           layouts={this.state.layouts}

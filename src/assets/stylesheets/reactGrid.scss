@@ -1,15 +1,15 @@
 
 .react-grid-layout{
-        background: darkgray;
+      //  background: darkgray;
         width: 100%;
         margin: 0 auto;
 }
 
 .react-grid-item {
-    border: 1px solid RGBA(142, 210, 234, 1.00);
-    background-color: RGBA(224, 224, 224, 0.3);
-    color: white;
-    text-transform: uppercase;
+  border: 0px solid RGBA(142,210,234,1);
+  background-color: RGBA(23, 136, 169, 0.5);
+  color: #fff;
+  text-transform: uppercase;
 }
 
 .grid .col {
@@ -24,4 +24,28 @@
     flex-basis: 0;
     max-width: 100%;
     padding: 0 8px 0 8px;
+}
+
+.grid {}
+
+.grid::before,
+.grid::after {
+    clear: both;
+    content: '';
+    display: block;
+}
+
+.grid__item {
+    box-sizing: border-box;
+    float: left;
+    height: 50vw;
+    padding: 2em;
+    width: 50vw;
+}
+
+@for $i from 1 through 8 {
+  .react-grid-item:nth-child(#{$i}),
+  .grid__item:nth-child(#{$i}) {
+    background-color: hsl(170 / 72 * $i, 60%, 20%);
+  }
 }

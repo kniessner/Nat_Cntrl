@@ -1,52 +1,33 @@
-/**
- * @file
- * INDEX
- *
- * Settings up routes to subpages and include navbar
- *
- */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Route, Switch ,Link  } from 'react-router-dom';
 
-
-
-
 import App from './App';
-import Book from './views/Book';
 import About from './views/About';
 import NotFound from './views/NotFound';
 import Leap from './views/Leap/Leap';
 import Track from './views/Track';
 import Dashboard from './views/Dashboard';
 
-/**
- * A shape.
- * NOTE Test
- */
 
-const Routes = () => (
-  <App>
+
+const Main = () => (
   <main>
     <Switch>
-      <Route exact path='/' component={Book}/>
+      <Route exact path='/' component={App}/>
       <Route path='/about' component={About}/>
       <Route path='/dashboard' component={Dashboard}/>
       <Route path='/app' component={App}/>
       <Route path='/leap' component={Leap}/>
       <Route path='/track' component={Track}/>
     </Switch>
-    </main>
-  </App>
+  </main>
 )
 
-//
 
-ReactDOM.render((
+const Routes = () => (
   <BrowserRouter>
-    <Routes />
+    <Navigation />
+    <Main />
   </BrowserRouter>
-), document.getElementById('root'))
-
-//document.body.classList.remove('loading');
+)
