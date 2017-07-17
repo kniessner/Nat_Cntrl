@@ -16,13 +16,17 @@ class Remote_Panel extends React.Component {
   sendClient(e) {
     e.preventDefault();
     //console.log('Send ... to server.');
-    socket.emit('message', { c2c: 'hello' });
+    //socket.emit('message', { c2c: 'hello' });
     socket.emit('c2c_wire', { hostname: window.location.hostname});
   }
 
   serverCMD(e){
-      e.preventDefault();
-      socket.emit('log', 'eio' );
+    e.preventDefault();
+    socket.emit('log', 'client.server.eio' );
+  }
+  serverExec(e){
+    e.preventDefault();
+    socket.emit('exec', 'client.server' );
   }
   render() {
 
@@ -55,7 +59,10 @@ class Remote_Panel extends React.Component {
         <button className="remote client_server" onClick={this.serverCMD}>
           Show connected devices
         </button>
-
+        <button className="remote client_server" onClick={this.serverExec}>
+          Execute CMD
+        </button>
+        <input id="exec_value" autocomplete="off" />
         <hr/>
         <button className="remote client_client" onClick={this.sendClient}>
           Hello : Client -> Client
