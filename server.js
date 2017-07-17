@@ -78,25 +78,31 @@ server.listen(PORT, function(error) {
 });
 
 
+
+
+
+
   io.on('connection', function(client) {
     var clients = client.server.eio.clientsCount;
-    console.info('client connected!','clientsCount '+ clients );
+    var client_origin = client.handshake.headers.origin;
+    //console.info('client connected!', 'id '+client.id,'clientsCount '+ clients );
 
-    client.on('disconnect', function(){
-      console.info('client disconnected');
-    });
+    console.log('\x1b[36m%s\x1b[0m','new client: ',client.id );
+
     client.on('wire', function(data) {
       console.log('\x1b[36m%s\x1b[0m','client:',data);
+      client.broadcast.emit('connected_clients', data);
     });
+
     client.on('message', function(data) {
       console.log('\x1b[36m%s\x1b[0m','client', data);
+      client.broadcast.emit('message', { some: 'broad' });
     });
 
     client.on('log', function(data) {
       console.log('\x1b[42m%s\x1b[0m','command', data);
       console.log([data]);
     });
-
 
     client.on('exec', function(cmd) {
       console.log('\x1b[42m%s\x1b[0m','command', cmd);
@@ -112,18 +118,33 @@ server.listen(PORT, function(error) {
 
     client.emit('news',   {topic: 'update available\n'});
     client.emit('message', {title: 'hello world'});
-    client.emit('wire', {server_connected: 'server_'+server_ip});
-    //client.emit('wire', {device_connected: 'device_'});
+
+    client.emit('wire', {client_connected: client_origin});
+    client.emit('wire', {server_connected: server_ip});
+    //client.emit('devices', {device_connected: 'device_'});
+
+    client.on('disconnect', function(){
+      console.info('client '+client.id + " from "+client_origin+' disconnected');
+    });
 
 
-                heroku_server.on("connect",function(){
-                  console.log('\x1b[35m%s\x1b[0m','remote server -heroku- connected');
+  });
 
-                  heroku_server.on('wire',function(data){
-                    console.log('\x1b[35m%s\x1b[0m','wire',data);
-                    client.emit('wire', data);
-                  });
+io.emit('wire', {server_connected: server_ip});
+io.emit('connected_server', {ip: server_ip});
 
-                });
+/*  io.clients((error, clients) => {
+    if (error) throw error;
+    console.log('clients',clients); // => [6em3d4TJP8Et9EMNAAAA, G5p55dHhGgUnLUctAAAB]
+  });
+*/
+  heroku_server.on("connect",function(){
+        console.log('\x1b[35m%s\x1b[0m','remote server connected');
+        heroku_server.on('wire',function(data){
+          console.log('\x1b[35m%s\x1b[0m','heroku wire',data);
 
+          io.emit('wire',data);
+          io.emit('connected_server', {ip: server_ip});
+
+        });
   });

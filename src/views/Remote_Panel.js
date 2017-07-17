@@ -9,14 +9,11 @@ class Remote_Panel extends React.Component {
   }
   sendServer(e) {
     e.preventDefault();
-    //console.log('Send ... to server.');
     socket.emit('message', { title: 'hello' });
   }
 
   sendClient(e) {
     e.preventDefault();
-    //console.log('Send ... to server.');
-    //socket.emit('message', { c2c: 'hello' });
     socket.emit('c2c_wire', { hostname: window.location.hostname});
   }
 
@@ -28,6 +25,7 @@ class Remote_Panel extends React.Component {
     e.preventDefault();
     socket.emit('exec', 'client.server' );
   }
+
   render() {
 
     socket.on('news', function (data) {
@@ -36,18 +34,29 @@ class Remote_Panel extends React.Component {
 
     socket.on('message', function (data) {
       console.log(data);
-      socket.emit('message', { answer: 'got message'});
+      //socket.emit('message', { answer: 'got message'});
     });
 
     socket.on('wire', function (data) {
-      console.log(data);
+      console.log('wire '+data);
       socket.emit('wire', { client_connected: window.location.hostname});
     });
+
+    socket.on('connected_server', function (data) {
+      console.log('connected_server'+ data);
+      //socket.emit('wire', { client_connected: window.location.hostname});
+    });
+    socket.on('connected_clients', function (data) {
+      console.log('connected_clients ' +data);
+    });
+
 
     socket.on('c2c_wire', function (data) {
       console.log(data);
       socket.emit('c2c_wire', { hostname: window.location.hostname});
     });
+    
+
 
     return (
       <div>

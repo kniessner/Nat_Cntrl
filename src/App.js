@@ -18,9 +18,6 @@ import {Row, Col} from 'pui-react-grids';
 import {Grid, FlexCol} from 'pui-react-flex-grids';
 import {Divider} from 'pui-react-dividers';
 
-import io from 'socket.io-client';
-let socket = io('http://localhost:3030/');
-
 
 import Navigation   from './components/Navigation';
 import Nav_Elements from './components/Nav_Elements';
