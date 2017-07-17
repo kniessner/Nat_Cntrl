@@ -75,10 +75,10 @@ server.listen(PORT, function(error) {
 
 
 io.on('connection', function(client) {
-  console.log('client connected!');
+  console.log('client connected!',client.Server);
 
   client.on('disconnect', function(){
-    console.log('user disconnected');
+    console.log('client disconnected');
   });
 
   client.emit('news', {topic: 'update available'});
@@ -88,11 +88,28 @@ io.on('connection', function(client) {
   client.emit('wire', {device_connected: 'server_'+server_ip});
 
   client.on('join', function(data) {
-    console.log(data);
+    console.log('client:',data);
   });
 
   client.on('message', function(data) {
-    console.log('message', data);
+    console.log('client message', data);
   });
 
+});
+
+var other_server = require("socket.io-client")('http://motionwire.herokuapp.com/'); // This is a client connecting to the SERVER 2
+other_server.on("connect",function(){
+    other_server.on('wire',function(data){
+      console.log(data);
+        // We received a message from Server 2
+        // We are going to forward/broadcast that message to the "Lobby" room
+        //io.to('lobby').emit('message',data);
+    });
+    other_server.on('join', function(data) {
+      console.log('server:', data);
+    });
+
+    other_server.on('message', function(data) {
+      console.log('server message', data);
+    });
 });
