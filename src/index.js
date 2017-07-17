@@ -18,6 +18,7 @@ import NotFound from './views/NotFound';
 import Leap from './views/Leap/Leap';
 import Track from './views/Track';
 import Dashboard from './views/Dashboard';
+import Remote_Panel from './views/Remote_Panel';
 
 /**
  * A shape.
@@ -33,7 +34,7 @@ const Routes = () => (
       <Route path='/dashboard' component={Dashboard}/>
       <Route path='/modules' component={Modules}/>
       <Route path='/leap' component={Leap}/>
-      <Route path='/track' component={Track}/>
+      <Route path='/remote_panel' component={Remote_Panel}/>
     </Switch>
     </main>
   </App>

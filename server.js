@@ -22,13 +22,33 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(webpackHotMiddleware(compiler));
 }
 
-fs.watch('./src', function(event, filename) {
-  if (filename) {
-    console.log('filename provided: ' + filename);
-  } else {
-    console.log('filename not provided');
-  }
+/*
+*/
+
+var os = require('os');
+var ifaces = os.networkInterfaces();
+
+Object.keys(ifaces).forEach(function (ifname) {
+  var alias = 0;
+
+  ifaces[ifname].forEach(function (iface) {
+    if ('IPv4' !== iface.family || iface.internal !== false) {
+      // skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
+      return;
+    }
+
+    if (alias >= 1) {
+      // this single interface has multiple ipv4 addresses
+      console.log(ifname + ':' + alias, iface.address);
+    } else {
+      // this interface has only one ipv4 adress
+      console.log(ifname, iface.address);
+    }
+    ++alias;
+  });
 });
+
+
 require('./server_modules/google_init.js');
 
 app.use(express.static(path.join(__dirname, 'app')));
@@ -56,8 +76,17 @@ server.listen(PORT, function(error) {
 
 io.on('connection', function(client) {
   console.log('client connected!');
+
   client.emit('news', {hello: 'world'});
+
+  client.emit('wire', {device_server_connected: 'world'});
+
   client.on('join', function(data) {
     console.log(data);
   });
+
+  client.on('message', function(data) {
+    console.log('message', data);
+  });
+
 });
