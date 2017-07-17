@@ -1,5 +1,14 @@
 
+import io from 'socket.io-client';
+let socket = io('http://localhost:3030/');
 
+socket.on('news', function (data) {
+  console.log(data);
+  socket.emit('my other event', { my: 'data' });
+});
+
+
+/*
 var socket = new WebSocket('ws://localhost:8081/');
 socket.onopen = function(event) {
   log('Opened connection 🎉');
@@ -40,3 +49,4 @@ var log = function(text) {
 window.addEventListener('beforeunload', function() {
   socket.close();
 });
+*/

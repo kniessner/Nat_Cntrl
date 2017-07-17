@@ -14,37 +14,51 @@ class Navigation extends React.Component {
 
   render() {
     return (
-      <nav>
+      <div id="nav_bar_top">
 
-        <button className="btn ghost" onClick={() => this.setState({expanded: !this.state.expanded})}>
+        <button className="icon_btn ghost" onClick={() => this.setState({expanded: !this.state.expanded})}>
             <Icon src="menu" style={{color:"white"}}/>
         </button>
 
+        <nav className="sub_nav">
+          <button className="turk">
+            Übersicht
+          </button>
+          <button className="turk active">
+            Kapitel
+          </button>
+          <button className="turk">
+            Hintergründe
+          </button>
+          <button className="turk">
+            Statisken
+          </button>
+          <button className="turk">
+            Quellen
+          </button>
+          <button className="turk">
+            Referenzen
+          </button>
+          <button className="turk">
+            Medien
+          </button>
+            {this.props.children}
+        </nav>
 
-        <ExpanderContent expanded={this.state.expanded}
+
+        <ExpanderContent className="nav_bar_expand" expanded={this.state.expanded}
                          onEntered={() => console.log('onEntered')}
                          onExited={() => console.log('onExited')}>
-                         <ul>
-                           <li className="w_50" ><Link to='/'>Home</Link></li>
-                           <li className="w_50"><Link to='/dashboard'>Try</Link></li>
-                         </ul>
+           <ul>
+             <li className="w_50" ><Link to='/'>Home</Link></li>
+             <li className="w_50"><Link to='/dashboard'>Try</Link></li>
+             <li className="w_50"><Link to='/modules'>Modules</Link></li>
+           </ul>
         </ExpanderContent>
-      </nav>
+
+      </div>
     )
   }
 }
-/*
-<li><Link to='/leap'>Leap</Link></li>
-<li><Link to='/leap'>Camera</Link></li>
-<li><Link to='/gestures'>Gestures</Link></li>
-<li><Link to='/'>Widgets</Link></li>
-<li><Link to='/'>Examples</Link></li>
-<li><Link to='/track'>Tracking</Link></li>
-<li><Link to='/'>Szenarios</Link></li>
-<li><Link to='/'>Meyer Werft</Link></li>
-<li><Link to='/'>Prostep GBL</Link></li>
-<li><Link to='/doc'>Doc</Link></li>
-<li><Link to='/style'>Style</Link></li>
- */
 
 export default Navigation;

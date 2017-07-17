@@ -10,11 +10,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Route, Switch ,Link  } from 'react-router-dom';
 
-
-
-
 import App from './App';
 import Book from './views/Book';
+import Modules from './views/Modules';
 import About from './views/About';
 import NotFound from './views/NotFound';
 import Leap from './views/Leap/Leap';
@@ -33,7 +31,7 @@ const Routes = () => (
       <Route exact path='/' component={Book}/>
       <Route path='/about' component={About}/>
       <Route path='/dashboard' component={Dashboard}/>
-      <Route path='/app' component={App}/>
+      <Route path='/modules' component={Modules}/>
       <Route path='/leap' component={Leap}/>
       <Route path='/track' component={Track}/>
     </Switch>

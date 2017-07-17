@@ -7,7 +7,7 @@
  * and the file-closure is important.
  */
 
-import '../assets/stylesheets/base.scss';
+
 import React, { Component } from 'react';
 import {Row, Col} from 'pui-react-grids';
 import {Grid, FlexCol} from 'pui-react-flex-grids';
@@ -25,21 +25,21 @@ class Dashboard extends React.Component {
   render() {
     return (
       <div id="Dashboard" >
-      <nav className="sub_nav">
-        <button >
-          Übersicht
-        </button>
-        <button className="active">
-          Dashboard
-        </button>
-        <button>
-          Dokumentation
-        </button>
-        <button>
-          Elemente
-        </button>
 
-      </nav>
+        <nav className="sub_nav">
+          <button >
+            Übersicht
+          </button>
+          <button className="active">
+            Dashboard
+          </button>
+          <button>
+            Dokumentation
+          </button>
+          <button>
+            Elemente
+          </button>
+        </nav>
 
         <div className="inner_wrap ">
           <GridDrag />

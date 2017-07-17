@@ -45,31 +45,6 @@ class Book extends React.Component {
   render() {
       return (
         <div id="book" className="">
-
-          <nav className="sub_nav">
-            <button >
-              Übersicht
-            </button>
-            <button className="active">
-              Kapitel
-            </button>
-            <button>
-              Hintergründe
-            </button>
-            <button>
-              Statisken
-            </button>
-            <button>
-              Quellen
-            </button>
-            <button>
-              Referenzen
-            </button>
-            <button>
-              Medien
-            </button>
-          </nav>
-
           <div className="inner_wrap ">
             <Inner_Header/>
             <Chapters />

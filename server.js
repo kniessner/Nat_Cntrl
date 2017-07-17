@@ -23,13 +23,13 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 fs.watch('./src', function(event, filename) {
-  console.log('event is: ' + event);
   if (filename) {
     console.log('filename provided: ' + filename);
   } else {
     console.log('filename not provided');
   }
 });
+require('./server_modules/google_init.js');
 
 app.use(express.static(path.join(__dirname, 'app')));
 
@@ -41,13 +41,8 @@ app.get('/style/', function(request, response) {
   response.sendFile(__dirname + '/styleguide/index.html')
 });
 
-io.on('connection', function(client) {
-  console.log('client connected!');
-  client.emit('news', {hello: 'world'});
-  client.on('join', function(data) {
-    console.log(data);
-  });
-});
+
+
 
 server.listen(PORT, function(error) {
   if (error) {
@@ -55,4 +50,14 @@ server.listen(PORT, function(error) {
   } else {
     console.info('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', PORT, PORT);
   }
+});
+
+
+
+io.on('connection', function(client) {
+  console.log('client connected!');
+  client.emit('news', {hello: 'world'});
+  client.on('join', function(data) {
+    console.log(data);
+  });
 });
