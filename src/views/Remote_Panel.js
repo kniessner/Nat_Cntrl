@@ -12,9 +12,9 @@ class Remote_Panel extends React.Component {
     socket.emit('message', { title: 'hello' });
   }
 
-  sendClient(e) {
+  sendMessage(e) {
     e.preventDefault();
-    socket.emit('c2c_wire', { hostname: window.location.hostname});
+    socket.emit('message', {title: 'my host', msg: window.location.hostname});
   }
 
   serverCMD(e){
@@ -74,7 +74,7 @@ class Remote_Panel extends React.Component {
         </button>
         <input id="exec_value" autocomplete="off" />
         <hr/>
-        <button className="remote client_client" onClick={this.sendClient}>
+        <button className="remote client_client" onClick={this.sendMessage}>
           Hello : Client -> Client
         </button>
 
