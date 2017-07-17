@@ -22,11 +22,10 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(webpackHotMiddleware(compiler));
 }
 
-/*
-*/
 
 var os = require('os');
 var ifaces = os.networkInterfaces();
+var server_ip;
 
 Object.keys(ifaces).forEach(function (ifname) {
   var alias = 0;
@@ -44,6 +43,7 @@ Object.keys(ifaces).forEach(function (ifname) {
       // this interface has only one ipv4 adress
       console.log(ifname, iface.address);
     }
+    server_ip = iface.address;
     ++alias;
   });
 });
@@ -77,9 +77,11 @@ server.listen(PORT, function(error) {
 io.on('connection', function(client) {
   console.log('client connected!');
 
-  client.emit('news', {hello: 'world'});
+  client.emit('news', {topic: 'update available'});
 
-  client.emit('wire', {device_server_connected: 'world'});
+  client.emit('message', {title: 'hello world'});
+
+  client.emit('wire', {device_connected: 'server_'+server_ip});
 
   client.on('join', function(data) {
     console.log(data);
