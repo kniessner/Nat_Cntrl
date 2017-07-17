@@ -49,7 +49,7 @@ Object.keys(ifaces).forEach(function (ifname) {
 });
 
 
-require('./server_modules/google_init.js');
+//require('./server_modules/google_init.js');
 
 app.use(express.static(path.join(__dirname, 'app')));
 

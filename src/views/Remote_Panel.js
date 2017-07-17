@@ -9,7 +9,7 @@ class Remote_Panel extends React.Component {
   }
   sendServer(e) {
     e.preventDefault();
-    console.log('Send ... to server.');
+    //console.log('Send ... to server.');
     socket.emit('message', { title: 'hello' });
   }
   render() {
@@ -19,6 +19,7 @@ class Remote_Panel extends React.Component {
         <button className="remote send_server" onClick={this.sendServer}>
           Hello Server
         </button>
+
       </div>
     )
   }

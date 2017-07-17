@@ -36,6 +36,12 @@ class App extends React.Component {
   }
   render() {
 
+    socket.on('wire', function (data) {
+      console.log(data);
+      socket.emit('message', { my: 'client answer' });
+    });
+
+
     socket.on('news', function (data) {
       console.log(data);
       socket.emit('join', { my: 'data' });
