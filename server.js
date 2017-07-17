@@ -7,6 +7,7 @@ var io = require('socket.io')(server);
 var fs = require('fs');
 const { exec } = require('child_process');
 var device = require('express-device');
+var heroku_server = require("socket.io-client")('http://motionwire.herokuapp.com/'); // This is a client connecting to the SERVER 2
 
 /** Description of prop "foo". */
 // using webpack-dev-server and middleware in development environment
@@ -55,14 +56,16 @@ Object.keys(ifaces).forEach(function (ifname) {
 
 app.use(express.static(path.join(__dirname, 'app')));
 
+app.use(device.capture());
+
 app.get('*', function(request, response) {
+  console.log('device',request.device.type.toUpperCase());
   response.sendFile(__dirname + '/app/index.html')
 });
 
 app.get('/style/', function(request, response) {
   response.sendFile(__dirname + '/styleguide/index.html')
 });
-
 
 
 
@@ -75,11 +78,9 @@ server.listen(PORT, function(error) {
 });
 
 
-if(server_ip === '192.168.178.72'){
-  console.log('local server');
   io.on('connection', function(client) {
     var clients = client.server.eio.clientsCount;
-    console.info('client connected!','clientsCount '+ clients ,client.server.eio.clients[0]);
+    console.info('client connected!','clientsCount '+ clients );
 
     client.on('disconnect', function(){
       console.info('client disconnected');
@@ -93,7 +94,7 @@ if(server_ip === '192.168.178.72'){
 
     client.on('log', function(data) {
       console.log('\x1b[42m%s\x1b[0m','command', data);
-      console.log([data])
+      console.log([data]);
     });
 
 
@@ -113,44 +114,16 @@ if(server_ip === '192.168.178.72'){
     client.emit('message', {title: 'hello world'});
     client.emit('wire', {server_connected: 'server_'+server_ip});
     //client.emit('wire', {device_connected: 'device_'});
+
+
+                heroku_server.on("connect",function(){
+                  console.log('\x1b[35m%s\x1b[0m','remote server -heroku- connected');
+
+                  heroku_server.on('wire',function(data){
+                    console.log('\x1b[35m%s\x1b[0m','wire',data);
+                    client.emit('wire', data);
+                  });
+
+                });
+
   });
-}else{
-console.log('other server');
-  var remote_server = require("socket.io-client")('http://localhost:3030/'); // This is a client connecting to the SERVER 2
-  remote_server.on("connect",function(){
-
-    remote_server.emit('message', {title: 'hello mother'});
-    remote_server.emit('wire', {server_connected: 'server_'+server_ip});
-
-
-      console.log('\x1b[35m%s\x1b[0m','remote server -heroku- connected');
-      remote_server.on('wire',function(data){
-        console.log('\x1b[35m%s\x1b[0m','wire',data);
-          // We received a message from Server 2
-          // We are going to forward/broadcast that message to the "Lobby" room
-          //io.to('lobby').emit('message',data);
-      });
-
-      remote_server.on('message', function(data) {
-        console.log('\x1b[35m%s\x1b[0m','server', data);
-      });
-  });
-}
-
-
-
-
-var other_server = require("socket.io-client")('http://motionwire.herokuapp.com/'); // This is a client connecting to the SERVER 2
-other_server.on("connect",function(){
-    console.log('\x1b[35m%s\x1b[0m','remote server -heroku- connected');
-    other_server.on('wire',function(data){
-      console.log('\x1b[35m%s\x1b[0m','wire',data);
-        // We received a message from Server 2
-        // We are going to forward/broadcast that message to the "Lobby" room
-        //io.to('lobby').emit('message',data);
-    });
-
-    other_server.on('message', function(data) {
-      console.log('\x1b[35m%s\x1b[0m','server', data);
-    });
-});
