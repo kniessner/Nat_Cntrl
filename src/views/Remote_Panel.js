@@ -12,18 +12,24 @@ class Remote_Panel extends React.Component {
     //console.log('Send ... to server.');
     socket.emit('message', { title: 'hello' });
   }
+
   sendClient(e) {
     e.preventDefault();
     //console.log('Send ... to server.');
     socket.emit('message', { c2c: 'hello' });
+    socket.emit('c2c_wire', { hostname: window.location.hostname});
   }
 
+  serverCMD(e){
+      e.preventDefault();
+      socket.emit('log', 'eio' );
+  }
   render() {
 
     socket.on('news', function (data) {
       console.log(data);
-
     });
+
     socket.on('message', function (data) {
       console.log(data);
       socket.emit('message', { answer: 'got message'});
@@ -31,7 +37,7 @@ class Remote_Panel extends React.Component {
 
     socket.on('wire', function (data) {
       console.log(data);
-      socket.emit('join', { client: window.location.hostname});
+      socket.emit('wire', { client_connected: window.location.hostname});
     });
 
     socket.on('c2c_wire', function (data) {
@@ -43,11 +49,16 @@ class Remote_Panel extends React.Component {
       <div>
         <h1>Remote Panel</h1>
         <button className="remote client_server" onClick={this.sendServer}>
-          Client -> Server
+          Hello : Client -> Server
         </button>
 
+        <button className="remote client_server" onClick={this.serverCMD}>
+          Show connected devices
+        </button>
+
+        <hr/>
         <button className="remote client_client" onClick={this.sendClient}>
-          Client -> Client
+          Hello : Client -> Client
         </button>
 
         <div className="chat_container">

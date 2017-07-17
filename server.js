@@ -69,7 +69,8 @@ server.listen(PORT, function(error) {
     console.error(error);
   } else {
     console.info('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', PORT, PORT);
-  }
+    console.info('==> 🌎 ', server.address());
+}
 });
 
 
@@ -80,37 +81,41 @@ io.on('connection', function(client) {
   client.on('disconnect', function(){
     console.info('client disconnected');
   });
-  client.on('join', function(data) {
+  client.on('wire', function(data) {
     console.log('\x1b[36m%s\x1b[0m','client:',data);
   });
   client.on('message', function(data) {
-    console.log('\x1b[36m%s\x1b[0m','client message', data);
+    console.log('\x1b[36m%s\x1b[0m','client', data);
   });
 
-  client.emit('news', {topic: 'update available\n'});
+  client.on('log', function(data) {
+    console.log('\x1b[42m%s\x1b[0m','command', data);
+    console.log(client.server[data])
+  });
+  client.on('exec', function(data) {
+    console.log('\x1b[42m%s\x1b[0m','command', data);
+  });
+
+  client.emit('news',   {topic: 'update available\n'});
   client.emit('message', {title: 'hello world'});
+  client.emit('wire', {server_connected: server.address()});
   client.emit('wire', {device_connected: 'server_'+server_ip});
-
-
 
 });
 
-console.log('\x1b[36m%s\x1b[0m', 'I am cyan');  //cyan
 
 
 var other_server = require("socket.io-client")('http://motionwire.herokuapp.com/'); // This is a client connecting to the SERVER 2
 other_server.on("connect",function(){
+    console.log('\x1b[35m%s\x1b[0m','remote server -heroku- connected');
     other_server.on('wire',function(data){
-      console.log('\x1b[35m%s\x1b[0m',data);
+      console.log('\x1b[35m%s\x1b[0m','wire',data);
         // We received a message from Server 2
         // We are going to forward/broadcast that message to the "Lobby" room
         //io.to('lobby').emit('message',data);
     });
-    other_server.on('join', function(data) {
-      console.log('\x1b[35m%s\x1b[0m','server:', data);
-    });
 
     other_server.on('message', function(data) {
-      console.log('\x1b[35m%s\x1b[0m','server message', data);
+      console.log('\x1b[35m%s\x1b[0m','server', data);
     });
 });
