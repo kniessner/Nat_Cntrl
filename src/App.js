@@ -37,29 +37,6 @@ class App extends React.Component {
   render() {
 
 
-
-
-    socket.on('news', function (data) {
-      console.log(data);
-
-    });
-    socket.on('message', function (data) {
-      console.log(data);
-      socket.emit('message', { answer: 'got message'});
-    });
-
-    socket.on('wire', function (data) {
-      console.log(data);
-      socket.emit('join', { client: window.location.hostname});
-    });
-
-    socket.on('c2c_wire', function (data) {
-      console.log(data);
-      socket.emit('c2c_wire', { hostname: window.location.hostname});
-    });
-
-
-
     return (
       <div id="content">
 
@@ -67,7 +44,9 @@ class App extends React.Component {
           {Nav_Elements}
         </Navigation>
 
-        <section className="main_section">{this.props.children}</section>
+        <section className="main_section">
+          {this.props.children}
+        </section>
 
 
     </div>

@@ -19,6 +19,26 @@ class Remote_Panel extends React.Component {
   }
 
   render() {
+
+    socket.on('news', function (data) {
+      console.log(data);
+
+    });
+    socket.on('message', function (data) {
+      console.log(data);
+      socket.emit('message', { answer: 'got message'});
+    });
+
+    socket.on('wire', function (data) {
+      console.log(data);
+      socket.emit('join', { client: window.location.hostname});
+    });
+
+    socket.on('c2c_wire', function (data) {
+      console.log(data);
+      socket.emit('c2c_wire', { hostname: window.location.hostname});
+    });
+
     return (
       <div>
         <h1>Remote Panel</h1>
@@ -30,6 +50,12 @@ class Remote_Panel extends React.Component {
           Client -> Client
         </button>
 
+        <div className="chat_container">
+        <ul id="messages"></ul>
+           <form action="">
+             <input id="m" autocomplete="off" /><button>Send</button>
+           </form>
+           </div>
       </div>
     )
   }

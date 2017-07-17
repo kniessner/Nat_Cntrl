@@ -77,6 +77,10 @@ server.listen(PORT, function(error) {
 io.on('connection', function(client) {
   console.log('client connected!');
 
+  client.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+
   client.emit('news', {topic: 'update available'});
 
   client.emit('message', {title: 'hello world'});
