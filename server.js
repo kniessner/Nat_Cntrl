@@ -91,12 +91,12 @@ server.listen(PORT, function(error) {
 
     client.on('wire', function(data) {
       console.log('\x1b[36m%s\x1b[0m','client:',data);
-      client.broadcast.emit('connected_clients', data);
+      io.emit('connected_clients', data);
     });
 
     client.on('message', function(data) {
       console.log('\x1b[36m%s\x1b[0m','client', data);
-      client.broadcast.emit('message', { some: 'broad' });
+      io.emit('message', { some: 'broad' });
     });
 
     client.on('log', function(data) {
@@ -116,11 +116,11 @@ server.listen(PORT, function(error) {
       });
     });
 
-    client.emit('news',   {topic: 'update available\n'});
-    client.emit('message', {title: 'hello world'});
+    //client.emit('news',   {topic: 'update available\n'});
+    //client.emit('message', {title: 'hello world'});
 
     client.emit('wire', {client_connected: client_origin});
-    client.emit('wire', {server_connected: server_ip});
+    //client.emit('wire', {server_connected: server_ip});
     //client.emit('devices', {device_connected: 'device_'});
 
     client.on('disconnect', function(){
@@ -130,7 +130,7 @@ server.listen(PORT, function(error) {
 
   });
 
-io.emit('wire', {server_connected: server_ip});
+//io.emit('wire', {server_connected: server_ip});
 io.emit('connected_server', {ip: server_ip});
 
 /*  io.clients((error, clients) => {
@@ -143,7 +143,7 @@ io.emit('connected_server', {ip: server_ip});
         heroku_server.on('wire',function(data){
           console.log('\x1b[35m%s\x1b[0m','heroku wire',data);
 
-          io.emit('wire',data);
+          //io.emit('wire',data);
           io.emit('connected_server', {ip: server_ip});
 
         });

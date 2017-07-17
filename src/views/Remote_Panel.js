@@ -39,12 +39,10 @@ class Remote_Panel extends React.Component {
 
     socket.on('wire', function (data) {
       console.log('wire '+data);
-      socket.emit('wire', { client_connected: window.location.hostname});
-    });
+     });
 
     socket.on('connected_server', function (data) {
       console.log('connected_server'+ data);
-      //socket.emit('wire', { client_connected: window.location.hostname});
     });
     socket.on('connected_clients', function (data) {
       console.log('connected_clients ' +data);
@@ -55,7 +53,9 @@ class Remote_Panel extends React.Component {
       console.log(data);
       socket.emit('c2c_wire', { hostname: window.location.hostname});
     });
-    
+
+    socket.broadcast.emit('wire', { client_connected: window.location.hostname});
+
 
 
     return (
