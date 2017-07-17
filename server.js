@@ -75,41 +75,42 @@ server.listen(PORT, function(error) {
 
 
 io.on('connection', function(client) {
-  console.log('client connected!',client.Server);
+  console.info('client connected!','clientsCount '+client.server.eio.clientsCount);
 
   client.on('disconnect', function(){
-    console.log('client disconnected');
+    console.info('client disconnected');
+  });
+  client.on('join', function(data) {
+    console.log('\x1b[36m%s\x1b[0m','client:',data);
+  });
+  client.on('message', function(data) {
+    console.log('\x1b[36m%s\x1b[0m','client message', data);
   });
 
-  client.emit('news', {topic: 'update available'});
-
+  client.emit('news', {topic: 'update available\n'});
   client.emit('message', {title: 'hello world'});
-
   client.emit('wire', {device_connected: 'server_'+server_ip});
 
-  client.on('join', function(data) {
-    console.log('client:',data);
-  });
 
-  client.on('message', function(data) {
-    console.log('client message', data);
-  });
 
 });
+
+console.log('\x1b[36m%s\x1b[0m', 'I am cyan');  //cyan
+
 
 var other_server = require("socket.io-client")('http://motionwire.herokuapp.com/'); // This is a client connecting to the SERVER 2
 other_server.on("connect",function(){
     other_server.on('wire',function(data){
-      console.log(data);
+      console.log('\x1b[35m%s\x1b[0m',data);
         // We received a message from Server 2
         // We are going to forward/broadcast that message to the "Lobby" room
         //io.to('lobby').emit('message',data);
     });
     other_server.on('join', function(data) {
-      console.log('server:', data);
+      console.log('\x1b[35m%s\x1b[0m','server:', data);
     });
 
     other_server.on('message', function(data) {
-      console.log('server message', data);
+      console.log('\x1b[35m%s\x1b[0m','server message', data);
     });
 });
