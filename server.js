@@ -93,7 +93,7 @@ server.listen(PORT, function(error) {
     //console.info('client connected!', 'id '+client.id,'clientsCount '+ clients );
 
     client.emit('message', { from: 'server' , title: 'your are connected', msg: 'your id is '+client.id });
-    client.broadcast.emit('wire', { 'new client: ',client.id });
+    client.broadcast.emit('wire', { 'new client: ': client.id });
     console.log('\x1b[36m%s\x1b[0m','new client: ',client.id );
 
 
