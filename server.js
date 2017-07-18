@@ -85,16 +85,23 @@ server.listen(PORT, function(error) {
     client.broadcast.emit() -> sends not to origin
  */
 
-
+ io.on("connection",function(){
+   io.emit('connected_server', {name: 'localhost', ip: server_ip});
+ });
 
   io.on('connection', function(client) {
     var clients = client.server.eio.clientsCount;
-    var client_origin = client.handshake.headers.origin;
+    if(client.handshake.headers.origin){
+      var client_origin = client.handshake.headers.origin;
+    }else{
+      var client_origin =  'localhost';
+    }
+
     //console.info('client connected!', 'id '+client.id,'clientsCount '+ clients );
 
     client.emit('message', { from: 'server' , title: 'your are connected', msg: 'your id is '+client.id });
-    client.broadcast.emit('wire', { 'new client: ': client.id });
-    console.log('\x1b[36m%s\x1b[0m','new client: ',client.id );
+    client.broadcast.emit('wire', { new_client: client.id , client_host: client_origin});
+    console.log('\x1b[36m%s\x1b[0m','new client: ', client.id );
 
 
     client.on('wire', function(data) {
@@ -141,7 +148,6 @@ server.listen(PORT, function(error) {
   });
 
 //io.emit('wire', {server_connected: server_ip});
-io.emit('connected_server', {name: 'localhost', ip: server_ip});
 
 function connectedDevices(){
   io.clients((error, clients) => {
