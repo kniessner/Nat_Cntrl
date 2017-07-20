@@ -7,7 +7,7 @@ export function init_client_sockets(){
   let socket = io('http://localhost:3030/');
   //connect to local server
   socket.emit('wire', { client_connected: window.location.hostname});
-  //connect to base server 
+  //connect to base server
 
 }
 
@@ -40,5 +40,5 @@ export function get_socket_messages(){
 
 
 export function emit_socket_actions(){
-  let socket = io('http://localhost:3030/');
+  //let socket = io('http://localhost:3030/');
 }

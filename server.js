@@ -8,7 +8,12 @@ var fs = require('fs');
 const { exec } = require('child_process');
 var device = require('express-device');
 var heroku_server = require("socket.io-client")('http://motionwire.herokuapp.com/'); // This is a client connecting to the SERVER 2
+
 var server_ip = require('./server_modules/net.js');
+
+
+var fiz = require('./fiz.js').fiz;
+fiz();
 
 //var google_api = require('./server_modules/google_init.js');
 // using webpack-dev-server and middleware in development environment
@@ -19,17 +24,12 @@ if (process.env.NODE_ENV !== 'production') {
   var config = require('./webpack.config');
   var compiler = webpack(config);
 
-  app.use(webpackDevMiddleware(compiler, {
+app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
     publicPath: config.output.publicPath
   }));
   app.use(webpackHotMiddleware(compiler));
 }
-
-
-
-
-//
 
 app.use(express.static(path.join(__dirname, 'app')));
 
@@ -51,7 +51,7 @@ server.listen(PORT, function(error) {
     console.error(error);
   } else {
     console.info('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', PORT, PORT);
-}
+  }
 });
 
 
