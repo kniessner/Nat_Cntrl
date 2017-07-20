@@ -8,6 +8,7 @@ var fs = require('fs');
 const { exec } = require('child_process');
 var device = require('express-device');
 var heroku_server = require("socket.io-client")('http://motionwire.herokuapp.com/'); // This is a client connecting to the SERVER 2
+var server_ip = require('./server_modules/net.js');
 
 //var google_api = require('./server_modules/google_init.js');
 // using webpack-dev-server and middleware in development environment
@@ -26,30 +27,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 
-var os = require('os');
-var ifaces = os.networkInterfaces();
-var server_ip;
-
-Object.keys(ifaces).forEach(function (ifname) {
-  var alias = 0;
-
-  ifaces[ifname].forEach(function (iface) {
-    if ('IPv4' !== iface.family || iface.internal !== false) {
-      // skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
-      return;
-    }
-
-    if (alias >= 1) {
-      // this single interface has multiple ipv4 addresses
-      console.log(ifname + ':' + alias, iface.address);
-    } else {
-      // this interface has only one ipv4 adress
-      console.log(ifname, iface.address);
-    }
-    server_ip = iface.address;
-    ++alias;
-  });
-});
 
 
 //
@@ -86,8 +63,10 @@ server.listen(PORT, function(error) {
  */
 
  io.on("connection",function(){
-   io.emit('connected_server', {name: 'localhost', ip: server_ip});
+  // io.emit('connected_server', {name: 'localhost', ip: server_ip});
  });
+
+  //io.emit('connected_server', {name: 'localhost', ip: server_ip});
 
   io.on('connection', function(client) {
     var clients = client.server.eio.clientsCount;

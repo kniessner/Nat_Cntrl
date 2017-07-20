@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client';
-let socket = io('http://localhost:3030/');
 
 
 class Remote_Panel extends React.Component {
@@ -27,37 +26,6 @@ class Remote_Panel extends React.Component {
   }
 
   render() {
-
-    socket.on('news', function (data) {
-      console.log('News' ,data);
-    });
-
-    socket.on('message', function (data) {
-      console.log('message',data);
-      //socket.emit('message', { answer: 'got message'});
-    });
-
-    socket.on('wire', function (data) {
-      console.log('Wire ', data);
-     });
-
-    socket.on('connected_server', function (data) {
-      console.log('Connected_server', data);
-      //socket.emit('wire', { client_connected: window.location.hostname});
-    });
-    socket.on('connected_clients', function (data) {
-      console.log('Connected_clients ', data);
-    });
-
-
-    socket.on('c2c_wire', function (data) {
-      console.log(data);
-      socket.emit('c2c_wire', { hostname: window.location.hostname});
-    });
-
-    socket.emit('wire', { client_connected: window.location.hostname});
-
-
 
     return (
       <div>
