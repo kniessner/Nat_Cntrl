@@ -1,6 +1,14 @@
 //GLOBALS
 
 global.PORT = process.env.PORT || 3030;
+module.exports = function (app) {
+    app.locals.author = 'Kniessner';
+    app.locals.title  = 'WireSense';
+    app.locals.email  = 'sascha-darius@kniessner.com';
+    app.locals.infos   = require('./get_infos.js');
+}
+
+
 global.colors = {
  Reset: "\x1b[0m",
  Bright: "\x1b[1m",

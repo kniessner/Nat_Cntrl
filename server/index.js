@@ -5,6 +5,6 @@ const server_ip = require('./server_modules/get_infos.js').server_ip;
 //const google_api = require('./server_modules/google_init.js');
 
 module.exports = function (app) {
-
+    console.log(app.locals.title);
     console.log(server_ip);
 }

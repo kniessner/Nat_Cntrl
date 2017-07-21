@@ -1,4 +1,4 @@
-require('./server/server_modules/globals.js');
+
 const fs = require('fs');
 const nodemon = require('nodemon');
 const path = require('path');
@@ -6,10 +6,8 @@ const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
 
+require('./server/server_modules/globals.js')(app);
 
-app.locals.title = 'WireSense';
-app.locals.email = 'sascha-darius@kniessner.com';
-app.locals.gloa = require('./server/server_modules/globals.js');
 
 
 
