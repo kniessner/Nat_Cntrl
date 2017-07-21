@@ -7,7 +7,8 @@ module.exports = {
   ],
   module: {
     loaders: [
-      { test: /\.js?$/, loader: 'babel', exclude: /node_modules/ },
+      { test: /\.js?$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
       { test: /\.s?css$/, loader: 'style!css!sass' },
       { test: /\.svg$/, loader: 'svg-loader' },
       {
@@ -20,7 +21,7 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['', '.js']
+    extensions: ['', '.js','.jsx']
   },
   output: {
     path: path.join(__dirname, '/app'),

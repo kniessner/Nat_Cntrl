@@ -1,9 +1,9 @@
 import $ from 'jquery'
 import React, { Component } from 'react';
 import io from 'socket.io-client';
-let socket = io('http://localhost:3030/');
+export let socket = io('http://localhost:3030/');
 
-export function init_client_sockets(){
+export function init_client_sockets(socket){
   //connect to local server
   socket.emit('wire', {
     hostname: window.location.hostname,
@@ -15,7 +15,7 @@ export function init_client_sockets(){
 
 }
 
-export function get_socket_messages(){
+export function get_socket_messages(socket){
 
   socket.on('news', function (data) {
     console.log('News' ,data);

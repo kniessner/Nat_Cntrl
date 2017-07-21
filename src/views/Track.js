@@ -3,6 +3,8 @@ import '../assets/stylesheets/base.scss';
 import React, { Component } from 'react';
 import {Row, Col} from 'pui-react-grids';
 import {Grid, FlexCol} from 'pui-react-flex-grids';
+import {Tracker, ColorTracker, ObjectTracker} from 'tracking';
+
 import {Divider} from 'pui-react-dividers';
 //import {Leap,screenPosition,hand} from 'leapjs';
 //import leapShell from 'leapShell';

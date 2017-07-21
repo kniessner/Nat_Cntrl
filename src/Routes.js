@@ -14,20 +14,18 @@ import Remote_Panel from './views/Remote_Panel';
 
 
 const Routes = () => (
-
-    <App>
-      <Switch>
-          <Route path='/' component={Dashboard}/>
-          <Route path='/about' component={About}/>
-          <Route path='/book' component={Book}/>
-          <Route path='/dashboard' component={Dashboard}/>
-
-          <Route path='/app' component={App}/>
-          <Route path='/remote' component={Remote_Panel}/>
-          <Route path='/track' component={Track}/>
-
-      </Switch>
-      </App>
+        <App>
+        <main>
+            <Switch>
+              <Route path='/' component={Book} exact/>
+              <Route path='/about' component={About}/>
+              <Route path='/book' component={Book}/>
+              <Route path='/dashboard' component={Dashboard}/>
+              <Route path='/remote' component={Remote_Panel}/>
+              <Route path='/track' component={Track}/>
+            </Switch>
+        </main>
+        </App>
 )
 
 

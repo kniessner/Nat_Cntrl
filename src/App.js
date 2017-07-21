@@ -5,30 +5,22 @@
  * The extra line between the end of the @file docblock
  * and the file-closure is important.
  */
-import React, {Component} from 'react';
-import {Tracker, ColorTracker, ObjectTracker} from 'tracking';
-import {Row, Col} from 'pui-react-grids';
-import {Grid, FlexCol} from 'pui-react-flex-grids';
-import {Divider} from 'pui-react-dividers';
-
-
 import './assets/stylesheets/base.scss';
-import {screen_width, screen_height} from './util/screen.js';
-import {scroll_top} from './util/scroll.js';
-
-import {init_client_sockets} from './util/sockets.js';
-
-
+import React, {Component} from 'react';
+import {Grid, FlexCol} from 'pui-react-flex-grids';
+/******** COMPONENTS
+*
+*
+*
+*************/
 import Navigation   from './components/Navigation';
 import Nav_Elements from './components/Nav_Elements';
-import Time from './components/Time';
-
-
-
-
-
-init_client_sockets();
-
+import Chat from './components/Chat';
+/******** UTILITIES
+*
+*
+************/
+import {init_client_sockets,socket} from './util/sockets.js';
 
 
 class App extends React.Component {
@@ -37,17 +29,17 @@ class App extends React.Component {
   }
 
   render() {
-
+    init_client_sockets(socket);
     return (
-        <div id="innerwrap">
+        <div id="content">
           <Navigation>
             {Nav_Elements}
           </Navigation>
-          {Time}
+          <Chat socket={socket}/>
             {window.location.hostname}
-          <section id="content" className="main_section">
+          <Grid className="main_section">
             {this.props.children}
-          </section>
+          </Grid>
         </div>
     )
   }

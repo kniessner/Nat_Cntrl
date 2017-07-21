@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "browser": "browserify -t babelify --standalone main src/index.js -o app/bundle.js && node app.js",
+    "start": "nodemon index.js",
     "postinstall": "webpack -p --config webpack.prod.config.js",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
@@ -50,7 +49,6 @@
     "pui-react-svg": "^8.3.0",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
-    "react-engine": "^4.3.0",
     "react-grid-layout": "^0.14.6",
     "react-motion": "^0.5.0",
     "react-redux": "^5.0.5",
