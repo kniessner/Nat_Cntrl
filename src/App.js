@@ -26,6 +26,12 @@ import Nav_Elements from './components/Nav_Elements';
 
 import Book         from './views/Book';
 
+import io from 'socket.io-client';
+let socket = io('http://localhost:3030/');
+
+
+init_client_sockets();
+
 
 
 
@@ -35,7 +41,7 @@ class App extends React.Component {
   }
 
   render() {
-    init_client_sockets();
+
     return (
         <div id="content">
 

@@ -1,12 +1,12 @@
 import $ from 'jquery'
 import React, { Component } from 'react';
 import io from 'socket.io-client';
-
+let socket = io('http://localhost:3030/');
 
 export function init_client_sockets(){
-  let socket = io('http://localhost:3030/');
+
   //connect to local server
-  socket.emit('wire', { client_connected: window.location.hostname});
+  socket.emit('wire', { hostname: window.location.hostname});
   //connect to base server
 
 }

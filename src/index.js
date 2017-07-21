@@ -40,8 +40,6 @@ const Routes = () => (
   </App>
 )
 
-//
-
 ReactDOM.render((
   <BrowserRouter>
     <Routes />
