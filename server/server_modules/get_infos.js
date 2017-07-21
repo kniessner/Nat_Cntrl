@@ -12,7 +12,6 @@ module.exports.current_date = function () {
   return Date();
 }
 
-
   Object.keys(ifaces).forEach(function (ifname) {
       var alias = 0;
       ifaces[ifname].forEach(function (iface) {

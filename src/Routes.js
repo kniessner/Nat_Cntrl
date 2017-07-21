@@ -8,26 +8,28 @@ import NotFound from './views/NotFound';
 import Leap from './views/Leap/Leap';
 import Track from './views/Track';
 import Dashboard from './views/Dashboard';
+import Remote_Panel from './views/Remote_Panel';
 
 
 
-const Main = () => (
-  <main>
+const Routes = () => (
+    <BrowserRouter>
+    <main>
     <Switch>
-      <Route exact path='/' component={App}/>
+      <Route name="app" path='/' handler={App}>
+        <Route name="about" path='/test' handler={About}/>
+      </Route>
       <Route path='/about' component={About}/>
       <Route path='/dashboard' component={Dashboard}/>
+
       <Route path='/app' component={App}/>
       <Route path='/leap' component={Leap}/>
       <Route path='/track' component={Track}/>
     </Switch>
   </main>
-)
-
-
-const Routes = () => (
-  <BrowserRouter>
-    <Navigation />
-    <Main />
   </BrowserRouter>
 )
+
+
+
+export default Routes;

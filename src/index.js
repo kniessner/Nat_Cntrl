@@ -10,6 +10,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Route, Switch ,Link  } from 'react-router-dom';
 
+import Routes from './Routes';
+
 import App from './App';
 import Book from './views/Book';
 import Modules from './views/Modules';
@@ -25,25 +27,10 @@ import Remote_Panel from './views/Remote_Panel';
  * NOTE Test
  */
 
-const Routes = () => (
-  <App>
-  <main>
-    <Switch>
-      <Route exact path='/' component={Book}/>
-      <Route path='/about' component={About}/>
-      <Route path='/dashboard' component={Dashboard}/>
-      <Route path='/modules' component={Modules}/>
-      <Route path='/leap' component={Leap}/>
-      <Route path='/remote_panel' component={Remote_Panel}/>
-    </Switch>
-    </main>
-  </App>
-)
+
 
 ReactDOM.render((
-  <BrowserRouter>
     <Routes />
-  </BrowserRouter>
 ), document.getElementById('root'))
 
 //document.body.classList.remove('loading');

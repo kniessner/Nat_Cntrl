@@ -1,5 +1,7 @@
 import $ from 'jquery'
 import React, { Component } from 'react';
+import io from 'socket.io-client';
+let socket = io('http://localhost:3030/');
 
 export function init_client_sockets(){
   //connect to local server
@@ -35,7 +37,31 @@ export function get_socket_messages(){
   });
 }
 
-
+export class SocketButton {
+  render() {
+    <div>
+      Button
+    </div>
+  }
+};
 export function emit_socket_actions(){
   //let socket = io('http://localhost:3030/');
+}
+export function sendServer(e) {
+  e.preventDefault();
+  socket.emit('message', { title: 'hello' });
+}
+
+export function sendMessage(e) {
+  e.preventDefault();
+  socket.emit('message', {title: 'my host', msg: window.location.hostname});
+}
+
+export function serverCMD(e){
+  e.preventDefault();
+  socket.emit('log', 'client.server.eio' );
+}
+export function serverExec(e){
+  e.preventDefault();
+  socket.emit('exec', 'client.server' );
 }
