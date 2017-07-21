@@ -1,30 +1,31 @@
+const dt = require('./server/server_modules/constants.js'); //Datastore
+const colors = require('./server/server_modules/constants.js').colors; //Datastore
+
+
+const express = require('express');
+const app = express();
+var router = express.Router;
+const server = require('http').createServer(app);
+
 const fs = require('fs');
 const nodemon = require('nodemon');
 const path = require('path');
-const express = require('express');
-const app = express();
-const server = require('http').createServer(app);
 const React = require('react');
 const ReactEngine = require('react-engine');
 const jsx = require('node-jsx');
-const chalk = require('chalk');
-const log = console.log;
-var os = require('os');
-os.cpus();
-
-const error = chalk.bold.red;
-const warning = chalk.keyword('orange');
-
-
-
-// Use RGB colors in terminal emulators that support it.
-log(chalk.keyword('orange')('Yay for orange colored text!'));
-log(chalk.rgb(123, 45, 67).underline('Underlined reddish color'));
-log(chalk.hex('#DEADED').bold('Bold gray!'));
-
-require('./server/server_modules/globals.js')(app);
-require('./server/server_modules/google_init.js');
 jsx.install();
+const chalk = require('chalk');
+const getPort = require('get-port');
+
+
+
+const log = console.log;
+
+
+require('./server/server_modules/socket_base.js')(server);
+require('./server/server_modules/globals.js')(app);
+//require('./server/server_modules/google_init.js');
+
 
 // using webpack-dev-server and middleware in development environment
 if (process.env.NODE_ENV !== 'production') {
@@ -39,6 +40,9 @@ if (process.env.NODE_ENV !== 'production') {
   }));
   app.use(webpackHotMiddleware(compiler));
 }
+
+require('./server/server_rend.js')(app);
+
 /*var engine = ReactEngine.server.create({
 
     see the complete server options spec here:
@@ -46,9 +50,8 @@ if (process.env.NODE_ENV !== 'production') {
 
 });*/
 var engine = require('react-engine').server.create({
-  reactRoutes: path.normalize(__dirname+'/src/Routes.jsx')
+  reactRoutes: path.normalize(path.join(__dirname, '/../src/Routes.jsx'))
 });
-
 // set the engine
 app.engine('.jsx', engine);
 
@@ -58,43 +61,37 @@ app.set('views', __dirname + '/src/views');
 // set jsx or js as the view engine
 // (without this you would need to supply the extension to res.render())
 // ex: res.render('index.jsx') instead of just res.render('index').
-app.set('view engine', 'js');
+app.set('view engine', 'jsx');
 
 // finally, set the custom view
 app.set('view', require('react-engine/lib/expressView'));
-
-
+app.use('*', require(__dirname + '/server/routes/index'));
+app.use('/api', require(__dirname + '/server/routes/api'));
 
 
 app.use(express.static(path.join(__dirname, 'app')));
 
-app.use('/', require(__dirname + '/server/routes/index'));
-app.use('/api', require(__dirname + '/server/routes/api'));
-
-app.get('*', function(request, response) {
+/*app.get('*', function(request, response) {
   response.sendFile(__dirname + '/app/index.html')
 });
+*/
 app.get('/style/', function(request, response) {
   response.sendFile(__dirname + '/styleguide/index.html')
 });
 
 
 
-var server1 = app.listen(8080, function () {
-    var host = server.address().address;
-    console.log('Listening at http://%s:%s', host, 8080);
-})
+
+
+
 
 server.listen(PORT, function(error) {
-  var addr = server.address();
-  console.log('ad',addr.port);
+var host = server.address().address;
   if (error) {
     console.error(error);
   } else {
-    console.info('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', PORT,PORT);
-
+    console.info('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', PORT);
     require('./server/server_modules/socket_base.js')(server);
-
   }
 });
 
@@ -102,7 +99,14 @@ server.listen(PORT, function(error) {
 /********************* ARCHIV SNIPPETS
 `******************/
 /*
-
+getPort(3000).then(port => {
+//    console.log(port);
+    var server1 = app.listen(port, function () {
+        var host = server.address().address;
+        console.log('Listening at http://%s:%s', host, port);
+    })
+    // Will use 3000 if available, otherwise fall back to a random port
+});
 
 app.use('/', function(req, res) {
   var books = [{

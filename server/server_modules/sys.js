@@ -1,3 +1,6 @@
+var os = require("os");
+
+
 cpuIAverage = function(i) {
   var cpu, cpus, idle, len, total, totalIdle, totalTick, type;
   totalIdle = 0;
@@ -100,6 +103,4 @@ module.exports.cpus =()=> {
   }, 100);
 };
 
-module.exports = cpus;
-
-var os = require("os");
+//smodule.sexports = cpus;

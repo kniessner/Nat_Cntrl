@@ -9,7 +9,7 @@ function CustomConsole() {
     this.client = function(id,info,msg) {
         console.log(  colors.fg.Cyan,
                       colors.Bright,
-                        `CLIENT ${colors.fg.White}(${id})${colors.fg.Cyan}=/${info}/=>`, //Log group
+                        `CLIENT  ▸ ${colors.fg.White}(${id})${colors.fg.Cyan}=/${info}/=>`, //Log group
                       colors.Reset,
                       colors.fg.White,
                         msg, // Log message
@@ -43,6 +43,12 @@ log.server('hello');
 log.sys('hello');
  */
  module.exports.showConsoleStyle = function () {
+   const error = chalk.bold.red;
+   const warning = chalk.keyword('orange');
+   // Use RGB colors in terminal emulators that support it.
+   log(chalk.keyword('orange')('Yay for orange colored text!'));
+   log(chalk.rgb(123, 45, 67).underline('Underlined reddish color'));
+   log(chalk.hex('#DEADED').bold('Bold gray!'));
 
  // Combine styled and normal strings
  log(chalk.blue('Hello') + 'World' + chalk.red('!'));

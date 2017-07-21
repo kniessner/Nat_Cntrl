@@ -6,7 +6,7 @@ module.exports.fiz = function () {
   console.log('fiz!');
 }
 
-module.exports.area = (r) => PI * r ** 2;
+//module.exports.area = (r) => PI * r ** 2;
 
 module.exports.current_date = function () {
   return Date();

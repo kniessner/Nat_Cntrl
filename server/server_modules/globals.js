@@ -1,6 +1,9 @@
 //GLOBALS
 
 global.PORT = process.env.PORT || 3030;
+global.PORT2 = process.env.PORT2 || 3000;
+
+
 module.exports = function (app) {
     app.locals.author = 'Kniessner';
     app.locals.title  = 'WireSense';
