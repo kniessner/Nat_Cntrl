@@ -26,10 +26,23 @@ import {init_client_sockets,socket} from './util/sockets.js';
 class App extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      input: '',
+      messages: 'nada'
+    }
   }
-
-  render() {
+  componentDidMount(){
+    self = this;
+    socket.emit('message', {title: 'my host', msg: window.location.hostname});
     init_client_sockets(socket);
+    socket.on('message', function (data) {
+      console.log('message',data);
+      self.setState({ messages: data})
+    });
+  }
+  render() {
+
+console.log('message props',this.state.messages);
     return (
         <div id="content">
           <Navigation>
