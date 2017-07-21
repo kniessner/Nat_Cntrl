@@ -5,7 +5,12 @@ let socket = io('http://localhost:3030/');
 
 export function init_client_sockets(){
   //connect to local server
-  socket.emit('wire', { hostname: window.location.hostname});
+  socket.emit('wire', {
+    hostname: window.location.hostname,
+    CodeName:navigator.appCodeName,
+    Name:navigator.appName,
+    Agent:navigator.userAgent
+  });
   //connect to base server
 
 }

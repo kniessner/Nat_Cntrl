@@ -1,22 +1,21 @@
 var React = require('react');
 //var CategoryList = require('./CategoryList.jsx');
 
+class Layout extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
-var Layout = React.createClass({
-	render: function() {
-		return (
-			<html>
-				<head>
-					<meta charSet='utf-8' />
-					<title>{this.props.title}</title>
-				</head>
-				<body>
+  render() {
+
+    return (
+    <div>
 				<h3>ReactNode</h3>
 					{this.props.children}
-				</body>
-				<script src='/bundle.js'></script>
-			</html>
-		);
-	};
-});
+	   </div>
+
+		)
+  }
+};
+
 module.exports = Layout;

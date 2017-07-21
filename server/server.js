@@ -33,7 +33,7 @@ var host = server.address().address;
     console.error(error);
   } else {
     console.info('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', PORT);
-    require('./server/server_modules/socket_base.js')(server);
+    require('./server_modules/socket_base.js')(server);
   }
 });
 

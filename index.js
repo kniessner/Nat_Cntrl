@@ -4,85 +4,69 @@ const colors = require('./server/server_modules/constants.js').colors; //Datasto
 
 const express = require('express');
 const app = express();
-var router = express.Router;
+require('./server/server_modules/globals.js')(app);
+
+const   router = express.Router;
 const server = require('http').createServer(app);
+const routes = require('./server/routes');
 
 const fs = require('fs');
 const nodemon = require('nodemon');
 const path = require('path');
 const React = require('react');
 const ReactEngine = require('react-engine');
+
 const jsx = require('node-jsx');
 jsx.install();
+
 const chalk = require('chalk');
+
+
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const webpack = require('webpack');
+const config = require('./webpack.config');
+
 const getPort = require('get-port');
+const isDeveloping = process.env.NODE_ENV !== 'production';
 
 
 
-const log = console.log;
-
-
-require('./server/server_modules/socket_base.js')(server);
-require('./server/server_modules/globals.js')(app);
 //require('./server/server_modules/google_init.js');
 
 
+
+//app.get('/', routes.index);
+app.use(express.static(__dirname + '/app'));
+app.use(express.static(__dirname + '/doc'));
+
 // using webpack-dev-server and middleware in development environment
-if (process.env.NODE_ENV !== 'production') {
-  var webpackDevMiddleware = require('webpack-dev-middleware');
-  var webpackHotMiddleware = require('webpack-hot-middleware');
-  var webpack = require('webpack');
-  var config = require('./webpack.config');
-  var compiler = webpack(config);
-  app.use(webpackDevMiddleware(compiler, {
-    noInfo: true,
-    publicPath: config.output.publicPath
-  }));
+if (isDeveloping) {
+
+
+  const compiler = webpack(config);
+
+  const middleware = webpackDevMiddleware(compiler, {
+    publicPath: config.output.publicPath,
+    contentBase: 'src',
+    stats: {
+      colors: true,
+      hash: false,
+      timings: true,
+      chunks: false,
+      chunkModules: false,
+      modules: false
+    }
+  });
+
+  app.use(middleware);
   app.use(webpackHotMiddleware(compiler));
+
 }
 
-require('./server/server_rend.js')(app);
-
-/*var engine = ReactEngine.server.create({
-
-    see the complete server options spec here:
-    https://github.com/paypal/react-engine#server-options-spec
-
-});*/
-var engine = require('react-engine').server.create({
-  reactRoutes: path.normalize(path.join(__dirname, '/../src/Routes.jsx'))
+app.get('*', function(request, response) {
+    response.sendFile(__dirname + '/app/index.html')
 });
-// set the engine
-app.engine('.jsx', engine);
-
-// set the view directory
-app.set('views', __dirname + '/src/views');
-
-// set jsx or js as the view engine
-// (without this you would need to supply the extension to res.render())
-// ex: res.render('index.jsx') instead of just res.render('index').
-app.set('view engine', 'jsx');
-
-// finally, set the custom view
-app.set('view', require('react-engine/lib/expressView'));
-app.use('*', require(__dirname + '/server/routes/index'));
-app.use('/api', require(__dirname + '/server/routes/api'));
-
-
-app.use(express.static(path.join(__dirname, 'app')));
-
-/*app.get('*', function(request, response) {
-  response.sendFile(__dirname + '/app/index.html')
-});
-*/
-app.get('/style/', function(request, response) {
-  response.sendFile(__dirname + '/styleguide/index.html')
-});
-
-
-
-
-
 
 
 server.listen(PORT, function(error) {
@@ -91,9 +75,12 @@ var host = server.address().address;
     console.error(error);
   } else {
     console.info('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', PORT);
+    require('./server/index.js')(app);
     require('./server/server_modules/socket_base.js')(server);
+    //
   }
 });
+
 
 
 /********************* ARCHIV SNIPPETS

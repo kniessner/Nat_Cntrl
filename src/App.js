@@ -15,7 +15,6 @@ import {Divider} from 'pui-react-dividers';
 import './assets/stylesheets/base.scss';
 import {screen_width, screen_height} from './util/screen.js';
 import {scroll_top} from './util/scroll.js';
-import {Video_Player,Camera_Test} from './util/media.js';
 
 import {init_client_sockets} from './util/sockets.js';
 
@@ -25,7 +24,6 @@ import Nav_Elements from './components/Nav_Elements';
 import Time from './components/Time';
 
 
-import Book         from './views/Book';
 
 
 
@@ -41,17 +39,15 @@ class App extends React.Component {
   render() {
 
     return (
-        <div id="content">
-
+        <div id="innerwrap">
           <Navigation>
-          <Time />
             {Nav_Elements}
           </Navigation>
+          {Time}
             {window.location.hostname}
-          <section className="main_section">
+          <section id="content" className="main_section">
             {this.props.children}
           </section>
-
         </div>
     )
   }
