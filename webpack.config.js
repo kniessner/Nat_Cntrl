@@ -1,5 +1,9 @@
 var webpack = require('webpack');
 var path = require('path');
+var devFlagPlugin = new webpack.DefinePlugin({
+__DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'false'))
+});
+
 
 module.exports = {
   entry: [
@@ -38,12 +42,8 @@ module.exports = {
         NODE_ENV: JSON.stringify('development')
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false
-        }
-    }),
-    new webpack.optimize.OccurenceOrderPlugin(),
+
+    //new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
 

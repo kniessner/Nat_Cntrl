@@ -28,7 +28,9 @@ class Chat extends React.Component {
   constructor(props) {
     super(props);
       this.state = {
-        input: ''
+
+        input: '',
+
 
       }
 
@@ -40,7 +42,6 @@ class Chat extends React.Component {
       self = this;
       this.props.socket.on('message', function (data) {
         console.log('message',data);
-        self.setState({ messages: data});
       });
     }
 
@@ -49,7 +50,7 @@ class Chat extends React.Component {
    }
    handleOnSubmit = (e) => {
       e.preventDefault();
-      this.props.socket.emit('message', { from: window.location.hostname, title: 'sending', msg: 'sending a message'} );
+      this.props.socket.emit('message', { 'from': window.location.hostname, 'title': 'sending', 'msg': 'sending a message'} );
       this.setState({ input: '' });
     }
 
@@ -68,13 +69,13 @@ class Chat extends React.Component {
                 <input type="submit" value="Submit" />
               </form>
                 <ul>
-                 {this.props.messages.map((msg) =>
+                 {this.props.messages ? this.props.messages.map((msg) =>
                    <li> {msg} </li>
-                 )}
+                 ) : ''
+               }
                  </ul>
               <Chat_Messages data={this.props.messages}/>
 
-              <p>{this.state.messages}</p>
               <p>{this.state.input}</p>
             </div>
           )

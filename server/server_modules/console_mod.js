@@ -1,44 +1,39 @@
+const chalk = require('chalk');
+
+const loga = console.log;
+
 
 function CustomConsole() {
     this.self = function() {
         console.log('asas',this);
     };
+
     this.client = function(id,info,msg) {
-        console.log(  colors.fg.Cyan,
-                      colors.Bright,
-                        `CLIENT ${colors.fg.White}(${id})${colors.fg.Cyan}=/${info}/=>`, //Log group
-                      colors.Reset,
-                      colors.fg.White,
-                        msg, // Log message
-                      colors.Reset);
+        loga(chalk.hex('#F8F8F7')('CLIENT =/' + chalk.white(`${id}`) + '/=> ' +info +'('+ msg+')'));
     };
-    this.server = function(msg) {
-        console.log(
-                      colors.fg.Magenta,
-                      colors.Blink,
-                        `SERVER ${id} ->`, //Log group
-                      colors.Reset,
-                      colors.fg.Cyan,
-                        msg, // Log message
-                      colors.Reset);
+    this.server = function(id,info,msg) {
+        if(id){
+            loga(chalk.hex('#9070B4')('SERVER =/' + chalk.white(`${info}`) + '/=' + msg +'-('+ id +')'));
+        }else{
+            loga(chalk.hex('#9070B4')('SERVER =/' + chalk.white(`${info}`) + '/=' + msg ));
+        }
     };
-    this.sys = function(info,msg) {
-        console.log(
-                      colors.fg.Yellow,
-                      colors.Dim,
-                        `SYSTEM =( ${info} )=>`, //Log group
-                      colors.Reset,
-                      colors.fg.White,
-                      colors.Dim,
-                        msg, // Log message
-                      colors.Reset);
+    this.sys = function(info,msg,id) {
+        if(id){
+            loga(chalk.hex('#32D4C2')('SYSTEM = ( ' + chalk.white.bold(`${info}`) + '/'+msg +'-('+ id +'))'));
+        }else{
+            loga(chalk.hex('#32D4C2')('SYSTEM = ( ' + chalk.white.bold(`${info}`) + '/'+msg ));
+        }
+    };
+    this.inf = function(info,msg,id) {
+        if(id){
+            loga(chalk.hex('#51A08C')('INFO <' + chalk.white.bold(`${info}`) + '>'+ id ));
+        }else{
+            loga(chalk.hex('#51A08C')('INFO <' + chalk.white.bold(`${info}`) + '>' ));
+        }
+
     };
 }
-/*
-log.client('hello');
-log.server('hello');
-log.sys('hello');
- */
 
 var log = new CustomConsole();
 module.exports = log;

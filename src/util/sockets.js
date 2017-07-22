@@ -28,9 +28,7 @@ function socket_inbox(slot){
     console.log('News' ,data);
   });
 
-  socket.on('message', function (data) {
-    console.log('message',data);
-  });
+  
 
   socket.on('wire', function (data) {
     console.log('Wire ', data);

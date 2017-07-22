@@ -1,19 +1,7 @@
 const log = require('./console_mod.js');
 const heroku_server = require("socket.io-client")('http://motionwire.herokuapp.com/'); // This is a client connecting to the SERVER 2
 const { exec } = require('child_process');
-/*
-const server = require('http').createServer();
-const io = require('socket.io')(server);
-server.listen(3000);
- */
 
-
-/*
-  EMITS
-    io.emit() -> sends not to origin -> sends to all
-    client.emit() -> sends only to origin
-    client.broadcast.emit() -> sends not to origin
- */
 module.exports = function (server) {
   const io = require('socket.io')(server);
 
@@ -22,7 +10,7 @@ module.exports = function (server) {
   function connectedDevices(){
     io.clients((error, clients) => {
        if (error) throw error;
-       log.sys('connected clients', clients);
+       log.inf('all connected clients', clients);
        io.emit('connected_clients', clients);
      });
   }
@@ -31,16 +19,14 @@ module.exports = function (server) {
     var client_origin =  'localhost';
     var clients = client.server.eio.clientsCount;
 
-    log.sys('new client', client.id);
-
     if(client.handshake.headers.origin){ client_origin = client.handshake.headers.origin; }
 
     client.on('register', function(data){
-      log.sys('registering ', data.socket_id+" "+ client.id);
+      log.sys('client ', 'connected', client.id);
     });
 
     client.on('disconnect', function(data){
-      log.sys('client', client.id);
+      log.sys('client', 'disconnected', client.id);
     });
 
     client.on('storeClientInfo', function (data) {
@@ -60,6 +46,8 @@ module.exports = function (server) {
       client.broadcast.emit('message', { from: client.id , title: data.title, msg: data.msg });
     });
 
+
+
     client.on('log', function(data) {
       log.client(client.id,'log',data );
     });
@@ -71,8 +59,8 @@ module.exports = function (server) {
           console.error(`exec error: ${error}`);
           return;
         }
-        log.sys('exec',`stdout: ${stdout}`);
-        log.sys('exec',`stderr: ${stderr}`);
+        log.inf('exec',`stdout: ${stdout}`);
+        log.inf('exec',`stderr: ${stderr}`);
       });
     });
 

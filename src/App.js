@@ -30,30 +30,33 @@ class App extends React.Component {
       input: '',
       messages: []
     }
-  }
-  componentWillMount(){
 
   }
+
   componentDidMount(){
-      var mam = socket_inbox('message');
-      var newArray = this.state.messages.slice();
-      newArray.push(mam);
-      this.setState({messages:newArray})
+      socket.on('message', function (data) {
+        console.log('neue nachricht');
+          var newArray = this.state.messages.slice();
+          newArray.push(data);
+          this.setState({messages:newArray})
+      });
 
-      console.log(mam);
-  }
+
+      }
+
   render() {
       console.log(connection_socket,socket);
+      //console.log(this.state.messages);
 
-
-
+      socket.emit('message', { 'from': window.location.hostname, 'title': 'sending', 'msg': 'sending a message'});
     return (
         <div id="content">
           <Navigation>
             {Nav_Elements}
           </Navigation>
 
-          <Chat socket={socket} data={messages}/>
+  <Chat socket={socket} data={this.state.messages}/>
+
             {window.location.hostname}
           <Grid className="main_section">
             {this.props.children}

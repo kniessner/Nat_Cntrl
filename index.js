@@ -5,10 +5,6 @@ const router = express.Router;
 const server = require('http').createServer(app);
 const routes = require('./server/routes');
 
-const webpackDevMiddleware = require('webpack-dev-middleware');
-const webpackHotMiddleware = require('webpack-hot-middleware');
-const webpack = require('webpack');
-const config = require('./webpack.config');
 
 const fs = require('fs');
 const path = require('path');
@@ -16,25 +12,24 @@ const chalk = require('chalk');
 
 require('./server/server_modules/globals.js')(app);
 const dt = require('./server/server_modules/constants.js'); //Datastore
-const isDeveloping = process.env.NODE_ENV !== 'production';
 
 app.use(express.static(__dirname + '/app'));
-app.use(express.static(__dirname + '/doc'));
+//app.use(express.static(__dirname + '/doc'));
 
-if (isDeveloping) {
-  const compiler = webpack(config);
-  const middleware = webpackDevMiddleware(compiler, {
-    publicPath: config.output.publicPath,
-    contentBase: 'src'
-  });
-  app.use(middleware);
+
+if (process.env.NODE_ENV !== 'production') {
+  var webpackDevMiddleware = require('webpack-dev-middleware');
+  var webpackHotMiddleware = require('webpack-hot-middleware');
+  var webpack = require('webpack');
+  var config = require('./webpack.config');
+  var compiler = webpack(config);
+
+  app.use(webpackDevMiddleware(compiler, {
+    noInfo: true,
+    publicPath: config.output.publicPath
+  }));
   app.use(webpackHotMiddleware(compiler));
 }
-
-app.get('*', function(request, response) {
-    console.log('id '+request.ip,'host '+request.hostname);
-    response.sendFile(__dirname + '/app/index.html');
-});
 
 
 server.listen(PORT, function(error) {
@@ -47,3 +42,20 @@ var host = server.address().address;
     require('./server/server_modules/socket_base.js')(server);
   }
 });
+
+
+var http = require('http'),
+    httpProxy = require('http-proxy');
+//
+// Create your proxy server and set the target in the options.
+//
+httpProxy.createProxyServer({target:'http://kniessner.com'}).listen(8000); // See (†)
+
+//
+// Create your target server
+//
+http.createServer(function (req, res) {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.write('request successfully proxied!' + '\n' + JSON.stringify(req.headers, true, 2));
+  res.end();
+}).listen(9000);
