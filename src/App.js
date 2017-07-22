@@ -7,6 +7,7 @@
  */
 import './assets/stylesheets/base.scss';
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {Grid, FlexCol} from 'pui-react-flex-grids';
 /******** COMPONENTS
 *
@@ -22,33 +23,36 @@ import Chat from './components/Chat';
 *
 ************/
 import {socket,connection_socket,socket_inbox} from './util/sockets.js';
+socket.emit('message', { 'from': window.location.hostname, 'title': 'sending', 'msg': 'sending a message'});
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      input: '',
-      messages: []
-    }
 
-  }
+  static propTypes = {
+    //onLayoutChange: PropTypes.func.isRequired
+  };
 
-  componentWillMount(){
+  static defaultProps = {
+    className: "App"
+  };
 
-        //  this.setState({messages:newArray})
-    }
-  componentDidMount(){
+  state = {
+    mounted: false,
+    messages:[]
+  };
+
+  componentDidMount() {
+    this.setState({mounted: true});
+    let that = this;
       socket.on('message', function (data) {
-        console.log('neue nachricht');
-          var newArray = this.state.messages.slice();
-          newArray.push(data);
-          this.setState({messages:newArray})
+        that.setState({ ...that.state, messages: [].concat(that.state.messages, 1) }, () => {
+            console.log('neue nachricht');
+        });
+
       });
     }
 
   render() {
-      console.log(connection_socket,socket);
-      socket.emit('message', { 'from': window.location.hostname, 'title': 'sending', 'msg': 'sending a message'});
+
     return (
         <div id="content">
           <Navigation>
@@ -56,7 +60,6 @@ class App extends React.Component {
           </Navigation>
 
             <Chat socket={socket} data={this.state.messages}/>
-
             {window.location.hostname}
           <Grid className="main_section">
             {this.props.children}

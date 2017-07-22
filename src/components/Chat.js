@@ -1,52 +1,50 @@
 import React, {Component} from 'react';
 import {socket_inbox} from '../util/sockets.js';
 
-
+function Item(props) {
+  return <li>{props.message}</li>;
+}
 function Chat_Messages(props) {
-
-  const mssgs = (
-    <ul>
-      {props.data}
-    </ul>
-  );
-
   return (
     <div>
-      {mssgs}
+    {props.data.map((message) => <Item key={message} message={message} />)}
     </div>
   );
 }
 
 
 class Chat extends React.Component {
-
   constructor(props) {
     super(props);
       this.state = {
-
         input: '',
-
+        output:''
 
       }
-
    this.handleOnChange = this.handleOnChange.bind(this)
    this.handleOnSubmit = this.handleOnSubmit.bind(this)
-   //this._handleMessageEvent = this._handleMessageEvent.bind(this)
   }
-    componentDidMount(){
-      console.log('mes'+this.props.data);
-      self = this;
+
+  componentDidMount(){
+    console.log('mes '+this.props.data);
+
+    let that = this;
       this.props.socket.on('message', function (data) {
-        console.log('message',data);
+        that.setState({messages: [].concat(that.state.messages, 1) }, () => {
+          console.log('message',data);
+
+          console.log('neue nachricht');
+        });
+
       });
-    }
+  }
 
    handleOnChange = (e) => {
       this.setState({ input: e.target.value });
    }
    handleOnSubmit = (e) => {
       e.preventDefault();
-      this.props.socket.emit('message', { 'from': window.location.hostname, 'title': 'sending', 'msg': 'sending a message'} );
+      this.props.socket.emit('message', { 'from': window.location.hostname, 'title': 'sending', 'msg': this.state.input} );
       this.setState({ input: '' });
     }
 

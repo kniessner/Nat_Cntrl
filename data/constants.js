@@ -1,15 +1,12 @@
-//GLOBALS
-
-//global.PORT = process.env.PORT || 3030;
-global.PORT2 = process.env.PORT2 || 3000;
-
-
 module.exports = function (app) {
     app.locals.author = 'Kniessner';
     app.locals.title  = 'WireSense';
     app.locals.email  = 'sascha-darius@kniessner.com';
-    app.locals.infos   = require('./get_infos.js');
+    app.locals.infos   = require('../server/server_modules/get_infos.js');
 }
+
+
+module.exports.someProperty = 'someValue';
 
 
 global.colors = {
