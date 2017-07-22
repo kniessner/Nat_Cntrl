@@ -1,12 +1,35 @@
 import React, {Component} from 'react';
+import {socket_inbox} from '../util/sockets.js';
+
+
+function Chat_Messages(props) {
+
+  const mssgs = (
+    <ul>
+      {props.data.map((message) =>
+        <li >
+        <h4> {message.title}</h4>
+        <p>   {message.msg}</p>
+        </li>
+      )}
+    </ul>
+  );
+
+  return (
+    <div>
+      {mssgs}
+    </div>
+  );
+}
+
 
 class Chat extends React.Component {
 
   constructor(props) {
     super(props);
       this.state = {
-        input: '',
-        messages: 'nada'
+        input: ''
+
       }
 
    this.handleOnChange = this.handleOnChange.bind(this)
@@ -26,11 +49,13 @@ class Chat extends React.Component {
    }
    handleOnSubmit = (e) => {
       e.preventDefault();
-      console.log(this.state.input);
-      this.props.socket.emit('message', { from: window.location.hostname, title: 'cheers', msg: this.state.input } );
+      this.props.socket.emit('message', { from: window.location.hostname, title: 'sending', msg: 'sending a message'} );
       this.setState({ input: '' });
     }
+
+
   render() {
+    console.log(this.props.messages);
     return (
             <div>
               <form onSubmit={this.handleOnSubmit}>
@@ -42,7 +67,12 @@ class Chat extends React.Component {
                     name="input" />
                 <input type="submit" value="Submit" />
               </form>
-
+                <ul>
+                 {this.props.messages.map((msg) =>
+                   <li> {msg} </li>
+                 )}
+                 </ul>
+              <Chat_Messages data={this.props.messages}/>
 
               <p>{this.state.messages}</p>
               <p>{this.state.input}</p>

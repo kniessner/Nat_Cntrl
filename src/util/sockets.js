@@ -1,21 +1,28 @@
 import $ from 'jquery'
 import React, { Component } from 'react';
 import io from 'socket.io-client';
-export let socket = io('http://localhost:3030/');
+let socket = io('http://localhost:3030/');
 
-export function init_client_sockets(socket){
-  //connect to local server
-  socket.emit('wire', {
-    hostname: window.location.hostname,
-    CodeName:navigator.appCodeName,
-    Name:navigator.appName,
-    Agent:navigator.userAgent
+var connection_socket = false;
+
+socket.on('connect', () => {
+  connection_socket = true;
+  socket.emit('register', { socket_id: socket.id });
+  console.log(socket.id);
+});
+
+socket.on('disconnect', function() {
+  connection_socket = false;
+  console.log('Disconnected!');
+});
+
+
+function socket_inbox(slot){
+  socket.on(slot, function (data) {
+    return data;
   });
-  //connect to base server
-
 }
-
-export function get_socket_messages(socket){
+/*
 
   socket.on('news', function (data) {
     console.log('News' ,data);
@@ -40,8 +47,8 @@ export function get_socket_messages(socket){
   socket.on('c2c_wire', function (data) {
     console.log(data);
   });
-}
-
+*/
+/*
 export class SocketButton {
   render() {
     <div>
@@ -70,3 +77,5 @@ export function serverExec(e){
   e.preventDefault();
   socket.emit('exec', 'client.server' );
 }
+*/
+export { socket_inbox, connection_socket, socket, io };

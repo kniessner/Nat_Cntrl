@@ -16,10 +16,8 @@ server.listen(3000);
  */
 module.exports = function (server) {
   const io = require('socket.io')(server);
-  io.on("connection",function(){
-   // io.emit('connected_server', {name: 'localhost', ip: server_ip});
-  });
 
+ var clients =[];
 
   function connectedDevices(){
     io.clients((error, clients) => {
@@ -37,8 +35,20 @@ module.exports = function (server) {
 
     if(client.handshake.headers.origin){ client_origin = client.handshake.headers.origin; }
 
+    client.on('register', function(data){
+      log.sys('registering ', data.socket_id+" "+ client.id);
+    });
+
     client.on('disconnect', function(data){
-      log.sys('disc client', client.id);
+      log.sys('client', client.id);
+    });
+
+    client.on('storeClientInfo', function (data) {
+            var clientInfo          = new Object();
+            clientInfo.customId     = data.customId;
+            clientInfo.clientId     = socket.id;
+            clients.push(clientInfo);
+            console.log (clients);
     });
 
     client.on('wire', function(data) {
@@ -66,6 +76,7 @@ module.exports = function (server) {
       });
     });
 
+    client.emit('message', { from: 'server' , title: 'hekko', msg: 'your id is '+client.id });
 
     client.emit('message', { from: 'server' , title: 'your are connected', msg: 'your id is '+client.id });
     client.broadcast.emit('wire', { new_client: client.id , client_host: client_origin});

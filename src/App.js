@@ -15,40 +15,45 @@ import {Grid, FlexCol} from 'pui-react-flex-grids';
 *************/
 import Navigation   from './components/Navigation';
 import Nav_Elements from './components/Nav_Elements';
+import Search from './components/Search';
 import Chat from './components/Chat';
 /******** UTILITIES
 *
 *
 ************/
-import {init_client_sockets,socket} from './util/sockets.js';
-
+import {socket,connection_socket,socket_inbox} from './util/sockets.js';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       input: '',
-      messages: 'nada'
+      messages: []
     }
   }
+  componentWillMount(){
+
+  }
   componentDidMount(){
-    self = this;
-    socket.emit('message', {title: 'my host', msg: window.location.hostname});
-    init_client_sockets(socket);
-    socket.on('message', function (data) {
-      console.log('message',data);
-      self.setState({ messages: data})
-    });
+      var mam = socket_inbox('message');
+      var newArray = this.state.messages.slice();
+      newArray.push(mam);
+      this.setState({messages:newArray})
+
+      console.log(mam);
   }
   render() {
+      console.log(connection_socket,socket);
 
-console.log('message props',this.state.messages);
+
+
     return (
         <div id="content">
           <Navigation>
             {Nav_Elements}
           </Navigation>
-          <Chat socket={socket}/>
+
+          <Chat socket={socket} data={messages}/>
             {window.location.hostname}
           <Grid className="main_section">
             {this.props.children}
