@@ -24,7 +24,7 @@ if (process.env.NODE_ENV !== 'production') {
   app.use(webpackHotMiddleware(compiler));
 }
 
-server.listen(3030, function(error) {
+server.listen(process.env.PORT || 3030, function(error) {
   if (error) {
     console.error(error);
   } else {

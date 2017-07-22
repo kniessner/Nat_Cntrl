@@ -30,8 +30,8 @@ class Chat extends React.Component {
 
     let that = this;
       this.props.socket.on('message', function (data) {
-        that.setState({messages: [].concat(that.state.messages, 1) }, () => {
-          console.log('message',data);
+        that.setState({messages: [].concat(data, 1) }, () => {
+          console.log('messages',data);
 
           console.log('neue nachricht');
         });
