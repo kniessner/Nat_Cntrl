@@ -6,12 +6,7 @@ function Chat_Messages(props) {
 
   const mssgs = (
     <ul>
-      {props.data.map((message) =>
-        <li >
-        <h4> {message.title}</h4>
-        <p>   {message.msg}</p>
-        </li>
-      )}
+      {props.data}
     </ul>
   );
 
@@ -39,6 +34,7 @@ class Chat extends React.Component {
    //this._handleMessageEvent = this._handleMessageEvent.bind(this)
   }
     componentDidMount(){
+      console.log('mes'+this.props.data);
       self = this;
       this.props.socket.on('message', function (data) {
         console.log('message',data);
@@ -56,7 +52,7 @@ class Chat extends React.Component {
 
 
   render() {
-    console.log(this.props.messages);
+
     return (
             <div>
               <form onSubmit={this.handleOnSubmit}>
@@ -69,12 +65,9 @@ class Chat extends React.Component {
                 <input type="submit" value="Submit" />
               </form>
                 <ul>
-                 {this.props.messages ? this.props.messages.map((msg) =>
-                   <li> {msg} </li>
-                 ) : ''
-               }
+
                  </ul>
-              <Chat_Messages data={this.props.messages}/>
+              <Chat_Messages data={this.props.data}/>
 
               <p>{this.state.input}</p>
             </div>

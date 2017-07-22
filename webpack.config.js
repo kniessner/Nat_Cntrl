@@ -33,7 +33,7 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    contentBase: './app',
+    contentBase: './src',
     hot: true
   },
   plugins: [

@@ -15,7 +15,7 @@ import {Grid, FlexCol} from 'pui-react-flex-grids';
 *************/
 import Navigation   from './components/Navigation';
 import Nav_Elements from './components/Nav_Elements';
-import Search from './components/Search';
+//import Search from './components/Search';
 import Chat from './components/Chat';
 /******** UTILITIES
 *
@@ -33,6 +33,11 @@ class App extends React.Component {
 
   }
 
+  componentWillMount(){
+    
+          test.push('test');
+          this.setState({messages:newArray})
+    }
   componentDidMount(){
       socket.on('message', function (data) {
         console.log('neue nachricht');
@@ -40,14 +45,10 @@ class App extends React.Component {
           newArray.push(data);
           this.setState({messages:newArray})
       });
-
-
-      }
+    }
 
   render() {
       console.log(connection_socket,socket);
-      //console.log(this.state.messages);
-
       socket.emit('message', { 'from': window.location.hostname, 'title': 'sending', 'msg': 'sending a message'});
     return (
         <div id="content">
@@ -55,7 +56,7 @@ class App extends React.Component {
             {Nav_Elements}
           </Navigation>
 
-  <Chat socket={socket} data={this.state.messages}/>
+            <Chat socket={socket} data={this.state.messages}/>
 
             {window.location.hostname}
           <Grid className="main_section">
