@@ -27,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'app')));
 
 
 
-server.listen(process.env.PORT || PORT, function(error) {
+server.listen(process.env.PORT || 3030, function(error) {
 var host = server.address().address;
   if (error) {
     console.error(error);

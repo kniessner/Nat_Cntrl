@@ -44,19 +44,19 @@ app.get("/api/*", function(req, res){
   apiProxy.web(req, res, { target: 'http://google.com:80' });
 });
 
-server.listen(PORT, function(error) {
+server.listen(process.env.PORT || 3030, function(error) {
 var host = server.address().address;
   if (error) {
     console.error(error);
   } else {
-    console.info('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', PORT);
+    console.info('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', this.address().port, app.settings.env);
     require('./server/index.js')(app);
     require('./server/server_modules/socket_base.js')(server);
   }
 });
 
 
-
+/*
  // get the remote IP
  var remotehost = req.connection.remoteAddress;
  if(typeof(req.headers["x-forwarded-for"]) !== 'undefined')
@@ -66,7 +66,7 @@ var host = server.address().address;
  }
  console.log(remotehost);
 
-/*
+
 
 //
 // Create your proxy server and set the target in the options.

@@ -1,6 +1,6 @@
 //GLOBALS
 
-global.PORT = process.env.PORT || 3030;
+//global.PORT = process.env.PORT || 3030;
 global.PORT2 = process.env.PORT2 || 3000;
 
 
