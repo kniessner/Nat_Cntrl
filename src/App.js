@@ -34,9 +34,8 @@ class App extends React.Component {
   }
 
   componentWillMount(){
-    
-          test.push('test');
-          this.setState({messages:newArray})
+
+        //  this.setState({messages:newArray})
     }
   componentDidMount(){
       socket.on('message', function (data) {

@@ -27,12 +27,12 @@ app.use(express.static(path.join(__dirname, 'app')));
 
 
 
-server.listen(PORT, function(error) {
+server.listen(process.env.PORT || PORT, function(error) {
 var host = server.address().address;
   if (error) {
     console.error(error);
   } else {
-    console.info('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', PORT);
+    console.info('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', this.address().port, app.settings.env);
     require('./server_modules/socket_base.js')(server);
   }
 });
