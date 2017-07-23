@@ -2,11 +2,14 @@ module.exports = function (app) {
     app.locals.author = 'Kniessner';
     app.locals.title  = 'WireSense';
     app.locals.email  = 'sascha-darius@kniessner.com';
-    app.locals.infos   = require('../server/server_modules/get_infos.js');
+    app.locals.infos  = require('../server/modules/get_infos.js');
+    app.locals.ip     = require('../server/modules/get_infos.js').server_ip;
 }
 
 
 module.exports.someProperty = 'someValue';
+
+
 
 
 global.colors = {

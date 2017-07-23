@@ -1,13 +1,29 @@
 import $ from 'jquery'
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import io from 'socket.io-client';
-let socket = io('http://localhost:3030/');
 
+const socket = io('http://localhost:3030');
 var connection_socket = false;
 
-socket.on('connect', () => {
-  connection_socket = true;
-  socket.emit('register', { socket_id: socket.id });
+function socket_init(socket) {
+  socket.on('connect', () => {
+//  connection_socket = true;
+  socket.emit('register', socket.id);
+  socket.emit('message', {
+    'from': window.location.hostname,
+    'id': socket.id,
+    'msg': 'sending a message'
+  });
+
+
+  socket.on('ping', function(data){
+    console.log(data.message);
+    socket.emit('ping', {
+      client: client.id,
+      message: i++
+    });
+  });
+
   console.log(socket.id);
 });
 
@@ -15,20 +31,40 @@ socket.on('disconnect', function() {
   connection_socket = false;
   console.log('Disconnected!');
 });
-
-
-function socket_inbox(slot){
-  socket.on(slot, function (data) {
+}
+/**
+ * [socket_inbox description]
+ * @param  {[type]} slot [description]
+ * @return {[type]}      [description]
+ */
+function socket_inbox(slot) {
+  socket.on(slot, function(data) {
+    console.log(slot, data);
     return data;
   });
 }
+function socket_in_ping() {
+  socket.on('ping', function(data) {
+    console.log('ping', data);
+    var i = 0;
+    setInterval(function() {
+      socket.emit('ping', {
+        client: client.id,
+        message: i++
+      });
+    }, 1000);
+
+  });
+}
+export {socket_inbox, socket_init, socket_in_ping, connection_socket, socket, io};
+
 /*
 
   socket.on('news', function (data) {
     console.log('News' ,data);
   });
 
-  
+
 
   socket.on('wire', function (data) {
     console.log('Wire ', data);
@@ -76,4 +112,3 @@ export function serverExec(e){
   socket.emit('exec', 'client.server' );
 }
 */
-export { socket_inbox, connection_socket, socket, io };

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: src/views/Dashboard.js</title>
+    <title>JSDoc: Source: server/index.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: src/views/Dashboard.js</h1>
+    <h1 class="page-title">Source: server/index.js</h1>
 
     
 
@@ -26,58 +26,40 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>
-/**
- * @file
- * The Entry Point
- *
- * The extra line between the end of the @file docblock
- * and the file-closure is important.
- */
+            <pre class="prettyprint source linenums"><code>/**
+* This is a description
+* @namespace My.Namespace
+* @method myMethodName
+* @param {String} str - some string
+* @param {Object} obj - some object
+* @param {requestCallback} callback - The callback that handles the response.
+* @return {bool} some bool
+*/
+const log   = require('./modules/console_mod.js');
+/*
+var request = require('request');
+request('http://kniessner.com', function (error, response, body) {
+  //console.log('error:', error); // Print the error if one occurred
+  //console.log('statusCode:', response &amp;&amp; response.statusCode); // Print the response status code if a response was received
+  //console.log('body:', body); // Print the HTML for the Google homepage.
+});
+*/
 
+module.exports = function () {
 
-import React, { Component } from 'react';
-import {Row, Col} from 'pui-react-grids';
-import {Grid, FlexCol} from 'pui-react-flex-grids';
-import {Divider} from 'pui-react-dividers';
+  /**
+   * [io description]
+   * @type {[const]}
+   */
 
-import GridDrag from '../components/Grid';
+  //const io_local  = io_base.local_socket(server);
+  //const io_remote = io_base.remote_socket('http://motionwire.herokuapp.com/');
+//  io_base.local_socket(server);
+  //io_base.socket_on(io);
+//  io_base.get_socketId(io);
+//  io_base.get_socketId(io_remote);
 
-
-
-class Dashboard extends React.Component {
-  constructor(props) {
-    super(props);
-    }
-
-  render() {
-    return (
-      &lt;div id="Dashboard" >
-
-        &lt;nav className="sub_nav">
-          &lt;button >
-            Übersicht
-          &lt;/button>
-          &lt;button className="active">
-            Dashboard
-          &lt;/button>
-          &lt;button>
-            Dokumentation
-          &lt;/button>
-          &lt;button>
-            Elemente
-          &lt;/button>
-        &lt;/nav>
-
-        &lt;div className="inner_wrap ">
-          &lt;GridDrag />
-        &lt;/div>
-      &lt;/div>
-    )
-  }
-};
-
-export default Dashboard;
+}
 </code></pre>
         </article>
     </section>

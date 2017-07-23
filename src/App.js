@@ -22,32 +22,29 @@ import Chat from './components/Chat';
 *
 *
 ************/
-import {socket,connection_socket,socket_inbox} from './util/sockets.js';
-socket.emit('message', { 'from': window.location.hostname, 'title': 'sending', 'msg': 'sending a message'});
+import {socket,socket_init,socket_inbox} from './util/sockets.js';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+      this.state = {
+        input: '',
+        output:'',
+        messages:[]
 
-  static propTypes = {
-    //onLayoutChange: PropTypes.func.isRequired
-  };
+      }
 
-  static defaultProps = {
-    className: "App"
-  };
+  }
 
-  state = {
-    mounted: false,
-    messages:[]
-  };
 
   componentDidMount() {
-    this.setState({mounted: true});
-    let that = this;
+      this.setState({mounted: true});
+      //socket_init(socket);
+      let that = this;
       socket.on('message', function (data) {
-        that.setState({ ...that.state, messages: [].concat(that.state.messages, 1) }, () => {
-            console.log('neue nachricht');
+        that.setState({messages: data}, () => {
+            console.log('App -> neue nachricht',data);
         });
-
       });
     }
 
@@ -59,7 +56,7 @@ class App extends React.Component {
             {Nav_Elements}
           </Navigation>
 
-            <Chat socket={socket} data={this.state.messages}/>
+            <Chat socket={this.socket} data={this.state.messages}/>
             {window.location.hostname}
           <Grid className="main_section">
             {this.props.children}

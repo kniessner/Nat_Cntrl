@@ -14,10 +14,10 @@ import {Row, Col} from 'pui-react-grids';
 import {Grid, FlexCol} from 'pui-react-flex-grids';
 import {Divider} from 'pui-react-dividers';
 
-import React_Grid from '../components/drag_grid';
-import Motion_Grid from '../components/motion_grid';
-import Motion_Drag from '../components/motion_drag';
-import Pixeltracker from "../controller/Pixeltracker";
+import React_Grid from './drag_grid';
+import Motion_Grid from './motion_grid';
+import Motion_Drag from './motion_drag';
+import Pixeltracker from "./Pixeltracker";
 
 
 
