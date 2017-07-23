@@ -18,9 +18,10 @@ import Navigation   from './components/Navigation';
 import Nav_Elements from './components/Nav_Elements';
 //import Search from './components/Search';
 import Chat from './components/Chat';
-/******** UTILITIES
+/********
+* UTILITIES
 *
-*
+* loading socke streams
 ************/
 import {socket,socket_init,socket_inbox} from './util/sockets.js';
 
@@ -31,21 +32,13 @@ class App extends React.Component {
         input: '',
         output:'',
         messages:[]
-
       }
-
   }
 
 
   componentDidMount() {
       this.setState({mounted: true});
-      //socket_init(socket);
-      let that = this;
-      socket.on('message', function (data) {
-        that.setState({messages: data}, () => {
-            console.log('App -> neue nachricht',data);
-        });
-      });
+
     }
 
   render() {
