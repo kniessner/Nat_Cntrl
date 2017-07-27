@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "start:watch": "nodemon server.js",
+    "electron": "electron electron.js",
     "watch": "webpack --config webpack.config.js",
     "build": "webpack  --config webpack.prod.config.js",
     "styleguide": "styleguidist server",
@@ -71,6 +72,7 @@
     "style-loader": "^0.13.1",
     "svg-loader": "0.0.2",
     "tracking": "^1.1.3",
+    "webdav": "^1.0.0-rc1",
     "webpack": "^1.12.14",
     "zingtouch": "^1.0.5"
   },
@@ -81,6 +83,7 @@
     "babel-preset-stage-1": "^6.24.1",
     "chalk": "^2.0.1",
     "docdash": "^0.4.0",
+    "electron": "^1.6.11",
     "file-loader": "^0.11.2",
     "flow-bin": "^0.48.0",
     "image-webpack-loader": "^3.3.1",

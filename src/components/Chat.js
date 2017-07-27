@@ -92,9 +92,6 @@ class Chat extends React.Component {
             return <Item data={object} key={i}/>;
           })}
         </ul>
-
-
-
         <p>{this.state.input}</p>
       </div>
     )

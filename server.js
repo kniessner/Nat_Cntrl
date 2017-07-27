@@ -20,6 +20,9 @@ const sio = require('./server/modules/sockets.js');
 //const rout = require('./server/routes')(app,server);
 
 require('./data/constants.js')(app);
+const modules = require('./server/index.js');
+
+modules.cloud;
 
 app.use(express.static(__dirname + '/app'));
 if (process.env.NODE_ENV !== 'production') {
@@ -36,6 +39,7 @@ if (process.env.NODE_ENV !== 'production') {
   }));
   app.use(webpackHotMiddleware(compiler));
 }
+
 
 
 app.on('mount', function (parent) {
