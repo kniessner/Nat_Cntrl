@@ -2,7 +2,8 @@ import $ from 'jquery'
 import React, {Component} from 'react';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:3030');
+const socket = io('http://wiresense.herokuapp.com/');
+
 var connection_socket = false;
 
 function socket_init(socket) {
