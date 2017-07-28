@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Pane, BasePane} from 'pui-react-panes';
 
 
 class Home extends React.Component {
@@ -7,14 +8,18 @@ class Home extends React.Component {
     }
 
   render() {
+    console.log('home',this.props);
     return (
       <div id="Home" >
-        <h1>
-            Welcome
-        </h1>
+        <div className="head container">
+          <h1>Welcome</h1>
+        </div>
+
       </div>
     )
   }
 };
+
+
 
 export default Home;

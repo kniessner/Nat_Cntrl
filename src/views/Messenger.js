@@ -2,6 +2,10 @@ import '../assets/stylesheets/messenger.scss';
 
 import React, { Component } from 'react';
 import {Grid, FlexCol} from 'pui-react-flex-grids';
+import {Input} from 'pui-react-inputs';
+import {Panel} from 'pui-react-panels';
+import {Divider} from 'pui-react-dividers';
+import {ExpanderContent} from 'pui-react-expander';
 
 function Item_Collection(props) {
   //console.log(props);
@@ -72,7 +76,8 @@ constructor(props) {
       input: '',
       connection: false,
       output: '',
-      messages: []
+      messages: [],
+      expanded: false
 
     }
     this.getClientHeader = this.getClientHeader.bind(this)
@@ -135,46 +140,53 @@ constructor(props) {
   render() {
     console.log(this.state.messages);
     return (
-      <div id="messenger" >
-        <h1>
-            Messenger
-        </h1>
+      <div id="commander" >
 
-          <button onClick={this.getClientHeader}>get Client Header</button>
-          <button onClick={this.getFolder}>get Client Header</button>
-          <Form />
-          <form onSubmit={this.handleOnSubmit}>
-            <input
-              type="text"
-              name='content'
-              value={this.state.input}
-              onChange={this.handleOnChange}
-              />
-            <input type="submit" value="Submit"/>
-          </form>
+          <Panel className="header bg-neutral-11 box-shadow-1"
+          header="Commander"
+          subtitle="Execute Shell Commands"
+          actions={<div><button className="btn btn-default mrl" onClick={() => this.setState({expanded: !this.state.expanded})}>Go</button></div>}>
+          <button onClick={this.getClientHeader} className="btn btn-sm btn-default" type="button" aria-label="button"> Client Header</button>
+          </Panel>
+          <ExpanderContent expanded={this.state.expanded}
+                         onEntered={() => console.log('onEntered')}
+                         onExited={() => console.log('onExited')}>
+                         <Panel className="body bg-neutral-11">
+                           <form onSubmit={this.handleOnSubmit}>
+                             <Input search
+                               name='content'
+                               value={this.state.input}
+                               onChange={this.handleOnChange}
+                                label="Run CMD"
+                                placeholder="GET SERVERINFOS" />
+                             <input className="btn btn-default-alt" type="submit" value="Submit"/>
+                           </form>
 
-           <ul className="stream">
-             {this.state.messages.reverse().map(function(object, i) {
-                console.log(object.name,object);
-                switch(object.name) {
-                    case 'client_header':
-                        return <Item_Collection data={object.data} key={i}/>;
-                        break;
-                    case 'error':
-                        return <Item_Error data={object.data} key={i}/>;
-                        break;
-                    case 'message':
-                        return <Item_Message data={object.data} key={i}/>;
-                        break;
-                    case 'self':
-                        return <Item_Message data={object.data} key={i}/>;
-                        break;
-                    default:
-                        return <Item_List data={object.data} key={i}/>;
-                        break;
-                }
-             })}
-           </ul>
+                            <ul className="stream">
+                              {this.state.messages.reverse().map(function(object, i) {
+                                 console.log(object.name,object);
+                                 switch(object.name) {
+                                     case 'client_header':
+                                         return <Item_Collection data={object.data} key={i}/>;
+                                         break;
+                                     case 'error':
+                                         return <Item_Error data={object.data} key={i}/>;
+                                         break;
+                                     case 'message':
+                                         return <Item_Message data={object.data} key={i}/>;
+                                         break;
+                                     case 'self':
+                                         return <Item_Message data={object.data} key={i}/>;
+                                         break;
+                                     default:
+                                         return <Item_List data={object.data} key={i}/>;
+                                         break;
+                                 }
+                              })}
+                            </ul>
+                          </Panel>
+        </ExpanderContent>
+
       </div>
     )
   }

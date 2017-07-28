@@ -1,8 +1,14 @@
+import '../assets/stylesheets/messenger.scss';
+
 import React, {Component} from 'react';
-import {socket, socket_inbox, socket_in_ping} from '../util/sockets.js';
+import {Grid, FlexCol} from 'pui-react-flex-grids';
+import {Input} from 'pui-react-inputs';
+import {Panel} from 'pui-react-panels';
+import {Divider} from 'pui-react-dividers';
+import {ExpanderContent} from 'pui-react-expander';
 
 function Item(props) {
-  return <li>{props.data.from} : <b>{props.data.title}</b> -> {props.data.msg}</li>;
+  return <li className="list_content"><p>{props.data.from} : <b>{props.data.title}</b> -> {props.data.msg}</p></li>;
 }
 
 function Chat_Messages(props) {
@@ -21,7 +27,8 @@ class Chat extends React.Component {
     this.state = {
       input: '',
       output: '',
-      messages: []
+      messages: [],
+        expanded: false
 
     }
 
@@ -49,7 +56,7 @@ class Chat extends React.Component {
   }
 
   _handleMessageEvent(){
-    socket.on('message', (inboundMessage) => {
+    this.props.socket.on('message', (inboundMessage) => {
       var allMessages = this.state.messages;
       allMessages.push(inboundMessage);
         this.setState({
@@ -67,8 +74,8 @@ class Chat extends React.Component {
     e.preventDefault();
     var form = e.target;
     var content = form.elements['content'].value;
-    socket.emit('message', {
-      'from': socket.id,
+    this.props.socket.emit('message', {
+      'from': this.props.socket.id,
       'title': '-Y> '+window.location.hostname,
       'msg': content
     });
@@ -77,22 +84,34 @@ class Chat extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleOnSubmit}>
-          <label htmlFor="fullName">Messages</label>
-          <input type="text"
-            name='content'
-            value={this.state.input}
-            onChange={this.handleOnChange}
-            />
-          <input type="submit" value="Submit"/>
-        </form>
-        <ul>
-          {this.state.messages.map(function(object, i) {
-            return <Item data={object} key={i}/>;
-          })}
-        </ul>
-        <p>{this.state.input}</p>
+      <div id="messenger">
+
+            <Panel className="header bg-neutral-11 box-shadow-1"
+            header="Messanger"
+            subtitle="Write with someone"
+            actions={<div><button className="btn btn-default mrl" onClick={() => this.setState({expanded: !this.state.expanded})}>Go</button></div>}>
+            Open Channel
+            </Panel>
+            <ExpanderContent expanded={this.state.expanded}
+                           onEntered={() => console.log('onEntered')}
+                           onExited={() => console.log('onExited')}>
+                        <Panel className="body bg-neutral-11">
+                          <form onSubmit={this.handleOnSubmit}>
+                            <Input search
+                              name='content'
+                              value={this.state.input}
+                              onChange={this.handleOnChange}
+                               label="Send a message"
+                               placeholder="Say something" />
+                            <input className="btn btn-default-alt" type="submit" value="Submit"/>
+                          </form>
+                          <ul className="stream">
+                            {this.state.messages.map(function(object, i) {
+                              return <Item data={object} key={i}/>;
+                            })}
+                          </ul>
+                        </Panel>
+            </ExpanderContent>
       </div>
     )
   }

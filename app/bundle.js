@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5e824f46d9034b48462c"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "8f7c19a43593cf3c0441"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -26207,6 +26207,8 @@
 
 	var _puiReactFlexGrids = __webpack_require__(232);
 
+	var _puiReactLabels = __webpack_require__(614);
+
 	var _Navigation = __webpack_require__(322);
 
 	var _Navigation2 = _interopRequireDefault(_Navigation);
@@ -26238,6 +26240,8 @@
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * The extra line between the end of the @file docblock
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                * and the file-closure is important.
 	                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+	//import '../../../node_modules/pui-css-all';
+	//import '../node_modules/pui-css-all';
 
 	/******** COMPONENTS
 	*
@@ -26246,6 +26250,7 @@
 	*************/
 
 	//import Search from './components/Search';
+
 
 	/********
 	* UTILITIES
@@ -26285,13 +26290,59 @@
 	          null,
 	          _Nav_Elements2.default
 	        ),
-	        _react2.default.createElement(_Messenger2.default, { socket: _sockets.socket }),
 	        _react2.default.createElement(
-	          _puiReactFlexGrids.Grid,
-	          { className: 'main_section' },
-	          this.props.children
+	          'div',
+	          { id: 'info_bar' },
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'data_wrap' },
+	            _react2.default.createElement(
+	              'h5',
+	              null,
+	              'Host: ',
+	              _react2.default.createElement(
+	                _puiReactLabels.Label,
+	                null,
+	                window.location.hostname
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'data_wrap' },
+	            _react2.default.createElement(
+	              'h5',
+	              null,
+	              'Ip: ',
+	              _react2.default.createElement(
+	                _puiReactLabels.Label,
+	                null,
+	                '192.168.178.0'
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'data_wrap' },
+	            _react2.default.createElement(
+	              'h5',
+	              null,
+	              'ID:  ',
+	              _react2.default.createElement(
+	                _puiReactLabels.Label,
+	                null,
+	                '#lbcYIA6Itiw_vEYlAABa'
+	              )
+	            )
+	          )
 	        ),
-	        window.location.hostname
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container', id: 'modules' },
+	          _react2.default.createElement(_Messenger2.default, { socket: _sockets.socket }),
+	          _react2.default.createElement(_Chat2.default, { socket: _sockets.socket })
+	        ),
+	        this.props.children
 	      );
 	    }
 	  }]);
@@ -26338,7 +26389,7 @@
 	exports.i(__webpack_require__(230), "");
 
 	// module
-	exports.push([module.id, "h1, h2, h3, h4, h5 {\n  font-family: helvetica;\n  text-transform: uppercase;\n  font-weight: 200; }\n\nhr {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  border: 0;\n  border-top: 1px solid #eee;\n  opacity: 0.1; }\n\np {\n  font-size: 13px; }\n\n.centerer {\n  width: 10px;\n  height: 10px;\n  margin: 0 auto;\n  position: relative; }\n\n.react-grid-layout {\n  width: 100%;\n  margin: 0 auto; }\n\n.react-grid-item {\n  border: 0px solid RGBA(142, 210, 234, 1);\n  background-color: RGBA(23, 136, 169, 0.5);\n  color: #fff;\n  text-transform: uppercase; }\n\n.grid .col {\n  min-width: 0;\n  box-sizing: border-box;\n  -ms-flex: 0 0 auto;\n  flex: 0 0 auto;\n  -ms-flex-positive: 1;\n  -webkit-box-flex: 1;\n  flex-grow: 1;\n  -ms-flex-preferred-size: 0;\n  flex-basis: 0;\n  max-width: 100%;\n  padding: 0 8px 0 8px; }\n\n.grid::before,\n.grid::after {\n  clear: both;\n  content: '';\n  display: block; }\n\n.grid__item {\n  box-sizing: border-box;\n  float: left;\n  height: 50vw;\n  padding: 2em;\n  width: 50vw; }\n\n.react-grid-item:nth-child(1),\n.grid__item:nth-child(1) {\n  background-color: #521714; }\n\n.react-grid-item:nth-child(2),\n.grid__item:nth-child(2) {\n  background-color: #521914; }\n\n.react-grid-item:nth-child(3),\n.grid__item:nth-child(3) {\n  background-color: #521c14; }\n\n.react-grid-item:nth-child(4),\n.grid__item:nth-child(4) {\n  background-color: #521e14; }\n\n.react-grid-item:nth-child(5),\n.grid__item:nth-child(5) {\n  background-color: #522014; }\n\n.react-grid-item:nth-child(6),\n.grid__item:nth-child(6) {\n  background-color: #522314; }\n\n.react-grid-item:nth-child(7),\n.grid__item:nth-child(7) {\n  background-color: #522514; }\n\n.react-grid-item:nth-child(8),\n.grid__item:nth-child(8) {\n  background-color: #522814; }\n\n#nav_bar_top {\n  background: RGBA(35, 240, 245, 0.6);\n  position: relative; }\n  #nav_bar_top .icon_btn {\n    right: 0; }\n  #nav_bar_top .collapse.in {\n    width: 100%;\n    left: 0;\n    width: 800px;\n    margin: 0 auto;\n    background: RGBA(248, 248, 247, 1); }\n    #nav_bar_top .collapse.in .collapse-shield {\n      margin-left: -20px;\n      margin-right: -20px; }\n    #nav_bar_top .collapse.in ul {\n      list-style: none;\n      padding: 0;\n      height: auto;\n      width: 100%;\n      display: inline-block;\n      position: relative;\n      margin: 10px auto; }\n      #nav_bar_top .collapse.in ul .w_50 {\n        height: 150px;\n        float: left;\n        width: 50%;\n        padding: 10px;\n        text-align: center; }\n      #nav_bar_top .collapse.in ul .w_50 a {\n        width: 100%;\n        height: 100%;\n        position: relative;\n        display: inline-block;\n        background: RGBA(35, 40, 45, 1);\n        color: white;\n        padding: 50px; }\n\nnav {\n  right: 0;\n  padding-top: 10px; }\n\nnav.sub_nav {\n  text-align: center;\n  padding: 0;\n  background: #23282d;\n  background: RGBA(35, 240, 245, 0.6);\n  width: 800px;\n  height: 60px;\n  margin: 0 auto;\n  /* display: inline-block; */ }\n  nav.sub_nav button.turk {\n    border: 0;\n    border-radius: 0;\n    color: rgba(120, 190, 200, 0.8);\n    padding: 20px 10px;\n    margin: 0;\n    background: none;\n    float: right;\n    font-size: 13px;\n    color: white; }\n  nav.sub_nav button.turk.active {\n    background: rgba(20, 160, 200, 0.8);\n    color: rgba(250, 250, 250, 0.8);\n    float: left;\n    font-size: 14px; }\n\nnav.sub_nav.default {\n  float: left;\n  position: relative;\n  width: 100%;\n  text-align: center;\n  padding: 10px 0;\n  background: none;\n  margin-top: -20px; }\n  nav.sub_nav.default button {\n    color: rgba(120, 190, 200, 0.8);\n    background: none;\n    border: 0;\n    border-radius: 0;\n    font-size: 13px;\n    padding: 20px;\n    margin: 0;\n    width: 100px; }\n  nav.sub_nav.default button.active {\n    /* background: rgba(20,160,200,.8); */\n    color: rgba(250, 250, 250, 0.8);\n    font-size: 16px;\n    color: #fff;\n    text-transform: uppercase;\n    letter-spacing: 6px;\n    margin-left: 20px;\n    opacity: 0.7; }\n\n#chapters {\n  max-width: 800px;\n  margin: 0 auto; }\n  #chapters .chapter {\n    padding: 5px 20px;\n    /* margin: 5px 0; */\n    background: RGBA(35, 40, 45, 1);\n    padding-left: 100px;\n    border-bottom: 1px solid; }\n    #chapters .chapter h4 {\n      padding: 0;\n      margin: 5px;\n      color: rgba(250, 250, 250, 0.6);\n      font-size: 13px;\n      letter-spacing: 2px; }\n  #chapters .chapter_content {\n    display: none; }\n\nbutton {\n  background: rgba(200, 200, 200, 0.1);\n  border: 1px solid rgba(200, 200, 200, 0.1); }\n\nbutton.btn {\n  background: none;\n  border: none; }\n\n.icon_btn {\n  font-size: 30px;\n  position: absolute;\n  padding: 0 20px;\n  height: 100%;\n  background: RGBA(35, 40, 45, 1);\n  border: 0; }\n  .icon_btn .icon-menu {\n    fill: #fff; }\n\nhtml {\n  overflow: scroll;\n  overflow-x: hidden; }\n\n::-webkit-scrollbar {\n  width: 0px;\n  /* remove scrollbar space */\n  background: transparent;\n  /* optional: just make scrollbar invisible */ }\n\n/* optional: show position indicator in red */\n::-webkit-scrollbar-thumb {\n  background: #FF0000; }\n\nbody {\n  background: #23282d;\n  font-family: helvetica;\n  font-weight: 200;\n  color: RGBA(241, 241, 241, 1);\n  background-image: linear-gradient(to top, #d5d4d0 0%, #d5d4d0 1%, #eeeeec 31%, #efeeec 75%, #e9e9e7 100%); }\n\n#content {\n  max-height: 100%;\n  background: rgba(250, 250, 250, 0.6);\n  overflow: hidden;\n  overflow-y: scroll;\n  padding: 0px;\n  width: 100%;\n  display: grid; }\n\n.head {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n  width: 800px;\n  margin: 0 auto; }\n\n.sub_head h4 {\n  margin: 0; }\n\nsection {\n  padding: 20px;\n  margin: 0  0 10px; }\n\n.main_section {\n  display: inline-block;\n  position: relative;\n  float: left;\n  height: 100%;\n  width: calc(100% + 200px);\n  padding: 0;\n  margin: 0;\n  border-top-right-radius: 1000px;\n  border-right: 200px solid rgba(0, 140, 140, 0.2);\n  background: none; }\n\n.low_pres {\n  background: rgba(250, 250, 250, 0.3);\n  color: RGBA(33, 37, 43, 1); }\n\n.high_pres {\n  color: rgba(250, 250, 250, 0.8);\n  background: RGBA(33, 37, 43, 1); }\n\n.title {\n  padding: 0 20px; }\n\n.snooz {\n  height: 0px;\n  padding: 0; }\n  .snooz h1 {\n    float: right;\n    margin-top: -40px;\n    color: white;\n    font-size: 13px;\n    padding: 0 30px;\n    opacity: 0.6; }\n  .snooz h3 {\n    display: none; }\n\n#stats {\n  width: 80px;\n  opacity: 0.9;\n  cursor: pointer;\n  position: absolute;\n  left: inherit !important;\n  top: inherit !important;\n  right: 10px !important;\n  bottom: 10px !important;\n  z-index: 100; }\n\n.inner_wrap {\n  padding: 0;\n  border-top-right-radius: 600px;\n  overflow: hidden;\n  width: 85%;\n  margin: 0 auto;\n  /* float: left; */\n  clear: both;\n  width: 100%;\n  padding: 0px 20px 20px;\n  padding-right: 20;\n  background: rgba(250, 250, 250, 0.2); }\n\n.test_area {\n  background: RGBA(35, 40, 45, 0.6);\n  min-height: 100px;\n  width: 100%;\n  float: left;\n  margin: 0 auto;\n  display: inline; }\n\n.media_screen {\n  max-width: 100%;\n  height: initial;\n  margin: 0 auto;\n  display: block; }\n", ""]);
+	exports.push([module.id, "h1, h2, h3, h4, h5 {\n  font-family: helvetica;\n  text-transform: uppercase;\n  font-weight: 200; }\n\nhr {\n  margin-top: 10px;\n  margin-bottom: 10px;\n  border: 0;\n  border-top: 1px solid #eee;\n  opacity: 0.1; }\n\np {\n  font-size: 13px; }\n\n.centerer {\n  width: 10px;\n  height: 10px;\n  margin: 0 auto;\n  position: relative; }\n\n.react-grid-layout {\n  width: 100%;\n  margin: 0 auto; }\n\n.react-grid-item {\n  border: 0px solid RGBA(142, 210, 234, 1);\n  background-color: RGBA(23, 136, 169, 0.5);\n  color: #fff;\n  text-transform: uppercase; }\n\n.grid .col {\n  min-width: 0;\n  box-sizing: border-box;\n  -ms-flex: 0 0 auto;\n  flex: 0 0 auto;\n  -ms-flex-positive: 1;\n  -webkit-box-flex: 1;\n  flex-grow: 1;\n  -ms-flex-preferred-size: 0;\n  flex-basis: 0;\n  max-width: 100%;\n  padding: 0 8px 0 8px; }\n\n.grid::before,\n.grid::after {\n  clear: both;\n  content: '';\n  display: block; }\n\n.grid__item {\n  box-sizing: border-box;\n  float: left;\n  height: 50vw;\n  padding: 2em;\n  width: 50vw; }\n\n.react-grid-item:nth-child(1),\n.grid__item:nth-child(1) {\n  background-color: #521714; }\n\n.react-grid-item:nth-child(2),\n.grid__item:nth-child(2) {\n  background-color: #521914; }\n\n.react-grid-item:nth-child(3),\n.grid__item:nth-child(3) {\n  background-color: #521c14; }\n\n.react-grid-item:nth-child(4),\n.grid__item:nth-child(4) {\n  background-color: #521e14; }\n\n.react-grid-item:nth-child(5),\n.grid__item:nth-child(5) {\n  background-color: #522014; }\n\n.react-grid-item:nth-child(6),\n.grid__item:nth-child(6) {\n  background-color: #522314; }\n\n.react-grid-item:nth-child(7),\n.grid__item:nth-child(7) {\n  background-color: #522514; }\n\n.react-grid-item:nth-child(8),\n.grid__item:nth-child(8) {\n  background-color: #522814; }\n\n#nav_bar_top {\n  position: relative;\n  width: 100%; }\n  #nav_bar_top .icon_btn {\n    right: 0;\n    float: right;\n    width: 50px;\n    margin: 0;\n    padding: 0; }\n  #nav_bar_top .collapse.in {\n    width: 100%;\n    left: 0;\n    margin: 0 auto;\n    padding: 0;\n    border-bottom: 1px solid;\n    background: RGBA(216, 216, 216, 0.4);\n    float: right; }\n    #nav_bar_top .collapse.in ul {\n      list-style: none;\n      padding: 0;\n      margin: 5px auto;\n      float: right; }\n      #nav_bar_top .collapse.in ul .w_50 {\n        height: 150px;\n        float: left;\n        width: 50%;\n        padding: 10px;\n        text-align: center; }\n      #nav_bar_top .collapse.in ul .w_50 a {\n        width: 100%;\n        height: 100%;\n        position: relative;\n        display: inline-block;\n        background: RGBA(35, 40, 45, 1);\n        color: white;\n        padding: 50px; }\n      #nav_bar_top .collapse.in ul .sub_menu_element {\n        float: right;\n        margin: 0 5px;\n        font-size: 13px; }\n        #nav_bar_top .collapse.in ul .sub_menu_element a {\n          width: 100%;\n          height: 100%;\n          position: relative;\n          display: inline-block;\n          background: rgba(20, 160, 200, 0.8);\n          color: white;\n          padding: 10px 50px; }\n\nnav {\n  right: 0;\n  padding-top: 10px; }\n\nnav.sub_nav {\n  text-align: center;\n  padding: 0;\n  background: #23282d;\n  height: 60px;\n  margin: 0 auto;\n  padding-right: 50px; }\n  nav.sub_nav button.turk {\n    border: 0;\n    border-radius: 0;\n    color: rgba(120, 190, 200, 0.8);\n    padding: 20px 10px;\n    margin: 0;\n    background: none;\n    float: right;\n    font-size: 13px;\n    color: white; }\n  nav.sub_nav button.turk.active {\n    background: rgba(20, 160, 200, 0.8);\n    color: rgba(250, 250, 250, 0.8);\n    float: left; }\n\nnav.sub_nav.default {\n  float: left;\n  position: relative;\n  width: 100%;\n  text-align: center;\n  padding: 10px 0;\n  background: none;\n  margin-top: -20px; }\n  nav.sub_nav.default button {\n    color: rgba(120, 190, 200, 0.8);\n    background: none;\n    border: 0;\n    border-radius: 0;\n    font-size: 13px;\n    padding: 20px;\n    margin: 0;\n    width: 100px; }\n  nav.sub_nav.default button.active {\n    /* background: rgba(20,160,200,.8); */\n    color: rgba(250, 250, 250, 0.8);\n    font-size: 16px;\n    color: #fff;\n    text-transform: uppercase;\n    letter-spacing: 6px;\n    margin-left: 20px;\n    opacity: 0.7; }\n\n#chapters {\n  max-width: 800px;\n  margin: 0 auto; }\n  #chapters .chapter {\n    padding: 5px 20px;\n    /* margin: 5px 0; */\n    background: RGBA(35, 40, 45, 1);\n    padding-left: 100px;\n    border-bottom: 1px solid; }\n    #chapters .chapter h4 {\n      padding: 0;\n      margin: 5px;\n      color: rgba(250, 250, 250, 0.6);\n      font-size: 13px;\n      letter-spacing: 2px; }\n  #chapters .chapter_content {\n    display: none; }\n\nbutton {\n  background: rgba(200, 200, 200, 0.1);\n  border: 1px solid rgba(200, 200, 200, 0.1); }\n\nbutton.btn {\n  background: none;\n  border: none; }\n\n.icon_btn {\n  font-size: 30px;\n  position: absolute;\n  padding: 0 20px;\n  height: 100%;\n  background: RGBA(35, 40, 45, 1);\n  border: 0; }\n  .icon_btn .icon-menu {\n    fill: #fff; }\n\nhtml {\n  overflow: scroll;\n  overflow-x: hidden; }\n\n::-webkit-scrollbar {\n  width: 0px;\n  /* remove scrollbar space */\n  background: transparent;\n  /* optional: just make scrollbar invisible */ }\n\n/* optional: show position indicator in red */\n::-webkit-scrollbar-thumb {\n  background: #FF0000; }\n\nbody {\n  background: #485563;\n  /* fallback for old browsers */\n  /* Chrome 10-25, Safari 5.1-6 */\n  background: -webkit-linear-gradient(left, #485563, #29323c);\n  background: -o-linear-gradient(left, #485563, #29323c);\n  background: linear-gradient(to right, #485563, #29323c);\n  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */\n  font-family: helvetica;\n  font-weight: 200;\n  color: RGBA(241, 241, 241, 1); }\n\n#content {\n  max-height: 100%;\n  overflow: hidden;\n  overflow-y: scroll;\n  padding: 0px;\n  width: 100%; }\n\n.head {\n  display: flex;\n  justify-content: flex-start;\n  align-items: center;\n  width: 800px;\n  margin: 0 auto;\n  color: silver; }\n\n.sub_head h4 {\n  margin: 0; }\n\nsection {\n  padding: 20px;\n  margin: 0  0 10px; }\n\n#info_bar {\n  width: 100%;\n  float: left;\n  background: rgba(20, 160, 200, 0.8); }\n  #info_bar .data_wrap {\n    color: white;\n    float: right;\n    margin: 5px;\n    padding: 0; }\n    #info_bar .data_wrap h5 {\n      font-size: 12px; }\n    #info_bar .data_wrap .label {\n      font-size: 13px;\n      background: none; }\n\n.main_section {\n  display: inline-block;\n  position: relative;\n  float: left;\n  height: 100%;\n  width: calc(100% + 200px);\n  padding: 0;\n  margin: 0;\n  border-top-right-radius: 1000px;\n  border-right: 200px solid rgba(0, 140, 140, 0.2);\n  background: none; }\n\n.low_pres {\n  background: rgba(250, 250, 250, 0.3);\n  color: RGBA(33, 37, 43, 1); }\n\n.high_pres {\n  color: rgba(250, 250, 250, 0.8);\n  background: RGBA(33, 37, 43, 1); }\n\n.title {\n  padding: 0 20px; }\n\n.snooz {\n  height: 0px;\n  padding: 0; }\n  .snooz h1 {\n    float: right;\n    margin-top: -40px;\n    color: white;\n    font-size: 13px;\n    padding: 0 30px;\n    opacity: 0.6; }\n  .snooz h3 {\n    display: none; }\n\n#stats {\n  width: 80px;\n  opacity: 0.9;\n  cursor: pointer;\n  position: absolute;\n  left: inherit !important;\n  top: inherit !important;\n  right: 10px !important;\n  bottom: 10px !important;\n  z-index: 100; }\n\n.inner_wrap {\n  padding: 0;\n  border-top-right-radius: 600px;\n  overflow: hidden;\n  width: 85%;\n  margin: 0 auto;\n  /* float: left; */\n  clear: both;\n  width: 100%;\n  padding: 0px 20px 20px;\n  padding-right: 20;\n  background: rgba(250, 250, 250, 0.2); }\n\n.test_area {\n  background: RGBA(35, 40, 45, 0.6);\n  min-height: 100px;\n  width: 100%;\n  float: left;\n  margin: 0 auto;\n  display: inline; }\n\n.media_screen {\n  max-width: 100%;\n  height: initial;\n  margin: 0 auto;\n  display: block; }\n", ""]);
 
 	// exports
 
@@ -28628,7 +28679,7 @@
 	            null,
 	            _react2.default.createElement(
 	              'li',
-	              { className: 'w_50' },
+	              { className: 'sub_menu_element' },
 	              _react2.default.createElement(
 	                _reactRouterDom.Link,
 	                { to: '/' },
@@ -28637,7 +28688,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'li',
-	              { className: 'w_50' },
+	              { className: 'sub_menu_element' },
 	              _react2.default.createElement(
 	                _reactRouterDom.Link,
 	                { to: '/dashboard' },
@@ -28646,7 +28697,7 @@
 	            ),
 	            _react2.default.createElement(
 	              'li',
-	              { className: 'w_50' },
+	              { className: 'sub_menu_element' },
 	              _react2.default.createElement(
 	                _reactRouterDom.Link,
 	                { to: '/modules' },
@@ -37157,11 +37208,21 @@
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+	__webpack_require__(602);
+
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _sockets = __webpack_require__(501);
+	var _puiReactFlexGrids = __webpack_require__(232);
+
+	var _puiReactInputs = __webpack_require__(605);
+
+	var _puiReactPanels = __webpack_require__(609);
+
+	var _puiReactDividers = __webpack_require__(558);
+
+	var _puiReactExpander = __webpack_require__(497);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37174,16 +37235,20 @@
 	function Item(props) {
 	  return _react2.default.createElement(
 	    'li',
-	    null,
-	    props.data.from,
-	    ' : ',
+	    { className: 'list_content' },
 	    _react2.default.createElement(
-	      'b',
+	      'p',
 	      null,
-	      props.data.title
-	    ),
-	    ' -> ',
-	    props.data.msg
+	      props.data.from,
+	      ' : ',
+	      _react2.default.createElement(
+	        'b',
+	        null,
+	        props.data.title
+	      ),
+	      ' -> ',
+	      props.data.msg
+	    )
 	  );
 	}
 
@@ -37214,8 +37279,8 @@
 	      e.preventDefault();
 	      var form = e.target;
 	      var content = form.elements['content'].value;
-	      _sockets.socket.emit('message', {
-	        'from': _sockets.socket.id,
+	      _this.props.socket.emit('message', {
+	        'from': _this.props.socket.id,
 	        'title': '-Y> ' + window.location.hostname,
 	        'msg': content
 	      });
@@ -37225,7 +37290,8 @@
 	    _this.state = {
 	      input: '',
 	      output: '',
-	      messages: []
+	      messages: [],
+	      expanded: false
 
 	    };
 
@@ -37259,7 +37325,7 @@
 	    value: function _handleMessageEvent() {
 	      var _this2 = this;
 
-	      _sockets.socket.on('message', function (inboundMessage) {
+	      this.props.socket.on('message', function (inboundMessage) {
 	        var allMessages = _this2.state.messages;
 	        allMessages.push(inboundMessage);
 	        _this2.setState({
@@ -37270,35 +37336,60 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this3 = this;
+
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { id: 'messenger' },
 	        _react2.default.createElement(
-	          'form',
-	          { onSubmit: this.handleOnSubmit },
+	          _puiReactPanels.Panel,
+	          { className: 'header bg-neutral-11 box-shadow-1',
+	            header: 'Messanger',
+	            subtitle: 'Write with someone',
+	            actions: _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement(
+	                'button',
+	                { className: 'btn btn-default mrl', onClick: function onClick() {
+	                    return _this3.setState({ expanded: !_this3.state.expanded });
+	                  } },
+	                'Go'
+	              )
+	            ) },
+	          'Open Channel'
+	        ),
+	        _react2.default.createElement(
+	          _puiReactExpander.ExpanderContent,
+	          { expanded: this.state.expanded,
+	            onEntered: function onEntered() {
+	              return console.log('onEntered');
+	            },
+	            onExited: function onExited() {
+	              return console.log('onExited');
+	            } },
 	          _react2.default.createElement(
-	            'label',
-	            { htmlFor: 'fullName' },
-	            'Messages'
-	          ),
-	          _react2.default.createElement('input', { type: 'text',
-	            name: 'content',
-	            value: this.state.input,
-	            onChange: this.handleOnChange
-	          }),
-	          _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
-	        ),
-	        _react2.default.createElement(
-	          'ul',
-	          null,
-	          this.state.messages.map(function (object, i) {
-	            return _react2.default.createElement(Item, { data: object, key: i });
-	          })
-	        ),
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          this.state.input
+	            _puiReactPanels.Panel,
+	            { className: 'body bg-neutral-11' },
+	            _react2.default.createElement(
+	              'form',
+	              { onSubmit: this.handleOnSubmit },
+	              _react2.default.createElement(_puiReactInputs.Input, { search: true,
+	                name: 'content',
+	                value: this.state.input,
+	                onChange: this.handleOnChange,
+	                label: 'Send a message',
+	                placeholder: 'Say something' }),
+	              _react2.default.createElement('input', { className: 'btn btn-default-alt', type: 'submit', value: 'Submit' })
+	            ),
+	            _react2.default.createElement(
+	              'ul',
+	              { className: 'stream' },
+	              this.state.messages.map(function (object, i) {
+	                return _react2.default.createElement(Item, { data: object, key: i });
+	              })
+	            )
+	          )
 	        )
 	      );
 	    }
@@ -54287,7 +54378,7 @@
 /* 548 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -54298,6 +54389,8 @@
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _puiReactPanes = __webpack_require__(610);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54317,15 +54410,20 @@
 	  }
 
 	  _createClass(Home, [{
-	    key: "render",
+	    key: 'render',
 	    value: function render() {
+	      console.log('home', this.props);
 	      return _react2.default.createElement(
-	        "div",
-	        { id: "Home" },
+	        'div',
+	        { id: 'Home' },
 	        _react2.default.createElement(
-	          "h1",
-	          null,
-	          "Welcome"
+	          'div',
+	          { className: 'head container' },
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            'Welcome'
+	          )
 	        )
 	      );
 	    }
@@ -91439,7 +91537,7 @@
 
 
 	// module
-	exports.push([module.id, "#messenger {\n  width: 300PX; }\n  #messenger form input {\n    width: 100%; }\n  #messenger .stream {\n    height: 500px;\n    overflow-x: scroll;\n    padding: 0; }\n    #messenger .stream .list_content {\n      background: rgba(250, 250, 250, 0.8);\n      padding: 20px;\n      margin: 10px 0;\n      list-style: none; }\n      #messenger .stream .list_content p {\n        padding: 0;\n        margin: 0; }\n", ""]);
+	exports.push([module.id, "#commander,\n#messenger {\n  width: 300PX;\n  padding: 10px;\n  background: RGBA(235, 240, 245, 0.8);\n  color: #23282D;\n  margin: 10px;\n  float: left; }\n  #commander .header,\n  #messenger .header {\n    height: 110px; }\n  #commander form input,\n  #messenger form input {\n    width: 100%; }\n  #commander .stream,\n  #messenger .stream {\n    height: 500px;\n    overflow-x: scroll;\n    padding: 0; }\n    #commander .stream .list_content,\n    #messenger .stream .list_content {\n      background: rgba(250, 250, 250, 0.8);\n      padding: 20px;\n      margin: 10px 0;\n      list-style: none; }\n      #commander .stream .list_content p,\n      #messenger .stream .list_content p {\n        padding: 0;\n        margin: 0; }\n", ""]);
 
 	// exports
 
@@ -91463,6 +91561,14 @@
 	var _react2 = _interopRequireDefault(_react);
 
 	var _puiReactFlexGrids = __webpack_require__(232);
+
+	var _puiReactInputs = __webpack_require__(605);
+
+	var _puiReactPanels = __webpack_require__(609);
+
+	var _puiReactDividers = __webpack_require__(558);
+
+	var _puiReactExpander = __webpack_require__(497);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -91600,7 +91706,8 @@
 	      input: '',
 	      connection: false,
 	      output: '',
-	      messages: []
+	      messages: [],
+	      expanded: false
 
 	    };
 	    _this2.getClientHeader = _this2.getClientHeader.bind(_this2);
@@ -91644,60 +91751,82 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var _this5 = this;
+
 	      console.log(this.state.messages);
 	      return _react2.default.createElement(
 	        'div',
-	        { id: 'messenger' },
+	        { id: 'commander' },
 	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          'Messenger'
+	          _puiReactPanels.Panel,
+	          { className: 'header bg-neutral-11 box-shadow-1',
+	            header: 'Commander',
+	            subtitle: 'Execute Shell Commands',
+	            actions: _react2.default.createElement(
+	              'div',
+	              null,
+	              _react2.default.createElement(
+	                'button',
+	                { className: 'btn btn-default mrl', onClick: function onClick() {
+	                    return _this5.setState({ expanded: !_this5.state.expanded });
+	                  } },
+	                'Go'
+	              )
+	            ) },
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: this.getClientHeader, className: 'btn btn-sm btn-default', type: 'button', 'aria-label': 'button' },
+	            ' Client Header'
+	          )
 	        ),
 	        _react2.default.createElement(
-	          'button',
-	          { onClick: this.getClientHeader },
-	          'get Client Header'
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: this.getFolder },
-	          'get Client Header'
-	        ),
-	        _react2.default.createElement(Form, null),
-	        _react2.default.createElement(
-	          'form',
-	          { onSubmit: this.handleOnSubmit },
-	          _react2.default.createElement('input', {
-	            type: 'text',
-	            name: 'content',
-	            value: this.state.input,
-	            onChange: this.handleOnChange
-	          }),
-	          _react2.default.createElement('input', { type: 'submit', value: 'Submit' })
-	        ),
-	        _react2.default.createElement(
-	          'ul',
-	          { className: 'stream' },
-	          this.state.messages.reverse().map(function (object, i) {
-	            console.log(object.name, object);
-	            switch (object.name) {
-	              case 'client_header':
-	                return _react2.default.createElement(Item_Collection, { data: object.data, key: i });
-	                break;
-	              case 'error':
-	                return _react2.default.createElement(Item_Error, { data: object.data, key: i });
-	                break;
-	              case 'message':
-	                return _react2.default.createElement(Item_Message, { data: object.data, key: i });
-	                break;
-	              case 'self':
-	                return _react2.default.createElement(Item_Message, { data: object.data, key: i });
-	                break;
-	              default:
-	                return _react2.default.createElement(Item_List, { data: object.data, key: i });
-	                break;
-	            }
-	          })
+	          _puiReactExpander.ExpanderContent,
+	          { expanded: this.state.expanded,
+	            onEntered: function onEntered() {
+	              return console.log('onEntered');
+	            },
+	            onExited: function onExited() {
+	              return console.log('onExited');
+	            } },
+	          _react2.default.createElement(
+	            _puiReactPanels.Panel,
+	            { className: 'body bg-neutral-11' },
+	            _react2.default.createElement(
+	              'form',
+	              { onSubmit: this.handleOnSubmit },
+	              _react2.default.createElement(_puiReactInputs.Input, { search: true,
+	                name: 'content',
+	                value: this.state.input,
+	                onChange: this.handleOnChange,
+	                label: 'Run CMD',
+	                placeholder: 'GET SERVERINFOS' }),
+	              _react2.default.createElement('input', { className: 'btn btn-default-alt', type: 'submit', value: 'Submit' })
+	            ),
+	            _react2.default.createElement(
+	              'ul',
+	              { className: 'stream' },
+	              this.state.messages.reverse().map(function (object, i) {
+	                console.log(object.name, object);
+	                switch (object.name) {
+	                  case 'client_header':
+	                    return _react2.default.createElement(Item_Collection, { data: object.data, key: i });
+	                    break;
+	                  case 'error':
+	                    return _react2.default.createElement(Item_Error, { data: object.data, key: i });
+	                    break;
+	                  case 'message':
+	                    return _react2.default.createElement(Item_Message, { data: object.data, key: i });
+	                    break;
+	                  case 'self':
+	                    return _react2.default.createElement(Item_Message, { data: object.data, key: i });
+	                    break;
+	                  default:
+	                    return _react2.default.createElement(Item_List, { data: object.data, key: i });
+	                    break;
+	                }
+	              })
+	            )
+	          )
 	        )
 	      );
 	    }
@@ -91709,6 +91838,827 @@
 	;
 
 	exports.default = Control_Board;
+
+/***/ }),
+/* 605 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/*(c) Copyright 2015 Pivotal Software, Inc. All Rights Reserved.*/
+	'use strict';
+
+	exports.__esModule = true;
+	exports.Input = undefined;
+
+	var _extends2 = __webpack_require__(313);
+
+	var _extends3 = _interopRequireDefault(_extends2);
+
+	var _objectWithoutProperties2 = __webpack_require__(233);
+
+	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+	var _classCallCheck2 = __webpack_require__(234);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(235);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(304);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _classnames = __webpack_require__(318);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _puiReactIconography = __webpack_require__(392);
+
+	var _puiReactHelpers = __webpack_require__(312);
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(188);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	__webpack_require__(606);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Input = exports.Input = function (_React$Component) {
+	  (0, _inherits3.default)(Input, _React$Component);
+
+	  function Input() {
+	    (0, _classCallCheck3.default)(this, Input);
+	    return (0, _possibleConstructorReturn3.default)(this, _React$Component.apply(this, arguments));
+	  }
+
+	  Input.prototype.componentDidMount = function componentDidMount() {
+	    if (this.props.autoFocus) this.input.focus();
+	  };
+
+	  Input.prototype.render = function render() {
+	    var _this2 = this;
+
+	    var _props = this.props,
+	        className = _props.className,
+	        autoFocus = _props.autoFocus,
+	        displayError = _props.displayError,
+	        errorMessage = _props.errorMessage,
+	        inputClassName = _props.inputClassName,
+	        label = _props.label,
+	        labelClassName = _props.labelClassName,
+	        search = _props.search,
+	        size = _props.size,
+	        success = _props.success,
+	        leftIcon = _props.leftIcon,
+	        props = (0, _objectWithoutProperties3.default)(_props, ['className', 'autoFocus', 'displayError', 'errorMessage', 'inputClassName', 'label', 'labelClassName', 'search', 'size', 'success', 'leftIcon']);
+	    var id = props.id,
+	        placeholder = props.placeholder;
+
+	    var successClassName = success ? 'form-group-right-icon' : '';
+	    var formClasses = (0, _classnames2.default)('form-group', { 'form-group-left-icon': search || leftIcon }, className, successClassName, { 'has-error': displayError });
+	    var labelClasses = (0, _classnames2.default)('control-label', labelClassName, {
+	      'label-lg': size === 'large',
+	      'label-sm': size === 'small'
+	    });
+	    var inputClassNames = (0, _classnames2.default)(inputClassName, {
+	      'input-lg': size === 'large',
+	      'input-sm': size === 'small'
+	    });
+	    var inputProps = (0, _puiReactHelpers.mergeProps)(props, { className: inputClassNames, 'aria-label': placeholder });
+	    var leftIconSrc = leftIcon || search && 'search';
+	    var customLeftIcon = typeof leftIconSrc === 'string' ? _react2.default.createElement(_puiReactIconography.Icon, { className: 'input-icon', src: leftIconSrc }) : _react2.default.createElement(
+	      'span',
+	      { className: 'input-icon' },
+	      leftIconSrc
+	    );
+
+	    return _react2.default.createElement(
+	      'div',
+	      { className: formClasses },
+	      label && _react2.default.createElement(
+	        'label',
+	        { htmlFor: id, className: labelClasses },
+	        label
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'input-wrapper' },
+	        _react2.default.createElement('input', (0, _extends3.default)({}, inputProps, { ref: function ref(_ref) {
+	            return _this2.input = _ref;
+	          } })),
+	        leftIconSrc && customLeftIcon,
+	        success && _react2.default.createElement(_puiReactIconography.Icon, { className: 'success', src: 'check' })
+	      ),
+	      displayError && _react2.default.createElement(
+	        'div',
+	        { className: 'help-block' },
+	        errorMessage ? errorMessage : 'Please enter your ' + label.toLowerCase() + '.'
+	      )
+	    );
+	  };
+
+	  return Input;
+	}(_react2.default.Component);
+
+	Input.propTypes = {
+	  autoFocus: _propTypes2.default.bool,
+	  displayError: _propTypes2.default.bool,
+	  errorMessage: _propTypes2.default.node,
+	  id: _propTypes2.default.string,
+	  inputClassName: _propTypes2.default.string,
+	  label: _propTypes2.default.node,
+	  labelClassName: _propTypes2.default.string,
+	  placeholder: _propTypes2.default.string,
+	  search: _propTypes2.default.bool,
+	  size: _propTypes2.default.oneOf(['small', 'medium', 'large']),
+	  success: _propTypes2.default.bool,
+	  leftIcon: _propTypes2.default.oneOfType([_propTypes2.default.node, _propTypes2.default.object])
+	};
+
+/***/ }),
+/* 606 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	try {
+	  __webpack_require__(378);
+	  __webpack_require__(607);
+	} catch(e) {
+	}
+
+
+/***/ }),
+/* 607 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(608);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(231)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(608, function() {
+				var newContent = __webpack_require__(608);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 608 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(228)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "input[type=\"email\"], input[type=\"number\"], input[type=\"search\"], input[type=\"text\"], input[type=\"tel\"], input[type=\"url\"], input[type=\"password\"], input[type=\"date\"], input:not([type]), textarea, select {\n  display: block;\n  width: 100%;\n  height: 32px;\n  padding: 4px 8px;\n  font-size: 14px;\n  background-color: #fff;\n  border: 1px solid #DFE5E8;\n  border-radius: 2px;\n  -webkit-appearance: none;\n  box-shadow: none;\n  box-sizing: border-box;\n  color: #243641; }\n\nselect {\n  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9IiM2MDc1ODAiIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4Ij48cGF0aCBkPSJNMjQsNSwxMiwxN2wyLjgzLDIuODNMMjQsMTAuNjZsOS4xNyw5LjE3TDM2LDE3WiIvPjxwYXRoIGQ9Ik0zMy4xNywyOC4xNywyNCwzNy4zNGwtOS4xNy05LjE3TDEyLDMxLDI0LDQzLDM2LDMxWiIvPjwvc3ZnPgo=);\n  background-size: 18px 18px;\n  background-position: right 6px bottom 6px;\n  background-repeat: no-repeat;\n  padding-right: 32px; }\n\ninput[type=\"email\"], input[type=\"number\"], input[type=\"search\"], input[type=\"text\"], input[type=\"tel\"], input[type=\"url\"], input[type=\"password\"], input[type=\"date\"], input:not([type]), textarea {\n  -webkit-appearance: none;\n  -moz-appearance: none;\n  appearance: none; }\n\ntextarea {\n  min-height: 65px;\n  padding-top: 6px;\n  padding-bottom: 6px; }\n\ninput[type=\"email\"]:focus, input[type=\"number\"]:focus, input[type=\"search\"]:focus, input[type=\"text\"]:focus, input[type=\"tel\"]:focus, input[type=\"url\"]:focus, input[type=\"password\"]:focus, input[type=\"date\"]:focus, input:not([type]):focus, textarea:focus, select:focus {\n  border: 1px solid #607580;\n  outline: 0; }\n\nfieldset {\n  padding: 0;\n  border-width: 0; }\n\ninput[type=\"checkbox\"], input[type=\"radio\"] {\n  display: inline;\n  margin-right: 2px; }\n\n.form-group-checkbox label {\n  display: inline-block;\n  font-weight: 400; }\n\nlabel, legend {\n  color: #243641; }\n\nhtml body input.disabled, html body input:disabled, html body textarea.disabled, html body textarea:disabled, html body select.disabled, html body select:disabled {\n  background-color: #ecefef;\n  cursor: not-allowed;\n  color: #607580;\n  border-color: #DFE5E8; }\n\nselect :not(input[type=\"radio\"]):not(input[type=\"checkbox\"]), input :not(input[type=\"radio\"]):not(input[type=\"checkbox\"]) {\n  height: 32px; }\n\nselect.input-lg, input.input-lg {\n  height: 40px;\n  font-size: 18px; }\n\nselect.input-lg ~ .icon, input.input-lg ~ .icon {\n  font-size: 20px;\n  right: 10px;\n  bottom: 10px; }\n\nselect.input-sm, input.input-sm {\n  padding-top: 0;\n  padding-bottom: 0;\n  height: 24px;\n  font-size: 14px; }\n\nselect.input-sm ~ .icon, input.input-sm ~ .icon {\n  font-size: 12px;\n  right: 6px;\n  bottom: 6px; }\n\nselect.input-lg {\n  background-size: 20px 20px;\n  background-position: right 9px bottom 9px; }\n\nselect.input-sm {\n  background-size: 14px 14px;\n  background-position: right 4px bottom 4px; }\n\n.form-control-static {\n  line-height: 32px;\n  margin: 0; }\n\n.form-group {\n  margin-bottom: 16px;\n  position: relative; }\n\n.form-group label {\n  position: relative;\n  display: block;\n  font-size: 14px;\n  font-weight: 600;\n  line-height: 32px;\n  margin-bottom: 0;\n  margin-right: 8px; }\n\n.form-group label .icon {\n  pointer-events: initial;\n  position: relative;\n  font-size: 16px;\n  bottom: 0;\n  right: 0; }\n\n.form-group label.label-sm {\n  font-size: 12px;\n  line-height: 24px; }\n\n.form-group label.label-lg {\n  font-size: 16px;\n  line-height: 40px; }\n\n.form-group .dropdown .icon:not(.icon-toggle) {\n  pointer-events: initial;\n  position: relative;\n  font-size: 16px;\n  bottom: 0;\n  right: 0; }\n\n.form-group .icon {\n  pointer-events: none;\n  position: absolute;\n  right: 7px;\n  bottom: 7px;\n  font-size: 18px; }\n\n.form-group .icon svg {\n  fill: #607580; }\n\n.form-group .icon.valid, .form-group .icon.invalid {\n  position: absolute;\n  right: 8px;\n  top: 8px;\n  font-size: 16px; }\n\n.form-group .icon.valid svg {\n  fill: #5C9917; }\n\n.form-group .icon.invalid svg {\n  fill: #B31B22; }\n\n.form-group .btn-icon .icon {\n  pointer-events: initial;\n  position: relative;\n  right: inherit;\n  bottom: inherit; }\n\n.form-group .btn-icon .icon svg {\n  fill: inherit; }\n\n.form-group .btn-icon .icon.valid, .form-group .btn-icon .icon.invalid {\n  position: relative;\n  right: inherit;\n  top: inherit;\n  font-size: 18px; }\n\n.form-group .btn-icon .icon.valid svg {\n  fill: inherit; }\n\n.form-group .btn-icon .icon.invalid svg {\n  fill: inherit; }\n\n.form-group-search {\n  position: relative; }\n\n.form-group-search .icon {\n  position: absolute;\n  top: 50%;\n  left: 7px;\n  -webkit-transform: translateY(-50%);\n  transform: translateY(-50%);\n  font-size: 18px; }\n\n.form-group-search input {\n  padding-left: 32px; }\n\n.form-lg label {\n  font-size: 16px;\n  line-height: 40; }\n\n.form-lg input {\n  height: 40px;\n  font-size: 16px; }\n\n.form-lg .icon {\n  font-size: 20px;\n  right: 10px;\n  bottom: 10px; }\n\n.radio input[type=\"radio\"], .radio-inline input[type=\"radio\"], .checkbox input[type=\"checkbox\"], .checkbox-inline input[type=\"checkbox\"] {\n  position: relative;\n  margin-left: 0;\n  margin-top: 0;\n  display: inline-block;\n  height: 14px;\n  width: 14px;\n  margin-right: 4px; }\n\n.radio-inline, .checkbox-inline {\n  padding-left: 0; }\n\n.radio-inline + .radio-inline, .checkbox-inline + .checkbox-inline {\n  margin-left: 8px; }\n\n.form-inline.form-lg label {\n  line-height: 40px; }\n\n.form-inline {\n  display: -webkit-inline-box;\n  display: -ms-inline-flexbox;\n  display: inline-flex;\n  vertical-align: top; }\n\n.form-inline:not(.col) + .form-inline {\n  margin-left: 16px; }\n\n.form-inline:not(.col) + .btn {\n  margin-left: 16px; }\n\n.form-inline label {\n  margin-right: 8px;\n  line-height: 32px; }\n\n.form-inline .help-block {\n  right: 0; }\n\ninput[type=\"email\"].invalid, input[type=\"number\"].invalid, input[type=\"search\"].invalid, input[type=\"text\"].invalid, input[type=\"tel\"].invalid, input[type=\"url\"].invalid, input[type=\"password\"].invalid, input[type=\"date\"].invalid, input:not([type]).invalid, textarea.invalid {\n  border: 1px solid #B31B22; }\n\ninput[type=\"email\"].valid, input[type=\"number\"].valid, input[type=\"search\"].valid, input[type=\"text\"].valid, input[type=\"tel\"].valid, input[type=\"url\"].valid, input[type=\"password\"].valid, input[type=\"date\"].valid, input:not([type]).valid, textarea.valid {\n  border: 1px solid #5C9917; }\n\n.help-block {\n  position: absolute;\n  bottom: -16px;\n  font-size: 12px;\n  line-height: 16px; }\n\n.has-error .help-block {\n  color: #B31B22; }\n\n.has-error input, .has-error textarea, .has-error select {\n  border-color: #B31B22; }\n\n.toggle-switch {\n  position: absolute;\n  visibility: hidden; }\n\n.toggle-switch + label {\n  position: relative;\n  display: block;\n  background-color: #d4d9d9;\n  color: #282828;\n  -webkit-transition: background 0.4s;\n  transition: background 0.4s;\n  cursor: pointer;\n  outline: none;\n  text-indent: -99999px; }\n\n.toggle-switch + label.small {\n  height: 14px;\n  width: 26px;\n  border-radius: 14px; }\n\n.toggle-switch + label.small:after {\n  height: 12px;\n  width: 12px;\n  top: 1px;\n  left: 1px;\n  bottom: 1px; }\n\n.toggle-switch + label.medium {\n  height: 18px;\n  width: 33px;\n  border-radius: 18px; }\n\n.toggle-switch + label.medium:after {\n  height: 14px;\n  width: 14px;\n  top: 2px;\n  left: 2px;\n  bottom: 2px; }\n\n.toggle-switch + label.large {\n  height: 24px;\n  width: 43px;\n  border-radius: 24px; }\n\n.toggle-switch + label.large:after {\n  height: 19px;\n  width: 19px;\n  top: 3px;\n  left: 3px;\n  bottom: 3px; }\n\n.toggle-switch + label:after {\n  position: absolute;\n  display: block;\n  background-color: #fff;\n  -webkit-transition: margin 0.4s, background 0.4s;\n  transition: margin 0.4s, background 0.4s;\n  content: \"\";\n  border-radius: 50%; }\n\n.toggle-switch:checked + label {\n  background-color: #176799; }\n\n.toggle-switch:checked + label.small:after {\n  margin-left: 12px; }\n\n.toggle-switch:checked + label.medium:after {\n  margin-left: 14px; }\n\n.toggle-switch:checked + label.large:after {\n  margin-left: 19px; }\n\n.toggle-switch[disabled] + label {\n  opacity: .5;\n  filter: alpha(opacity=50); }\n\n.form-group-left-icon input {\n  padding-left: 32px; }\n\n.form-group-left-icon .input-icon {\n  position: absolute;\n  left: 7px;\n  top: 50%;\n  -webkit-transform: translate(0, -50%);\n  transform: translate(0, -50%); }\n\n.form-group-right-icon input {\n  padding-right: 32px; }\n\n.input-wrapper {\n  position: relative; }\n", ""]);
+
+	// exports
+
+
+/***/ }),
+/* 609 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/*(c) Copyright 2015 Pivotal Software, Inc. All Rights Reserved.*/
+	'use strict';
+
+	exports.__esModule = true;
+	exports.HighlightPanel = exports.ClickableAltPanel = exports.ClickablePanel = exports.BasicPanelAlt = exports.BasicPanel = exports.SimplePanel = exports.ShadowPanel = exports.Panel = exports.PanelTitle = undefined;
+
+	var _extends2 = __webpack_require__(313);
+
+	var _extends3 = _interopRequireDefault(_extends2);
+
+	var _objectWithoutProperties2 = __webpack_require__(233);
+
+	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+	var _classCallCheck2 = __webpack_require__(234);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(235);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(304);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(188);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _classnames = __webpack_require__(318);
+
+	var _classnames2 = _interopRequireDefault(_classnames);
+
+	var _puiReactHelpers = __webpack_require__(312);
+
+	__webpack_require__(387);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var paddingTypes = [];
+	['p', 'm'].forEach(function (type) {
+	  ['l', 'r', 't', 'b', 'h', 'v', 'a'].forEach(function (location) {
+	    ['n', 's', 'm', 'l', 'xl', 'xxl', 'xxxl', 'xxxxl'].forEach(function (size) {
+	      paddingTypes.push('' + type + location + size);
+	    });
+	  });
+	});
+
+	var PanelTitle = exports.PanelTitle = function (_React$PureComponent) {
+	  (0, _inherits3.default)(PanelTitle, _React$PureComponent);
+
+	  function PanelTitle() {
+	    (0, _classCallCheck3.default)(this, PanelTitle);
+	    return (0, _possibleConstructorReturn3.default)(this, _React$PureComponent.apply(this, arguments));
+	  }
+
+	  PanelTitle.prototype.render = function render() {
+	    var _props = this.props,
+	        className = _props.className,
+	        other = (0, _objectWithoutProperties3.default)(_props, ['className']);
+
+	    className = (0, _classnames2.default)('panel-title-alt', className);
+	    return _react2.default.createElement('div', (0, _extends3.default)({ className: className }, other));
+	  };
+
+	  return PanelTitle;
+	}(_react2.default.PureComponent);
+
+	PanelTitle.propTypes = {
+	  className: _propTypes2.default.string
+	};
+
+	var PanelHeader = function (_React$Component) {
+	  (0, _inherits3.default)(PanelHeader, _React$Component);
+
+	  function PanelHeader() {
+	    (0, _classCallCheck3.default)(this, PanelHeader);
+	    return (0, _possibleConstructorReturn3.default)(this, _React$Component.apply(this, arguments));
+	  }
+
+	  PanelHeader.prototype.render = function render() {
+	    var _props2 = this.props,
+	        actions = _props2.actions,
+	        header = _props2.header,
+	        subtitle = _props2.subtitle;
+
+	    if (header) {
+	      var titleNode = header.constructor === String ? _react2.default.createElement(
+	        PanelTitle,
+	        null,
+	        header
+	      ) : header;
+
+	      var headerNode = subtitle ? _react2.default.createElement(
+	        'div',
+	        null,
+	        titleNode,
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'panel-subtitle' },
+	          subtitle
+	        )
+	      ) : titleNode;
+
+	      var actionsNode = actions ? _react2.default.createElement(
+	        'div',
+	        { className: 'panel-actions' },
+	        actions
+	      ) : null;
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'panel-header' },
+	        headerNode,
+	        actionsNode
+	      );
+	    } else {
+	      return null;
+	    }
+	  };
+
+	  return PanelHeader;
+	}(_react2.default.Component);
+
+	PanelHeader.propTypes = {
+	  actions: _propTypes2.default.oneOfType([_propTypes2.default.node, _propTypes2.default.object]),
+	  header: _propTypes2.default.oneOfType([_propTypes2.default.node, _propTypes2.default.object]),
+	  subtitle: _propTypes2.default.node
+	};
+
+	var PanelFooter = function (_React$PureComponent2) {
+	  (0, _inherits3.default)(PanelFooter, _React$PureComponent2);
+
+	  function PanelFooter() {
+	    (0, _classCallCheck3.default)(this, PanelFooter);
+	    return (0, _possibleConstructorReturn3.default)(this, _React$PureComponent2.apply(this, arguments));
+	  }
+
+	  PanelFooter.prototype.render = function render() {
+	    var footer = this.props.footer;
+
+
+	    if (footer) {
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'panel-footer' },
+	        footer
+	      );
+	    } else {
+	      return null;
+	    }
+	  };
+
+	  return PanelFooter;
+	}(_react2.default.PureComponent);
+
+	PanelFooter.propTypes = {
+	  footer: _propTypes2.default.node
+	};
+
+	var Panel = exports.Panel = function (_React$Component2) {
+	  (0, _inherits3.default)(Panel, _React$Component2);
+
+	  function Panel() {
+	    (0, _classCallCheck3.default)(this, Panel);
+	    return (0, _possibleConstructorReturn3.default)(this, _React$Component2.apply(this, arguments));
+	  }
+
+	  Panel.prototype.render = function render() {
+	    var _props3 = this.props,
+	        actions = _props3.actions,
+	        children = _props3.children,
+	        footer = _props3.footer,
+	        header = _props3.header,
+	        innerClassName = _props3.innerClassName,
+	        padding = _props3.padding,
+	        scrollable = _props3.scrollable,
+	        shadowLevel = _props3.shadowLevel,
+	        subtitle = _props3.subtitle,
+	        other = (0, _objectWithoutProperties3.default)(_props3, ['actions', 'children', 'footer', 'header', 'innerClassName', 'padding', 'scrollable', 'shadowLevel', 'subtitle']);
+
+	    var scrollableStyle = typeof scrollable === 'number' ? { maxHeight: scrollable + 'px' } : null;
+	    var props = (0, _puiReactHelpers.mergeProps)(other, {
+	      className: ['panel', this.kind]
+	    });
+
+	    var bodyProps = {
+	      className: (0, _classnames2.default)('panel-body', padding, innerClassName, { 'panel-scrollable': scrollable }),
+	      style: scrollableStyle
+	    };
+
+	    return _react2.default.createElement(
+	      'div',
+	      props,
+	      _react2.default.createElement(PanelHeader, { actions: actions, header: header, subtitle: subtitle }),
+	      _react2.default.createElement(
+	        'div',
+	        bodyProps,
+	        children
+	      ),
+	      _react2.default.createElement(PanelFooter, { footer: footer })
+	    );
+	  };
+
+	  return Panel;
+	}(_react2.default.Component);
+
+	Panel.propTypes = {
+	  header: _propTypes2.default.oneOfType([_propTypes2.default.node, _propTypes2.default.object]),
+	  footer: _propTypes2.default.node,
+	  actions: _propTypes2.default.oneOfType([_propTypes2.default.node, _propTypes2.default.object]),
+	  subtitle: _propTypes2.default.node,
+	  innerClassName: _propTypes2.default.string,
+	  padding: function padding(props, propName, componentName) {
+	    if (props.padding && !props.padding.split(' ').every(function (pad) {
+	      return paddingTypes.indexOf(pad) >= 0;
+	    })) {
+	      return new Error('Invalid padding type used in ' + componentName);
+	    }
+	  },
+	  scrollable: _propTypes2.default.oneOfType([_propTypes2.default.bool, _propTypes2.default.number])
+	};
+
+	var ShadowPanel = exports.ShadowPanel = function (_Panel) {
+	  (0, _inherits3.default)(ShadowPanel, _Panel);
+
+	  function ShadowPanel(props) {
+	    (0, _classCallCheck3.default)(this, ShadowPanel);
+
+	    var _this5 = (0, _possibleConstructorReturn3.default)(this, _Panel.call(this, props));
+
+	    _this5.kind = 'panel-shadow-' + props.shadowLevel;
+	    return _this5;
+	  }
+
+	  return ShadowPanel;
+	}(Panel);
+
+	ShadowPanel.propTypes = (0, _extends3.default)({}, Panel.propTypes, {
+	  shadowLevel: _propTypes2.default.oneOf([1, 2, 3, 4])
+	});
+	ShadowPanel.defaultProps = {
+	  shadowLevel: 3
+	};
+
+	var SimplePanel = exports.SimplePanel = function (_Panel2) {
+	  (0, _inherits3.default)(SimplePanel, _Panel2);
+
+	  function SimplePanel() {
+	    var _temp, _this6, _ret;
+
+	    (0, _classCallCheck3.default)(this, SimplePanel);
+
+	    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+	      args[_key] = arguments[_key];
+	    }
+
+	    return _ret = (_temp = (_this6 = (0, _possibleConstructorReturn3.default)(this, _Panel2.call.apply(_Panel2, [this].concat(args))), _this6), _this6.kind = 'panel-simple', _temp), (0, _possibleConstructorReturn3.default)(_this6, _ret);
+	  }
+
+	  return SimplePanel;
+	}(Panel);
+
+	var BasicPanel = exports.BasicPanel = function (_Panel3) {
+	  (0, _inherits3.default)(BasicPanel, _Panel3);
+
+	  function BasicPanel() {
+	    var _temp2, _this7, _ret2;
+
+	    (0, _classCallCheck3.default)(this, BasicPanel);
+
+	    for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+	      args[_key2] = arguments[_key2];
+	    }
+
+	    return _ret2 = (_temp2 = (_this7 = (0, _possibleConstructorReturn3.default)(this, _Panel3.call.apply(_Panel3, [this].concat(args))), _this7), _this7.kind = 'panel-basic', _temp2), (0, _possibleConstructorReturn3.default)(_this7, _ret2);
+	  }
+
+	  return BasicPanel;
+	}(Panel);
+
+	var BasicPanelAlt = exports.BasicPanelAlt = function (_Panel4) {
+	  (0, _inherits3.default)(BasicPanelAlt, _Panel4);
+
+	  function BasicPanelAlt() {
+	    var _temp3, _this8, _ret3;
+
+	    (0, _classCallCheck3.default)(this, BasicPanelAlt);
+
+	    for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+	      args[_key3] = arguments[_key3];
+	    }
+
+	    return _ret3 = (_temp3 = (_this8 = (0, _possibleConstructorReturn3.default)(this, _Panel4.call.apply(_Panel4, [this].concat(args))), _this8), _this8.kind = 'panel-basic-alt', _temp3), (0, _possibleConstructorReturn3.default)(_this8, _ret3);
+	  }
+
+	  return BasicPanelAlt;
+	}(Panel);
+
+	var ClickablePanel = exports.ClickablePanel = function (_Panel5) {
+	  (0, _inherits3.default)(ClickablePanel, _Panel5);
+
+	  function ClickablePanel() {
+	    var _temp4, _this9, _ret4;
+
+	    (0, _classCallCheck3.default)(this, ClickablePanel);
+
+	    for (var _len4 = arguments.length, args = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+	      args[_key4] = arguments[_key4];
+	    }
+
+	    return _ret4 = (_temp4 = (_this9 = (0, _possibleConstructorReturn3.default)(this, _Panel5.call.apply(_Panel5, [this].concat(args))), _this9), _this9.kind = 'panel-clickable', _temp4), (0, _possibleConstructorReturn3.default)(_this9, _ret4);
+	  }
+
+	  return ClickablePanel;
+	}(Panel);
+
+	var ClickableAltPanel = exports.ClickableAltPanel = function (_Panel6) {
+	  (0, _inherits3.default)(ClickableAltPanel, _Panel6);
+
+	  function ClickableAltPanel() {
+	    var _temp5, _this10, _ret5;
+
+	    (0, _classCallCheck3.default)(this, ClickableAltPanel);
+
+	    for (var _len5 = arguments.length, args = Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
+	      args[_key5] = arguments[_key5];
+	    }
+
+	    return _ret5 = (_temp5 = (_this10 = (0, _possibleConstructorReturn3.default)(this, _Panel6.call.apply(_Panel6, [this].concat(args))), _this10), _this10.kind = 'panel-clickable-alt', _temp5), (0, _possibleConstructorReturn3.default)(_this10, _ret5);
+	  }
+
+	  return ClickableAltPanel;
+	}(Panel);
+
+	var HighlightPanel = exports.HighlightPanel = function (_Panel7) {
+	  (0, _inherits3.default)(HighlightPanel, _Panel7);
+
+	  function HighlightPanel() {
+	    var _temp6, _this11, _ret6;
+
+	    (0, _classCallCheck3.default)(this, HighlightPanel);
+
+	    for (var _len6 = arguments.length, args = Array(_len6), _key6 = 0; _key6 < _len6; _key6++) {
+	      args[_key6] = arguments[_key6];
+	    }
+
+	    return _ret6 = (_temp6 = (_this11 = (0, _possibleConstructorReturn3.default)(this, _Panel7.call.apply(_Panel7, [this].concat(args))), _this11), _this11.kind = 'panel-highlight', _temp6), (0, _possibleConstructorReturn3.default)(_this11, _ret6);
+	  }
+
+	  return HighlightPanel;
+	}(Panel);
+
+/***/ }),
+/* 610 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/*(c) Copyright 2015 Pivotal Software, Inc. All Rights Reserved.*/
+	'use strict';
+
+	exports.__esModule = true;
+	exports.Pane = exports.BasePane = undefined;
+
+	var _extends2 = __webpack_require__(313);
+
+	var _extends3 = _interopRequireDefault(_extends2);
+
+	var _objectWithoutProperties2 = __webpack_require__(233);
+
+	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+	var _classCallCheck2 = __webpack_require__(234);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(235);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(304);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _propTypes = __webpack_require__(188);
+
+	var _propTypes2 = _interopRequireDefault(_propTypes);
+
+	var _puiReactHelpers = __webpack_require__(312);
+
+	__webpack_require__(611);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var BasePane = exports.BasePane = function (_React$PureComponent) {
+	  (0, _inherits3.default)(BasePane, _React$PureComponent);
+
+	  function BasePane() {
+	    (0, _classCallCheck3.default)(this, BasePane);
+	    return (0, _possibleConstructorReturn3.default)(this, _React$PureComponent.apply(this, arguments));
+	  }
+
+	  BasePane.prototype.render = function render() {
+	    var _props = this.props,
+	        innerClassName = _props.innerClassName,
+	        children = _props.children,
+	        other = (0, _objectWithoutProperties3.default)(_props, ['innerClassName', 'children']);
+
+	    var outerProps = (0, _puiReactHelpers.mergeProps)(other, { className: 'pane' });
+	    var innerProps = (0, _puiReactHelpers.mergeProps)({ className: innerClassName }, { className: 'container' });
+
+	    return _react2.default.createElement(
+	      'div',
+	      outerProps,
+	      _react2.default.createElement(
+	        'div',
+	        innerProps,
+	        children
+	      )
+	    );
+	  };
+
+	  return BasePane;
+	}(_react2.default.PureComponent);
+
+	BasePane.propTypes = {
+	  className: _propTypes2.default.string,
+	  innerClassName: _propTypes2.default.string
+	};
+
+	var Pane = exports.Pane = function (_React$PureComponent2) {
+	  (0, _inherits3.default)(Pane, _React$PureComponent2);
+
+	  function Pane() {
+	    (0, _classCallCheck3.default)(this, Pane);
+	    return (0, _possibleConstructorReturn3.default)(this, _React$PureComponent2.apply(this, arguments));
+	  }
+
+	  Pane.prototype.render = function render() {
+	    var _props2 = this.props,
+	        className = _props2.className,
+	        other = (0, _objectWithoutProperties3.default)(_props2, ['className']);
+
+	    return _react2.default.createElement(BasePane, (0, _extends3.default)({}, other, { className: className }));
+	  };
+
+	  return Pane;
+	}(_react2.default.PureComponent);
+
+	Pane.propTypes = {
+	  className: _propTypes2.default.string
+	};
+
+/***/ }),
+/* 611 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	try {
+	  __webpack_require__(378);
+	  __webpack_require__(612);
+	} catch(e) {
+	}
+
+
+/***/ }),
+/* 612 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(613);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(231)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(613, function() {
+				var newContent = __webpack_require__(613);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 613 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(228)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".pane > .container {\n  padding-top: 35px;\n  padding-bottom: 35px; }\n\n.pane-offset .pane-image {\n  text-align: center;\n  margin-bottom: -70px; }\n\n.pane-offset .pane-image > img {\n  display: inline-block; }\n\n.pane-offset + .pane .container {\n  padding-top: 70px; }\n\n@media (min-width: 768px) {\n  .pane > .container {\n    padding-top: 45px;\n    padding-bottom: 45px; }\n  .pane-offset .pane-image {\n    margin-bottom: -90px; }\n  .pane-offset + .pane .container {\n    padding-top: 90px; } }\n\n@media (min-width: 992px) {\n  .pane > .container {\n    padding-top: 60px;\n    padding-bottom: 60px; }\n  .pane-offset .pane-image {\n    margin-bottom: -120px; }\n  .pane-offset + .pane .container {\n    padding-top: 120px; } }\n", ""]);
+
+	// exports
+
+
+/***/ }),
+/* 614 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	/*(c) Copyright 2015 Pivotal Software, Inc. All Rights Reserved.*/
+	'use strict';
+
+	exports.__esModule = true;
+	exports.Label = undefined;
+
+	var _objectWithoutProperties2 = __webpack_require__(233);
+
+	var _objectWithoutProperties3 = _interopRequireDefault(_objectWithoutProperties2);
+
+	var _classCallCheck2 = __webpack_require__(234);
+
+	var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
+
+	var _possibleConstructorReturn2 = __webpack_require__(235);
+
+	var _possibleConstructorReturn3 = _interopRequireDefault(_possibleConstructorReturn2);
+
+	var _inherits2 = __webpack_require__(304);
+
+	var _inherits3 = _interopRequireDefault(_inherits2);
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	__webpack_require__(615);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	var Label = exports.Label = function (_React$PureComponent) {
+	  (0, _inherits3.default)(Label, _React$PureComponent);
+
+	  function Label() {
+	    (0, _classCallCheck3.default)(this, Label);
+	    return (0, _possibleConstructorReturn3.default)(this, _React$PureComponent.apply(this, arguments));
+	  }
+
+	  Label.prototype.render = function render() {
+	    var _props = this.props,
+	        children = _props.children,
+	        props = (0, _objectWithoutProperties3.default)(_props, ['children']);
+
+	    return _react2.default.createElement(
+	      'span',
+	      props,
+	      children
+	    );
+	  };
+
+	  return Label;
+	}(_react2.default.PureComponent);
+
+	Label.defaultProps = {
+	  className: 'label label-primary'
+	};
+
+/***/ }),
+/* 615 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	try {
+	  __webpack_require__(378);
+	  __webpack_require__(616);
+	} catch(e) {
+	}
+
+
+/***/ }),
+/* 616 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(617);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(231)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(true) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept(617, function() {
+				var newContent = __webpack_require__(617);
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ }),
+/* 617 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(228)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".label {\n  padding: 0.2em 0.6em;\n  border-radius: 3px;\n  text-transform: uppercase; }\n\n.label-removable {\n  padding: 4px 7px;\n  border-radius: 3px;\n  background-color: #00A79D;\n  color: #fff;\n  font-weight: 600; }\n\n.label-removable .close-btn {\n  margin-left: 15px;\n  color: rgba(255, 255, 255, 0.6); }\n\n.label-removable .close-btn:hover {\n  color: #fff;\n  text-decoration: none; }\n", ""]);
+
+	// exports
+
 
 /***/ })
 /******/ ]);

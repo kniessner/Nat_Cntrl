@@ -5,10 +5,14 @@
  * The extra line between the end of the @file docblock
  * and the file-closure is important.
  */
+//import '../../../node_modules/pui-css-all';
+//import '../node_modules/pui-css-all';
+
 import './assets/stylesheets/base.scss';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Grid, FlexCol} from 'pui-react-flex-grids';
+import {Label} from 'pui-react-labels';
 /******** COMPONENTS
 *
 *
@@ -19,6 +23,7 @@ import Nav_Elements from './components/Nav_Elements';
 //import Search from './components/Search';
 import Messenger from './views/Messenger';
 import Chat from './components/Chat';
+
 /********
 * UTILITIES
 *
@@ -47,12 +52,34 @@ class App extends React.Component {
             {Nav_Elements}
           </Navigation>
 
-            <Messenger socket={socket}/>
+          <div  id="info_bar">
+          <span  className="data_wrap">
+            <h5>
+            Host: <Label>{window.location.hostname}</Label>
+            </h5>
+          </span>
+          <span  className="data_wrap">
+            <h5>
+            Ip: <Label>192.168.178.0</Label>
+            </h5>
+          </span>
+          <span className="data_wrap">
+            <h5>
+            ID:  <Label>#lbcYIA6Itiw_vEYlAABa</Label>
 
-          <Grid className="main_section">
-            {this.props.children}
-          </Grid>
-            {window.location.hostname}
+            </h5>
+          </span>
+          </div>
+
+          <div className="container" id="modules">
+            <Messenger socket={socket}/>
+            <Chat socket={socket}/>
+          </div>
+
+          {this.props.children}
+
+
+
         </div>
     )
   }

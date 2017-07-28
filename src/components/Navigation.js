@@ -50,9 +50,9 @@ class Navigation extends React.Component {
                          onEntered={() => console.log('onEntered')}
                          onExited={() => console.log('onExited')}>
            <ul>
-             <li className="w_50" ><Link to='/'>Home</Link></li>
-             <li className="w_50"><Link to='/dashboard'>Try</Link></li>
-             <li className="w_50"><Link to='/modules'>Modules</Link></li>
+             <li className="sub_menu_element"><Link to='/'>Home</Link></li>
+             <li className="sub_menu_element"><Link to='/dashboard'>Try</Link></li>
+             <li className="sub_menu_element"><Link to='/modules'>Modules</Link></li>
            </ul>
         </ExpanderContent>
 
