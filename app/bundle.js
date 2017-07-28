@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "8f7c19a43593cf3c0441"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "fa934401e6f481f92498"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -26268,12 +26268,28 @@
 	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props));
 
 	    _this.state = {
-	      mounted: false
+	      mounted: false,
+	      id: '',
+	      connected: false,
+	      port: ''
 	    };
 	    return _this;
 	  }
 
 	  _createClass(App, [{
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
+	      var _this2 = this;
+
+	      _sockets.socket.on('connect', function () {
+	        _this2.setState({
+	          id: _sockets.socket.id,
+	          connected: _sockets.socket.connected,
+	          port: _sockets.socket.io.engine.port
+	        });
+	      });
+	    }
+	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      this.setState({ mounted: true });
@@ -26281,7 +26297,6 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      console.log('App');
 	      return _react2.default.createElement(
 	        'div',
 	        { id: 'content' },
@@ -26313,11 +26328,11 @@
 	            _react2.default.createElement(
 	              'h5',
 	              null,
-	              'Ip: ',
+	              'PORT:',
 	              _react2.default.createElement(
 	                _puiReactLabels.Label,
 	                null,
-	                '192.168.178.0'
+	                this.state.port
 	              )
 	            )
 	          ),
@@ -26327,11 +26342,25 @@
 	            _react2.default.createElement(
 	              'h5',
 	              null,
-	              'ID:  ',
+	              'ID: ',
 	              _react2.default.createElement(
 	                _puiReactLabels.Label,
 	                null,
-	                '#lbcYIA6Itiw_vEYlAABa'
+	                '#',
+	                this.state.id
+	              )
+	            )
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            { className: 'data_wrap' },
+	            _react2.default.createElement(
+	              'h5',
+	              null,
+	              _react2.default.createElement(
+	                _puiReactLabels.Label,
+	                null,
+	                this.state.connected ? 'connected' : 'disconnected'
 	              )
 	            )
 	          )

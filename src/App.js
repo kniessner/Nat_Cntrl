@@ -35,17 +35,27 @@ class App extends React.Component {
   constructor(props) {
     super(props);
       this.state = {
-        mounted:false
+        mounted:false,
+        id:'',
+        connected:false,
+        port: ''
       }
   }
 
-
+  componentWillMount() {
+    socket.on('connect', () => {
+      this.setState({
+        id: socket.id,
+        connected: socket.connected,
+        port: socket.io.engine.port
+      });
+    });
+  }
   componentDidMount() {
       this.setState({mounted: true});
-    }
+  }
 
   render() {
-    console.log('App');
     return (
         <div id="content">
           <Navigation>
@@ -58,15 +68,26 @@ class App extends React.Component {
             Host: <Label>{window.location.hostname}</Label>
             </h5>
           </span>
-          <span  className="data_wrap">
+          {
+            /*<span  className="data_wrap">
             <h5>
             Ip: <Label>192.168.178.0</Label>
+            </h5>
+          </span>*/
+        }
+          <span className="data_wrap">
+            <h5>
+            PORT:<Label>{this.state.port}</Label>
             </h5>
           </span>
           <span className="data_wrap">
             <h5>
-            ID:  <Label>#lbcYIA6Itiw_vEYlAABa</Label>
-
+            ID: <Label>#{this.state.id}</Label>
+            </h5>
+          </span>
+          <span className="data_wrap">
+            <h5>
+            <Label>{this.state.connected ? 'connected' : 'disconnected'}</Label>
             </h5>
           </span>
           </div>
