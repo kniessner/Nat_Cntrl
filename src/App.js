@@ -5,8 +5,6 @@
  * The extra line between the end of the @file docblock
  * and the file-closure is important.
  */
-//import '../../../node_modules/pui-css-all';
-//import '../node_modules/pui-css-all';
 
 import './assets/stylesheets/base.scss';
 import React, {Component} from 'react';
@@ -20,6 +18,7 @@ import {Label} from 'pui-react-labels';
 *************/
 import Navigation   from './components/Navigation';
 import Nav_Elements from './components/Nav_Elements';
+import Info_Bar from './components/Info_Bar';
 //import Search from './components/Search';
 import Messenger from './views/Messenger';
 import Chat from './components/Chat';
@@ -61,36 +60,8 @@ class App extends React.Component {
           <Navigation>
             {Nav_Elements}
           </Navigation>
+          <Info_Bar socket={socket}/>
 
-          <div  id="info_bar">
-          <span  className="data_wrap">
-            <h5>
-            Host: <Label>{window.location.hostname}</Label>
-            </h5>
-          </span>
-          {
-            /*<span  className="data_wrap">
-            <h5>
-            Ip: <Label>192.168.178.0</Label>
-            </h5>
-          </span>*/
-        }
-          <span className="data_wrap">
-            <h5>
-            PORT:<Label>{this.state.port}</Label>
-            </h5>
-          </span>
-          <span className="data_wrap">
-            <h5>
-            ID: <Label>#{this.state.id}</Label>
-            </h5>
-          </span>
-          <span className="data_wrap">
-            <h5>
-            <Label>{this.state.connected ? 'connected' : 'disconnected'}</Label>
-            </h5>
-          </span>
-          </div>
 
           <div className="container" id="modules">
             <Messenger socket={socket}/>
