@@ -3,13 +3,16 @@ const { exec } = require('child_process');
 const clients = [];
 const remote_server = ['http://motionwire.herokuapp.com/'];
 
-
+module.exports = function (io) {
+    io.on('connect', function(client) {
+        log.sys('Conn '+ client.id);
+    });
+}
+/*
 var socket_server = function(server) {
    console.log('hellov '+server);
 
 }
-
-
 
 function local_socket(local_server) {
     return require('socket.io')(local_server);
@@ -47,3 +50,4 @@ module.exports = {
   get_clients:get_clients,
   socket_on:socket_on
 }
+*/

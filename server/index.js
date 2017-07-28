@@ -9,7 +9,7 @@
 */
 const log    = require('./modules/console_mod.js');
 const cloud  = require('./modules/webdav.js');
-const google = require('./modules/google.js');
+//const google = require('./modules/google.js');
 const sockets = require('./modules/sockets.js');
 /*
 var request = require('request');
@@ -24,6 +24,4 @@ request('http://kniessner.com', function (error, response, body) {
 module.exports = {
   log,
   cloud:cloud.get()
-  google,
-  sockets
 }

@@ -17,6 +17,7 @@ import {Grid, FlexCol} from 'pui-react-flex-grids';
 import Navigation   from './components/Navigation';
 import Nav_Elements from './components/Nav_Elements';
 //import Search from './components/Search';
+import Messenger from './views/Messenger';
 import Chat from './components/Chat';
 /********
 * UTILITIES
@@ -29,31 +30,29 @@ class App extends React.Component {
   constructor(props) {
     super(props);
       this.state = {
-        input: '',
-        output:'',
-        messages:[]
+        mounted:false
       }
   }
 
 
   componentDidMount() {
       this.setState({mounted: true});
-
     }
 
   render() {
-
+    console.log('App');
     return (
         <div id="content">
           <Navigation>
             {Nav_Elements}
           </Navigation>
 
-            <Chat socket={this.socket} data={this.state.messages}/>
-            {window.location.hostname}
+            <Messenger socket={socket}/>
+
           <Grid className="main_section">
             {this.props.children}
           </Grid>
+            {window.location.hostname}
         </div>
     )
   }

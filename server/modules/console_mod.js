@@ -20,9 +20,11 @@ function CustomConsole() {
     };
     this.sys = function(info,msg,id) {
         if(id){
-            loga(chalk.hex('#32D4C2')('SYSTEM = ( ' + chalk.white.bold(`${info}`) + '/'+msg +'-('+ id +'))'));
+            loga(chalk.hex('#32D4C2')('SYSTEM => ' + chalk.white.bold(`${info}`+ '/'+msg)  +'-('+ id +'))'));
+        }else if(msg){
+            loga(chalk.hex('#32D4C2')('SYSTEM => ' + chalk.white.bold(`${info}`+ '/'+msg)  ));
         }else{
-            loga(chalk.hex('#32D4C2')('SYSTEM = ( ' + chalk.white.bold(`${info}`) + '/'+msg ));
+            loga(chalk.hex('#32D4C2')('SYSTEM => ' + chalk.white.bold(`${info}`)));
         }
     };
     this.inf = function(info,msg,id) {

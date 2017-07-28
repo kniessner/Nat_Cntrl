@@ -1,7 +1,20 @@
-var os = require("os");
+const os = require("os");
+const si = require('systeminformation');
+var net = require('net');
+module.exports.cpu = function () {
+  si.cpu(function(data) {
+      return data;
+  })
+}
 
 
-cpuIAverage = function(i) {
+// promises style - new in version 3
+/*si.cpu()
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+*/
+
+module.exports.cpuIAverage = function(i) {
   var cpu, cpus, idle, len, total, totalIdle, totalTick, type;
   totalIdle = 0;
   totalTick = 0;
@@ -11,7 +24,6 @@ cpuIAverage = function(i) {
     totalTick += cpu.times[type];
   }
   totalIdle += cpu.times.idle;
-
   idle = totalIdle / cpus.length;
   total = totalTick / cpus.length;
   return {
@@ -20,41 +32,9 @@ cpuIAverage = function(i) {
   };
 };
 
-cpuILoadInit = function() {
-  var index=arguments[0];
-  return function() {
-    var start;
-    start = cpuIAverage(index);
-    return function() {
-      var dif, end;
-      end = cpuIAverage(index);
-      dif = {};
-      dif.cpu=index;
-      dif.idle = end.idle - start.idle;
-      dif.total = end.total - start.total;
-      dif.percent = 1 - dif.idle / dif.total;
-      return dif;
-    };
-  };
-};
-cpuILoad = (function() {
-  var info=[],cpus = os.cpus();
-  for (i = 0, len = cpus.length; i < len; i++) {
-    var a=cpuILoadInit(i)();
-    info.push( a );
-  }
-  return function() {
-    var res=[],cpus = os.cpus();
-    for (i = 0, len = cpus.length; i < len; i++) {
-      res.push( info[i]() );
-    }
-    return res;
-  }
 
-})();
 // Mock products to be used with API call.
-module.exports.cpus =()=> {
-
+module.exports.cpus = function(){
   //Create function to get CPU information
   function cpuAverage() {
 
@@ -103,4 +83,51 @@ module.exports.cpus =()=> {
   }, 100);
 };
 
-//smodule.sexports = cpus;
+module.exports.openPorts = function(i) {
+
+
+// the machine to scan
+var host = 'localhost';
+// starting from port number
+var start = 1;
+// to port number
+var end = 10000;
+// sockets should timeout asap to ensure no resources are wasted
+// but too low a timeout value increases the likelyhood of missing open sockets, so be careful
+var timeout = 2000;
+
+// the port scanning loop
+while (start <= end) {
+
+    // it is always good to give meaningful names to your variables
+    // since the context is changing, we use `port` to refer to current port to scan
+    var port = start;
+
+    // we create an anonynous function, pass the current port, and operate on it
+    // the reason we encapsulate the ^socket creation process is because we want to preseve the value of `port` for the callbacks
+    (function(port) {
+        // console.log('CHECK: ' + port);
+        var s = new net.Socket();
+
+        s.setTimeout(timeout, function() { s.destroy(); });
+        s.connect(port, host, function() {
+            console.log('OPEN: ' + port);
+            // we don't destroy the socket cos we want to listen to data event
+            // the socket will self-destruct in 2 secs cos of the timeout we set, so no worries
+        });
+
+        // if any data is written to the client on connection, show it
+        s.on('data', function(data) {
+            console.log(port +': '+ data);
+            s.destroy();
+        });
+
+        s.on('error', function(e) {
+            // silently catch all errors - assume the port is closed
+            s.destroy();
+        });
+    })(port);
+
+    start++;
+}
+};

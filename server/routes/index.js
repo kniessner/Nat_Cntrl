@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
 	});
 });
 
-module.exports = router;
+module.exports.router = router;
 
 module.exports.index = function(req, res){
   res.render('index', { name: 'John' });

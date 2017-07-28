@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import {BrowserRouter, Route, Switch ,Link  } from 'react-router-dom';
 
 import App from './App';
+import Home from './views/Home';
 import Book from './views/Book';
 import About from './views/About';
 import NotFound from './views/NotFound';
@@ -12,12 +13,11 @@ import Dashboard from './views/Dashboard';
 import Remote_Panel from './views/Remote_Panel';
 
 
-
 const Routes = () => (
         <App>
         <main>
             <Switch>
-              <Route path='/' component={Book} exact/>
+              <Route path='/' component={Home} exact/>
               <Route path='/about' component={About}/>
               <Route path='/book' component={Book}/>
               <Route path='/dashboard' component={Dashboard}/>
