@@ -10,7 +10,6 @@ import './assets/stylesheets/base.scss';
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {Grid, FlexCol} from 'pui-react-flex-grids';
-import {Label} from 'pui-react-labels';
 /******** COMPONENTS
 *
 *
@@ -22,7 +21,8 @@ import Info_Bar from './components/Info_Bar';
 //import Search from './components/Search';
 import Messenger from './views/Messenger';
 import Chat from './components/Chat';
-
+import Finder from './components/Finder';
+import Carousel from './components/Carousel_Content';
 /********
 * UTILITIES
 *
@@ -62,13 +62,21 @@ class App extends React.Component {
           </Navigation>
           <Info_Bar socket={socket}/>
 
+          <Carousel>
+          <div>
+
+          <Messenger socket={socket}/>
+          <Chat socket={socket}/>
+          <Finder socket={socket}/>
+          </div>
+          {this.props.children}
+          </Carousel>
+
 
           <div className="container" id="modules">
-            <Messenger socket={socket}/>
-            <Chat socket={socket}/>
+
           </div>
 
-          {this.props.children}
 
 
 

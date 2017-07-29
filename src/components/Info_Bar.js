@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Label} from 'pui-react-labels';
 
 class Info_Bar extends React.Component {
   constructor(props) {

@@ -233,3 +233,19 @@
     color: #fff; }
   .carousel:hover .slide .legend {
     opacity: 1; }
+
+    .carousel.carousel-slider {
+        position: relative;
+        margin: 0;
+        overflow: hidden;
+        width: 100%;
+        height: calc(100vh - 100px);
+    }
+    .carousel .slide {
+    min-width: 100%;
+    margin: 0;
+    position: relative;
+    text-align: center;
+    background: none;
+    height: calc(100vh - 100px);
+}
