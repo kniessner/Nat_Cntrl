@@ -23,6 +23,8 @@ import Messenger from './views/Messenger';
 import Chat from './components/Chat';
 import Finder from './components/Finder';
 import Carousel from './components/Carousel_Content';
+
+
 /********
 * UTILITIES
 *
@@ -51,7 +53,7 @@ class App extends React.Component {
     });
   }
   componentDidMount() {
-      this.setState({mounted: true});
+      this.setState({mounted: true});x
   }
 
   render() {
