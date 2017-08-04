@@ -38,7 +38,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 sio;
 
-server.listen(process.env.PORT || 3030, function(error) {
+server.listen(80, function(error) {
   if (error) console.error(error);
   else  console.info('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser. -%s', this.address().port,this.address().port, app.settings.env);
 });
