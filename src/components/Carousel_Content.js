@@ -8,7 +8,7 @@ var Carousel = require('react-responsive-carousel').Carousel;
 class CustSlider extends React.Component {
     render() {
         return (
-            <Carousel axis="horizontal" useKeyboardArrows="true" infiniteLoop="true" showThumbs="false" dynamicHeight emulateTouch>
+            <Carousel axis="horizontal" useKeyboardArrows={true} infiniteLoop={true} showThumbs={false} dynamicHeight emulateTouch>
                 {this.props.children}
             </Carousel>
         );

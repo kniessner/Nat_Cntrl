@@ -69,13 +69,13 @@ nav {
   padding-top: 10px;
 }
 
-nav.sub_nav {
+nav.main_nav {
   text-align: center;
   padding: 0;
   background: #23282d;
   height: 60px;
   margin: 0 auto;
-padding-right: 50px;
+  padding-right: 50px;
   button.turk {
     border: 0;
     border-radius: 0;
@@ -95,7 +95,7 @@ padding-right: 50px;
    }
 }
 
-nav.sub_nav.default {
+nav.main_nav.default {
   float: left;
   position: relative;
   width: 100%;

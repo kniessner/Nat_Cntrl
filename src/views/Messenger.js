@@ -13,7 +13,6 @@ function Item_Collection(props) {
         <li className="list_content collection">
           {
             Object.keys(props.data).map(function(item,i){
-                console.log('list:',item+ " "+props.data[item]+ " "+i);
                 return (
                     <p key={i}>
                     <b>{item}: </b>{props.data[item]}
@@ -92,7 +91,6 @@ constructor(props) {
   }
 
   componentDidMount() {
-    console.log(this.props.socket);
     this.props.socket.on('connect', () => {
       this.setState({
         connection: true
@@ -138,7 +136,6 @@ constructor(props) {
     }
 
   render() {
-    console.log(this.state.messages);
     return (
       <div id="commander" >
 
@@ -163,7 +160,7 @@ constructor(props) {
                            </form>
 
                             <ul className="stream">
-                              {this.state.messages.reverse().map(function(object, i) {
+                              {this.state.messages ? this.state.messages.reverse().map(function(object, i) {
                                  console.log(object.name,object);
                                  switch(object.name) {
                                      case 'client_header':
@@ -182,7 +179,7 @@ constructor(props) {
                                          return <Item_List data={object.data} key={i}/>;
                                          break;
                                  }
-                              })}
+                              }) : 'nothing to show'}
                             </ul>
                           </Panel>
         </ExpanderContent>

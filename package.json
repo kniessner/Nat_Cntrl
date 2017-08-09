@@ -20,6 +20,7 @@
   },
   "author": "",
   "dependencies": {
+    "axios": "^0.16.2",
     "babel-core": "^6.7.6",
     "babel-loader": "^6.2.4",
     "babel-polyfill": "^6.23.0",
@@ -40,6 +41,7 @@
     "lodash.range": "^3.2.0",
     "node-jsx": "^0.13.3",
     "node-sass": "^3.4.2",
+    "normalize-scss": "^7.0.0",
     "prop-types": "^15.5.10",
     "pui-css-all": "^8.3.1",
     "pui-css-backgrounds": "^8.3.0",

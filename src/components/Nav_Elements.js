@@ -1,6 +1,9 @@
+import React from 'react';
 
-export const Nav_Elements = () => (
-    <button className="turk">
-      Test
-    </button>
-)
+const Nav_Elements = () =>
+      <button className="turk">
+        Test
+      </button>;
+
+
+export default Nav_Elements;

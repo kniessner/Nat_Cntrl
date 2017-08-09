@@ -31,6 +31,23 @@ import Carousel from './components/Carousel_Content';
 * loading socke streams
 ************/
 import {socket,socket_init,socket_inbox} from './util/sockets.js';
+import WpApi from './util/WpApi';
+
+const Sub_Elements = () =>
+      <ul>
+        <li className="sub_menu_element">
+          <Link to='/'>Home</Link>
+        </li>
+        <li className="sub_menu_element">
+          <Link to='/dashboard'>Try</Link>
+        </li>
+        <li className="sub_menu_element">
+          <Link to='/modules'>Modules</Link>
+        </li>
+      </ul>;
+
+
+
 
 class App extends React.Component {
   constructor(props) {
@@ -53,25 +70,33 @@ class App extends React.Component {
     });
   }
   componentDidMount() {
-      this.setState({mounted: true});x
+      this.setState({mounted: true});
   }
 
   render() {
     return (
         <div id="content">
-          <Navigation>
-            {Nav_Elements}
+          <Navigation main_elements={Nav_Elements} sub_elements={Sub_Elements}>
+
           </Navigation>
           <Info_Bar socket={socket}/>
 
-          <Carousel>
-          <div>
 
-          <Messenger socket={socket}/>
-          <Chat socket={socket}/>
-          <Finder socket={socket}/>
-          </div>
-          {this.props.children}
+          <Carousel>
+            <div>
+              <img src="http://localhost:3030/images/1.jpeg" />
+            </div>
+            <div>
+              <img src="./images/2.jpeg" />
+            </div>
+
+            <div>
+              <Messenger socket={socket}/>
+              <Chat socket={socket}/>
+              <Finder socket={socket}/>
+            </div>
+
+            {this.props.children}
           </Carousel>
 
 

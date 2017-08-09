@@ -63,7 +63,7 @@ class Chat extends React.Component {
           messages: allMessages
         });
       })
-  }
+  }                 
 
   handleOnChange = (e) => {
     e.preventDefault();
@@ -106,9 +106,9 @@ class Chat extends React.Component {
                             <input className="btn btn-default-alt" type="submit" value="Submit"/>
                           </form>
                           <ul className="stream">
-                            {this.state.messages.map(function(object, i) {
+                            {this.state.messages ? this.state.messages.map(function(object, i) {
                               return <Item data={object} key={i}/>;
-                            })}
+                            }) : 'no message'}
                           </ul>
                         </Panel>
             </ExpanderContent>
